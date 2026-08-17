@@ -2,7 +2,7 @@
  * Clinical Atelier design system: luminous white fields, silver hardware, and calibration-emerald accents.
  * The layout treats Bella Nissa Science as a connected serum-and-device protocol rather than a conventional beauty catalogue.
  */
-import { useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import {
   ArrowDownRight,
   ArrowUpRight,
@@ -18,7 +18,9 @@ const ASSETS = {
   hero: "/manus-storage/bns-hero-system_78a7dae4.jpg",
   serum: "/manus-storage/bns-serum-laboratory_969683fc.jpg",
   device: "/manus-storage/bns-device-precision_66879012.jpg",
-  deviceExploded: "/manus-storage/bns-actual-device-exploded_8be9e5f4.jpg",
+  deviceInternalAssembled: "/manus-storage/bns-device-internal-assembled_622a9b8a.jpg",
+  deviceInternalMid: "/manus-storage/bns-device-internal-mid_e504260a.jpg",
+  deviceInternalExploded: "/manus-storage/bns-device-internal-exploded_25eb25bc.jpg",
   ritualMotion: "/manus-storage/bns-blonde-device-ritual-motion_68f91816.mp4",
   ritualMineralStill: "/manus-storage/bns-blonde-device-ritual-mineral-keyframe_7a913bcc.png",
   ingredientMap: "/manus-storage/bns-skin-layer-ingredient-map_07772248.jpg",
@@ -75,8 +77,28 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [openUsageStep, setOpenUsageStep] = useState<number | null>(0);
+  const [assemblyStage, setAssemblyStage] = useState(0);
+  const assemblyRef = useRef<HTMLElement | null>(null);
 
   const activeProtocol = protocol[activeStep];
+
+  useEffect(() => {
+    const updateAssemblyStage = () => {
+      const section = assemblyRef.current;
+      if (!section) return;
+      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+      const travel = Math.max(1, section.offsetHeight - window.innerHeight);
+      const progress = Math.min(1, Math.max(0, (window.scrollY - sectionTop) / travel));
+      setAssemblyStage(progress < 0.32 ? 0 : progress < 0.7 ? 1 : 2);
+    };
+    updateAssemblyStage();
+    window.addEventListener("scroll", updateAssemblyStage, { passive: true });
+    window.addEventListener("resize", updateAssemblyStage);
+    return () => {
+      window.removeEventListener("scroll", updateAssemblyStage);
+      window.removeEventListener("resize", updateAssemblyStage);
+    };
+  }, []);
 
   return (
     <div className="site-shell">
@@ -207,24 +229,28 @@ export default function Home() {
           </article>
         </section>
 
-        <section className="device-explainer" aria-labelledby="device-explainer-title">
-          <div className="device-explainer__intro">
-            <div className="section-kicker">03 / Device anatomy</div>
-            <h2 id="device-explainer-title">A considered object.<br /><em>Shown in sequence.</em></h2>
-            <p>The companion device is presented as an assembled ritual tool: its visible layers separate, pause in view, then return to one calm, ready-to-use form.</p>
-            <p className="device-explainer__note">Component names describe the visible product architecture shown here; they do not represent proprietary internal specifications.</p>
-          </div>
-          <div className="device-explainer__stage" aria-label="Animated exploded view of the Bella Nissa Science companion device">
-            <img className="actual-device actual-device--assembled" src={ASSETS.device} alt="Bella Nissa Science device in its assembled form" />
-            <img className="actual-device actual-device--exploded" src={ASSETS.deviceExploded} alt="Bella Nissa Science device shown as an exploded assembly" />
-            <div className="device-callout device-callout--treatment"><i /><span>CONTOURED<br />TREATMENT SURFACE</span></div>
-            <div className="device-callout device-callout--interface"><i /><span>POWER + STATUS<br />INTERFACE</span></div>
-            <div className="device-callout device-callout--housing"><i /><span>PRECISION OUTER<br />HOUSING</span></div>
-            <div className="device-callout device-callout--base"><i /><span>LOWER SUPPORT<br />BASE</span></div>
-            <div className="device-stage-meta"><span>EXPLODE → OBSERVE → REASSEMBLE</span><span>DEVICE / 02</span></div>
-          </div>
-          <div className="device-explainer__legend">
-            <span><b>01</b> Treatment surface</span><span><b>02</b> Interface</span><span><b>03</b> Outer housing</span><span><b>04</b> Support base</span>
+        <section ref={assemblyRef} className={`assembly-scroller assembly-scroller--stage-${assemblyStage}`} aria-labelledby="assembly-title">
+          <div className="assembly-sticky">
+            <div className="assembly-copy">
+              <div className="section-kicker">03 / Internal assembly</div>
+              <p className="assembly-copy__index">DEVICE / 02</p>
+              <h2 id="assembly-title">The system,<br /><em>held within.</em></h2>
+              <p>The companion device opens from a complete object to an internal assembly, then returns to its finished form as you scroll back through the sequence.</p>
+              <div className="assembly-copy__seal"><img src={ASSETS.logo} alt="BNS molecular badge" /><span>BNS / INTERNAL<br />ASSEMBLY CONCEPT</span></div>
+              <div className="assembly-progress" aria-label="Assembly sequence progress"><span className={assemblyStage >= 0 ? "is-active" : ""}>01 / ASSEMBLED</span><span className={assemblyStage >= 1 ? "is-active" : ""}>02 / OPEN</span><span className={assemblyStage >= 2 ? "is-active" : ""}>03 / EXPLODED</span></div>
+            </div>
+            <div className="assembly-render" aria-label="Illustrative internal exploded assembly of the Bella Nissa Science device">
+              <img className="assembly-frame assembly-frame--assembled" src={ASSETS.deviceInternalAssembled} alt="Bella Nissa device in its assembled form" />
+              <img className="assembly-frame assembly-frame--mid" src={ASSETS.deviceInternalMid} alt="Bella Nissa device with its outer layers beginning to separate" />
+              <img className="assembly-frame assembly-frame--exploded" src={ASSETS.deviceInternalExploded} alt="Bella Nissa device in an illustrative internal exploded assembly" />
+              <div className="assembly-callout assembly-callout--cap"><i /><span>CURVED<br />TREATMENT CAP</span></div>
+              <div className="assembly-callout assembly-callout--ring"><i /><span>CONDUCTIVE<br />CONTACT RING</span></div>
+              <div className="assembly-callout assembly-callout--board"><i /><span>CONTROL +<br />INTERFACE BOARD</span></div>
+              <div className="assembly-callout assembly-callout--cell"><i /><span>RECHARGEABLE<br />POWER CELL</span></div>
+              <div className="assembly-callout assembly-callout--flex"><i /><span>CONTACT<br />FLEX LAYER</span></div>
+              <div className="assembly-callout assembly-callout--base"><i /><span>LOWER<br />SUPPORT BASE</span></div>
+              <div className="assembly-render__note"><img src={ASSETS.logo} alt="" /><span>ILLUSTRATIVE INTERNAL CONCEPT<br />PENDING PRODUCTION CAD</span></div>
+            </div>
           </div>
         </section>
 

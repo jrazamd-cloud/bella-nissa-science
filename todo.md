@@ -34,3 +34,8 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Analyze the user-provided animation reference and the actual Bella Nissa device geometry.
 - [x] Create an actual-device exploded-view treatment that separates and reassembles the real device form.
 - [x] Replace the abstract anatomy graphic and review the revised device module across responsive layouts.
+- [x] Remove the current external-only device explainer section.
+- [x] Define an illustrative internal component set that is clearly presented as a concept pending CAD specifications.
+- [x] Generate actual-device internal exploded-assembly visual states.
+- [x] Implement a scroll-driven assembled-to-exploded-to-reassembled interaction with labelled callouts.
+- [x] Review the new assembly interaction across desktop and mobile before saving.
