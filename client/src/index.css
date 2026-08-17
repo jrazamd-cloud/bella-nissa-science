@@ -571,22 +571,18 @@ a:focus-visible { outline: 2px solid var(--emerald); outline-offset: 4px; border
   .proof-strip { margin-top: 0; }
 }
 
-/* Targeted hardening: named links opt into a component class rather than relying on page or token inheritance. */
-.brand-link, .brand-link:visited { color: var(--ink) !important; text-decoration: none; }
-.brand-link:hover { color: var(--emerald) !important; text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 0.2em; }
-.brand-link:focus-visible { outline: 2px solid var(--emerald); outline-offset: 4px; border-radius: 2px; }
+/* Context-specific link contract: no global color override, so every anchor declares its intended surface. */
+.brand-link { text-decoration: none; }
+.brand-link:focus-visible { outline: 2px solid #00a97f; outline-offset: 4px; border-radius: 2px; }
+.brand-link--on-light, .brand-link--on-light:visited { color: #17211f !important; }
+.brand-link--on-light:hover { color: #006f58 !important; text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 0.2em; }
+.brand-link--on-dark, .brand-link--on-dark:visited { color: #f6f7f3 !important; }
+.brand-link--on-dark:hover { color: #a7ddc4 !important; text-decoration: underline; text-decoration-color: currentColor; text-underline-offset: 0.2em; }
 .brand-link--action, .brand-link--action:visited { color: #fff !important; }
-.brand-link--action:hover { color: #fff !important; text-decoration-color: #9fdcc5; }
+.brand-link--action:hover { color: #fff !important; text-decoration-color: #d7f2e5; }
 .brand-link--footer, .brand-link--footer:visited { color: #f6f7f3 !important; }
 .brand-link--footer:hover { color: #a7ddc4 !important; }
-.brand-link--header, .brand-link--header:visited { color: var(--ink) !important; }
-.brand-link--header:hover { color: var(--emerald) !important; }
-.brand-link--header .wordmark { color: inherit !important; }
-.desktop-nav .brand-link, .header-action.brand-link { color: var(--slate) !important; }
-.desktop-nav .brand-link:hover, .header-action.brand-link:hover { color: var(--emerald) !important; }
-.mobile-nav .brand-link { color: var(--ink) !important; }
-.text-link.brand-link, .product-link.brand-link, .formula-link.brand-link { color: var(--ink) !important; }
-.text-link.brand-link:hover, .product-link.brand-link:hover, .formula-link.brand-link:hover { color: var(--emerald) !important; }
+.brand-link--on-light .wordmark, .brand-link--on-dark .wordmark { color: inherit !important; }
 
 .hero-epilogue { position: absolute; z-index: 4; right: 30px; bottom: 28px; left: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 14px 16px; border-top: 1px solid rgba(0, 77, 62, 0.34); border-bottom: 1px solid rgba(0, 77, 62, 0.16); background: rgba(244, 248, 245, 0.72); backdrop-filter: blur(8px); color: #385247; font-family: "DM Mono", monospace; }
 .hero-epilogue > div { display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 8px; min-width: 0; }

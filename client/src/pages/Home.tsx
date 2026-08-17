@@ -105,18 +105,18 @@ export default function Home() {
   return (
     <div className="site-shell">
       <header className="site-header">
-          <a className="brand site-link brand-link brand-link--header" href="#top" aria-label="Bella Nissa Science home">
+          <a className="brand site-link brand-link brand-link--on-light" href="#top" aria-label="Bella Nissa Science home">
           <img src={ASSETS.logo} alt="BNS scientific emblem" />
           <Wordmark />
         </a>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
-          <a className="brand-link" href="#system">The system</a>
-          <a className="brand-link" href="/formula">Formula detail</a>
-          <a className="brand-link" href="#method">The method</a>
+          <a className="brand-link brand-link--on-light" href="#system">The system</a>
+          <a className="brand-link brand-link--on-light" href="/formula">Formula detail</a>
+          <a className="brand-link brand-link--on-light" href="#method">The method</a>
         </nav>
 
-        <a className="header-action site-link brand-link" href="#protocol">
+        <a className="header-action site-link brand-link brand-link--on-light" href="#protocol">
           View protocol <ArrowUpRight size={14} strokeWidth={1.7} />
         </a>
 
@@ -133,10 +133,10 @@ export default function Home() {
 
       {menuOpen && (
         <nav className="mobile-nav" aria-label="Mobile navigation">
-          <a className="brand-link" href="#system" onClick={() => setMenuOpen(false)}>The system</a>
-          <a className="brand-link" href="/formula" onClick={() => setMenuOpen(false)}>Formula detail</a>
-          <a className="brand-link" href="#method" onClick={() => setMenuOpen(false)}>The method</a>
-          <a className="brand-link" href="#protocol" onClick={() => setMenuOpen(false)}>View protocol</a>
+          <a className="brand-link brand-link--on-light" href="#system" onClick={() => setMenuOpen(false)}>The system</a>
+          <a className="brand-link brand-link--on-light" href="/formula" onClick={() => setMenuOpen(false)}>Formula detail</a>
+          <a className="brand-link brand-link--on-light" href="#method" onClick={() => setMenuOpen(false)}>The method</a>
+          <a className="brand-link brand-link--on-light" href="#protocol" onClick={() => setMenuOpen(false)}>View protocol</a>
         </nav>
       )}
 
@@ -157,7 +157,7 @@ export default function Home() {
               Bella Nissa Science connects a precision formula with a purposeful absorption ritual—one quiet, considered system.
             </p>
             <div className="hero-actions">
-              <a className="button button--emerald brand-link brand-link--action" href="#system">
+              <a className="button button--emerald brand-link brand-link--action brand-link--on-dark" href="#system">
                 Explore the system <ArrowDownRight size={17} />
               </a>
             </div>
@@ -196,7 +196,7 @@ export default function Home() {
           </div>
           <div className="system-statement">
             <p>Two components, each with a distinct role. The serum begins the ritual; the device is made to follow it.</p>
-            <a className="text-link brand-link" href="#protocol">Understand the protocol <ArrowDownRight size={17} /></a>
+            <a className="text-link brand-link brand-link--on-light" href="#protocol">Understand the protocol <ArrowDownRight size={17} /></a>
           </div>
         </section>
 
@@ -214,7 +214,7 @@ export default function Home() {
               <p className="product-label">Bioactive Renewal Serum</p>
               <h3>Start with the formula.</h3>
               <p>Frosted glass, measured presentation, and a formula-first point of entry for the Bella Nissa Science system.</p>
-              <a className="product-link brand-link" href="#protocol">Explore serum <ArrowUpRight size={17} /></a>
+              <a className="product-link brand-link brand-link--on-light" href="#protocol">Explore serum <ArrowUpRight size={17} /></a>
             </div>
           </article>
 
@@ -231,7 +231,7 @@ export default function Home() {
               <p className="product-label">Absorption + Massage Device</p>
               <h3>Continue with purpose.</h3>
               <p>A compact companion designed to make the application ritual feel purposeful, tactile, and complete.</p>
-              <a className="product-link brand-link" href="#protocol">Explore device <ArrowUpRight size={17} /></a>
+              <a className="product-link brand-link brand-link--on-light" href="#protocol">Explore device <ArrowUpRight size={17} /></a>
             </div>
           </article>
         </section>
@@ -351,7 +351,7 @@ export default function Home() {
             <div className="section-kicker">05 / Use sequence</div>
             <h2 id="use-accordion-title">Formula first.<br /><em>Method follows.</em></h2>
             <p>Open each step for a clear, measured order of use. This routine describes cosmetic application only; always follow the final product directions.</p>
-            <a href="/formula" className="formula-link brand-link">Read the formula dossier <ArrowUpRight size={16} /></a>
+            <a href="/formula" className="formula-link brand-link brand-link--on-light">Read the formula dossier <ArrowUpRight size={16} /></a>
           </div>
           <div className="use-accordion__steps">
             {usageSteps.map((step, index) => {
@@ -447,7 +447,7 @@ export default function Home() {
       </main>
 
       <footer className="site-footer">
-        <a className="brand brand--footer site-link brand-link brand-link--footer" href="#top">
+        <a className="brand brand--footer site-link brand-link brand-link--footer brand-link--on-dark" href="#top">
           <img src={ASSETS.logo} alt="BNS scientific emblem" />
           <Wordmark inverse />
         </a>

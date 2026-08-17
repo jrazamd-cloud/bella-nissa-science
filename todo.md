@@ -73,3 +73,7 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Close the preceding-to-ritual vertical rhythm with no empty anatomy container or scroll gap.
 - [x] Measure named anchor foreground/background contrast in the live preview and correct context-specific link classes to at least 4.5:1.
 - [x] Run pnpm check and pnpm build, verify the live preview, and push the focused revision to GitHub main with recorded contrast ratios.
+- [x] Inspect the live CSS cascade for the four named dark-context anchors and identify the exact winning color override.
+- [x] Capture a screenshot of the running preview and sample painted link/background pixels for the header wordmark, hero CTA, serum link, and device link.
+- [x] Apply a narrowly scoped dark-context link override that preserves light-panel ink links.
+- [ ] Re-sample rendered screenshot pixels, calculate each contrast ratio, run pnpm check/build, and push the verified fix to GitHub main.
