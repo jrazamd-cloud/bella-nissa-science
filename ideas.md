@@ -83,8 +83,3 @@ The wordmark uses Bella Nissa in a restrained humanist medical sans, with SCIENC
 - Calibration Emerald is a **precision signal**, used only for rails, inlays, active controls, molecular nodes, and selective calls to action; it is never used as a dominant section field.
 - Every major page section carries at least one Clinical Atelier signature: a frosted specimen surface, brushed-silver inset, calibration rail, or BNS molecular waypoint.
 - Spacious page fields are anchored with a measured annotation, material surface, or calibration detail so the rhythm stays deliberately editorial rather than merely empty.
-- Display typography defaults to graphite; Calibration Emerald appears only in a single hero emphasis, rails, active controls, molecular nodes, key numerals, and restrained CTA details.
-- Customer-facing copy describes the Bella Nissa Science ritual directly and never refers to page structure, source material, or implementation decisions.
-- The BNS molecular badge is an authority mark: it appears as a tactile silver-and-emerald seal at primary section waypoints and alongside the wordmark, never as a decorative afterthought.
-- Human ritual imagery follows the product still lifes: pale mineral lighting, frosted surfaces, visible serum-and-device context, and no dark spa or glamour atmosphere.
-- Text-heavy formula material must retain a tactile Clinical Atelier cue—frosted specimen field, brushed-silver inset, calibration rail, or BNS molecular seal—so substantiation never reads as a generic report.
