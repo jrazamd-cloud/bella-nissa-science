@@ -67,4 +67,4 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Apply explicit element-level brand-link classes to the named anchors with foreground default, emerald hover, and visible focus styling.
 - [x] Refine the SVG device silhouette from the actual product reference and add observable internal-core drawing detail.
 - [x] Tighten and strengthen the hero formula/method specification epilogue at 550px and 768px.
-- [ ] Reinspect computed link colors, validate requested responsive widths, run pnpm check/build, and push the targeted revision to GitHub main.
+- [x] Reinspect computed link colors, validate requested responsive widths, run pnpm check/build, and push the targeted revision to GitHub main.
