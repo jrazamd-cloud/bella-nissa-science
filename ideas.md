@@ -85,3 +85,5 @@ The wordmark uses Bella Nissa in a restrained humanist medical sans, with SCIENC
 - Spacious page fields are anchored with a measured annotation, material surface, or calibration detail so the rhythm stays deliberately editorial rather than merely empty.
 - Display typography defaults to graphite; Calibration Emerald appears only in a single hero emphasis, rails, active controls, molecular nodes, key numerals, and restrained CTA details.
 - Customer-facing copy describes the Bella Nissa Science ritual directly and never refers to page structure, source material, or implementation decisions.
+- The BNS molecular badge is an authority mark: it appears as a tactile silver-and-emerald seal at primary section waypoints and alongside the wordmark, never as a decorative afterthought.
+- Human ritual imagery follows the product still lifes: pale mineral lighting, frosted surfaces, visible serum-and-device context, and no dark spa or glamour atmosphere.
