@@ -31,3 +31,6 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Define safe, observable device component labels for the exploded-view animation.
 - [x] Generate or compose a device exploded-view motion sequence with callouts and reassembly.
 - [x] Place the component explainer in the device story and verify the responsive presentation.
+- [x] Analyze the user-provided animation reference and the actual Bella Nissa device geometry.
+- [x] Create an actual-device exploded-view treatment that separates and reassembles the real device form.
+- [x] Replace the abstract anatomy graphic and review the revised device module across responsive layouts.
