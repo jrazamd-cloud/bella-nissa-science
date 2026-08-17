@@ -19,6 +19,7 @@ const ASSETS = {
   serum: "/manus-storage/bns-serum-laboratory_969683fc.jpg",
   device: "/manus-storage/bns-device-precision_66879012.jpg",
   ritualMotion: "/manus-storage/bns-blonde-device-ritual-motion_68f91816.mp4",
+  ingredientMap: "/manus-storage/bns-skin-layer-ingredient-map_07772248.jpg",
 };
 
 const protocol = [
@@ -56,7 +57,7 @@ function Wordmark({ inverse = false }: { inverse?: boolean }) {
   return (
     <div className={`wordmark ${inverse ? "wordmark--inverse" : ""}`} aria-label="Bella Nissa Science">
       <span>Bella Nissa</span>
-      <small>SCIENCE</small>
+      <small>SCIENCE / BNS</small>
     </div>
   );
 }
@@ -211,7 +212,7 @@ export default function Home() {
               <img src={ASSETS.logo} alt="" />
               <span>RITUAL / IN MOTION</span>
             </div>
-            <p className="motion-education__caption">A calm, deliberate moment after formula application.</p>
+            <p className="motion-education__caption">METHOD / a calm, deliberate application pass after formula.</p>
           </div>
 
           <div className="motion-education__copy">
@@ -249,6 +250,55 @@ export default function Home() {
           <div className="motion-education__care-note">
             <span className="molecular-waypoint" aria-hidden="true"><i /><i /><i /></span>
             <p><b>Care note</b> This content describes a cosmetic skincare ritual and is not a medical assessment. If you have a persistent skin concern or uncertainty about using a facial device, consult a qualified clinician.</p>
+          </div>
+        </section>
+
+        <section className="ingredient-science" id="ingredients" aria-labelledby="ingredient-science-title">
+          <div className="ingredient-science__head">
+            <div>
+              <div className="section-kicker">04 / Formula in context</div>
+              <h2 id="ingredient-science-title">An active formula,<br /><em>seen in context.</em></h2>
+            </div>
+            <div className="ingredient-science__annotation">
+              <div className="ingredient-science__seal"><img src={ASSETS.logo} alt="BNS molecular badge" /><span>FORMULATION<br />AUTHORITY</span></div>
+              <p>The serum sits at the surface of the ritual. The companion device follows with a directed application pass over the serum layer—an intentional finish, not a claim of deep or clinical delivery.</p>
+            </div>
+          </div>
+
+          <figure className="ingredient-figure">
+            <img src={ASSETS.ingredientMap} alt="Bella Nissa Science skin-layer illustration with active serum ingredient groupings and the device shown in guided surface application" />
+            <figcaption><span>FORMULA / SURFACE-LEVEL STORY</span><span>DEVICE / GUIDED APPLICATION PASS</span></figcaption>
+          </figure>
+
+          <div className="ingredient-science__body">
+            <div className="ingredient-science__intro">
+              <div className="section-kicker">The active system</div>
+              <h3>Four formulation stories.<br />One considered sequence.</h3>
+              <p>Each active group has been placed within the surface and upper-skin context appropriate to a cosmetic formula. Product performance depends on the full formulation and individual skin response.</p>
+            </div>
+            <ul className="ingredient-list">
+              <li>
+                <span className="ingredient-list__dot">01</span>
+                <div><strong>sh-Oligopeptide-1 + peptide complex</strong><p>A formula-focused peptide group, including copper tripeptide-1, acetyl octapeptide-3, and palmitoyl tripeptide-5, positioned around the appearance of smoothness and skin conditioning.</p></div>
+              </li>
+              <li>
+                <span className="ingredient-list__dot">02</span>
+                <div><strong>NAD+ + niacinamide</strong><p>A coenzyme-and-vitamin B3 story for vitality-minded care, with niacinamide commonly used in cosmetic formulas that support a balanced-looking tone and skin barrier.</p></div>
+              </li>
+              <li>
+                <span className="ingredient-list__dot">03</span>
+                <div><strong>Adenosine + ectoin</strong><p>A comfort-focused pairing used to support a smooth-looking surface and help the formula feel protective in the context of everyday environmental exposure.</p></div>
+              </li>
+              <li>
+                <span className="ingredient-list__dot">04</span>
+                <div><strong>Hyaluronic acid + glutathione</strong><p>A moisture-and-antioxidant-focused pairing: sodium hyaluronate supports a hydrated feel, while glutathione completes the formula’s antioxidant-focused profile.</p></div>
+              </li>
+            </ul>
+          </div>
+
+          <div className="ingredient-science__note">
+            <span className="molecular-waypoint" aria-hidden="true"><i /><i /><i /></span>
+            <p><b>Formula note</b> Ingredient descriptions are cosmetic education only. This surface-level map does not represent clinical penetration, medical treatment, or a guarantee of individual results.</p>
           </div>
         </section>
 

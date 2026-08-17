@@ -10,7 +10,3 @@ The ingredient visual is designed as **cosmetic education**, not a depiction of 
 | Growth factor claims | Do not market EGF as a proven regenerative or collagen-restructuring cosmetic effect; evidence and delivery conditions are mixed. | [Miller-Kobisher et al., 2021](https://pmc.ncbi.nlm.nih.gov/articles/PMC8423211/) |
 
 The visual and accompanying copy should use terms such as **hydrates**, **conditions**, **supports the skin’s moisture barrier**, **antioxidant-focused**, and **a purposeful application ritual**. It should not claim to repair DNA, restore mitochondria, regenerate skin, reach muscle, or deliver ingredients directly into the dermis.
-
-## Formula Detail Page Boundary
-
-No finished-product clinical study, concentration disclosure, consumer trial, instrumental result, stability record, or safety dossier has been supplied for publication. The Formula Detail page therefore presents external **ingredient context** only and explicitly identifies product-specific testing as a future substantiation requirement, not a completed claim.
