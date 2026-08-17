@@ -14,15 +14,10 @@ describe("Bella Nissa Science experience contract", () => {
     expect(home).toContain('href="#system"');
   });
 
-  it("uses a six-part observable vector anatomy and a customer-facing caption", () => {
-    expect(home).toContain("function DeviceAnatomySvg");
-    expect(home).toContain('id="treatment-head"');
-    expect(home).toContain('id="upper-housing-shell"');
-    expect(home).toContain('id="lower-housing-shell"');
-    expect(home).toContain('id="internal-core"');
-    expect(home).toContain('id="power-cell"');
-    expect(home).toContain('id="base-cap"');
-    expect(home).toContain("OBSERVABLE PARTS, SHOWN APART");
+  it("removes the retired device teardown completely", () => {
+    expect(home).not.toContain("DeviceAnatomySvg");
+    expect(home).not.toContain("assembly-scroller");
+    expect(home).not.toContain("DEVICE ANATOMY");
     expect(home).not.toContain("PENDING PRODUCTION CAD");
   });
 

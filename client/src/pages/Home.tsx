@@ -18,8 +18,6 @@ const ASSETS = {
   hero: "/manus-storage/bns-hero-system_78a7dae4.jpg",
   serum: "/manus-storage/bns-serum-laboratory_969683fc.jpg",
   device: "/manus-storage/bns-device-precision_66879012.jpg",
-  deviceInternalAssembled: "/manus-storage/bns-device-internal-assembled_622a9b8a.jpg",
-  deviceExploded: "/manus-storage/bns-actual-device-exploded_e7963143.jpg",
   ritualMotion: "/manus-storage/bns-blonde-device-ritual-motion_68f91816.mp4",
   ritualMineralStill: "/manus-storage/bns-blonde-device-ritual-mineral-keyframe_7a913bcc.png",
   ingredientMap: "/manus-storage/bns-skin-layer-ingredient-map_07772248.jpg",
@@ -72,43 +70,11 @@ function Wordmark({ inverse = false }: { inverse?: boolean }) {
   );
 }
 
-function DeviceAnatomySvg({ progress }: { progress: number }) {
-  const move = (distance: number) => Math.round(distance * progress);
-  const anchorY = {
-    treatment: 196 - move(112),
-    upper: 264 - move(55),
-    lower: 350 + move(2),
-    core: 319 + move(44),
-    cell: 405 + move(87),
-    base: 520 + move(132),
-  };
-  const leader = (fromY: number, toY: number) => `402,${fromY} 486,${fromY} 520,${toY}`;
-
-  return (
-    <svg className="device-anatomy-svg" viewBox="0 0 760 720" role="img" aria-labelledby="device-anatomy-svg-title device-anatomy-svg-desc">
-      <title id="device-anatomy-svg-title">Bella Nissa Science device anatomy</title>
-      <desc id="device-anatomy-svg-desc">A line-art orthographic elevation of the companion device. Six named parts separate vertically as the page scrolls, then reseat into the finished device.</desc>
-      <g className="device-anatomy-svg__axis" aria-hidden="true"><path d="M304 56V672" /><path d="M294 56h20M294 672h20" /></g>
-      <g id="treatment-head" transform={`translate(0 ${-move(112)})`}><path className="device-part device-part--plate" d="M218 190c5-20 24-34 46-34h82c22 0 41 14 46 34l2 11H216z" /><path className="device-detail" d="M236 189c15-10 29-14 69-14s54 4 69 14M232 201h146" /></g>
-      <g id="upper-housing-shell" transform={`translate(0 ${-move(55)})`}><path className="device-part" d="M190 281v-31c0-49 31-80 70-90 28-7 63-7 91 0 39 10 70 41 70 90v31z" /><path className="device-detail" d="M204 270h202M219 244c26-23 145-23 172 0" /></g>
-      <g id="lower-housing-shell" transform={`translate(0 ${move(2)})`}><path className="device-part" d="M190 291h231v119c0 76-52 128-116 128-63 0-115-52-115-128z" /><path className="device-detail" d="M202 307h207M214 501c46 16 137 16 182 0M230 526c38 8 112 8 150 0" /><circle className="device-control" cx="305" cy="363" r="24" /><path className="device-detail" d="M305 348v17m-10-7a14 14 0 1 0 20 0" /></g>
-      <g id="internal-core" transform={`translate(0 ${move(44)})`}><path className="device-part device-part--internal" d="M236 326h138v55H236z" /><path className="device-detail" d="M252 340h28v27h-28zM290 340h30v27h-30zM330 340h28v27h-28zM265 334v-13m40 13v-13m40 13v-13M252 373h106" /><circle className="device-control" cx="265" cy="353" r="3" /><circle className="device-control" cx="305" cy="353" r="3" /><circle className="device-control" cx="344" cy="353" r="3" /></g>
-      <g id="power-cell" transform={`translate(0 ${move(87)})`}><rect className="device-part device-part--internal" x="250" y="397" width="110" height="72" rx="12" /><path className="device-detail" d="M273 421h64v24h-64zM360 421h8v24h-8" /></g>
-      <g id="base-cap" transform={`translate(0 ${move(132)})`}><path className="device-part" d="M225 515c23 17 137 17 160 0l-9 23c-18 17-128 17-146 0z" /><path className="device-detail" d="M240 536h130" /></g>
-      <g className="device-anatomy-svg__leaders" aria-hidden="true"><polyline points={leader(anchorY.treatment, 111)} /><polyline points={leader(anchorY.upper, 193)} /><polyline points={leader(anchorY.lower, 275)} /><polyline points={leader(anchorY.core, 397)} /><polyline points={leader(anchorY.cell, 479)} /><polyline points={leader(anchorY.base, 605)} /></g>
-      <g className="device-anatomy-svg__labels" aria-hidden="true"><text x="536" y="107"><tspan>01 / TREATMENT HEAD</tspan><tspan x="536" dy="14">CONTACT PLATE</tspan></text><text x="536" y="189"><tspan>02 / UPPER</tspan><tspan x="536" dy="14">HOUSING SHELL</tspan></text><text x="536" y="271"><tspan>03 / LOWER</tspan><tspan x="536" dy="14">HOUSING SHELL</tspan></text><text x="536" y="393"><tspan>04 / INTERNAL CORE</tspan></text><text x="536" y="475"><tspan>05 / POWER CELL</tspan></text><text x="536" y="601"><tspan>06 / BASE CAP</tspan></text></g>
-    </svg>
-  );
-}
-
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [openUsageStep, setOpenUsageStep] = useState<number | null>(0);
-  const [assemblyStage, setAssemblyStage] = useState(0);
-  const [assemblyProgress, setAssemblyProgress] = useState(0);
   const [heroProgress, setHeroProgress] = useState(0);
-  const assemblyRef = useRef<HTMLElement | null>(null);
   const heroRef = useRef<HTMLElement | null>(null);
 
   const activeProtocol = protocol[activeStep];
@@ -118,8 +84,6 @@ export default function Home() {
       const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
       if (reducedMotion) {
         setHeroProgress(1);
-        setAssemblyProgress(1);
-        setAssemblyStage(2);
         return;
       }
       const hero = heroRef.current;
@@ -127,14 +91,6 @@ export default function Home() {
         const heroTop = hero.getBoundingClientRect().top + window.scrollY;
         const heroTravel = Math.max(1, hero.offsetHeight - window.innerHeight);
         setHeroProgress(Math.min(1, Math.max(0, (window.scrollY - heroTop) / heroTravel)));
-      }
-      const section = assemblyRef.current;
-      if (section) {
-        const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-        const travel = Math.max(1, section.offsetHeight - window.innerHeight);
-        const progress = Math.min(1, Math.max(0, (window.scrollY - sectionTop) / travel));
-        setAssemblyProgress(progress < 0.5 ? progress * 2 : (1 - progress) * 2);
-        setAssemblyStage(progress < 0.32 ? 0 : progress < 0.7 ? 1 : 2);
       }
     };
     updateScrollScenes();
@@ -278,31 +234,6 @@ export default function Home() {
               <a className="product-link brand-link" href="#protocol">Explore device <ArrowUpRight size={17} /></a>
             </div>
           </article>
-        </section>
-
-        <section ref={assemblyRef} className={`assembly-scroller assembly-scroller--stage-${assemblyStage}`} aria-labelledby="assembly-title">
-          <div className="assembly-sticky">
-            <div className="assembly-copy">
-              <div className="section-kicker">03 / Internal assembly</div>
-              <p className="assembly-copy__index">DEVICE / 02</p>
-              <h2 id="assembly-title">The system,<br /><em>held within.</em></h2>
-              <p>The companion device opens from a complete object to an internal assembly, then returns to its finished form as you scroll back through the sequence.</p>
-              <div className="assembly-copy__seal"><img src={ASSETS.logo} alt="BNS molecular badge" /><span>BNS / DEVICE<br />ANATOMY STUDY</span></div>
-              <div className="assembly-progress" aria-label="Assembly sequence progress"><span className={assemblyStage >= 0 ? "is-active" : ""}>01 / ASSEMBLED</span><span className={assemblyStage >= 1 ? "is-active" : ""}>02 / OPEN</span><span className={assemblyStage >= 2 ? "is-active" : ""}>03 / EXPLODED</span></div>
-            </div>
-            <div className="assembly-render" aria-label="Scroll-scrubbed vector anatomy of the Bella Nissa Science device">
-              <DeviceAnatomySvg progress={assemblyProgress} />
-              <ol className="device-anatomy-mobile-legend" aria-label="Device anatomy labels">
-                <li>01 / Treatment head · contact plate</li>
-                <li>02 / Upper housing shell</li>
-                <li>03 / Lower housing shell</li>
-                <li>04 / Internal core</li>
-                <li>05 / Power cell</li>
-                <li>06 / Base cap</li>
-              </ol>
-              <div className="assembly-render__note"><img src={ASSETS.logo} alt="" /><span>DEVICE ANATOMY /<br />OBSERVABLE PARTS, SHOWN APART</span></div>
-            </div>
-          </div>
         </section>
 
         <section className="motion-education" id="ritual" aria-labelledby="ritual-title">
