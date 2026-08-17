@@ -23,17 +23,31 @@ const ASSETS = {
 const protocol = [
   {
     id: "01",
-    eyebrow: "Formula / 01",
-    title: "Prepare the surface.",
-    body: "Apply the Bioactive Renewal Serum as the first measured step in the system.",
-    note: "BIOACTIVE RENEWAL SERUM",
+    eyebrow: "Preparation / 01",
+    title: "Begin with a clean canvas.",
+    body: "Start your ritual after cleansing, so the serum is applied to fresh, makeup-free skin.",
+    note: "PREPARE / CLEANSE",
   },
   {
     id: "02",
-    eyebrow: "Method / 02",
+    eyebrow: "Formula / 02",
+    title: "Apply the serum first.",
+    body: "Dispense the Bioactive Renewal Serum and smooth it over the face as the formula-led opening to the system.",
+    note: "BIOACTIVE RENEWAL SERUM",
+  },
+  {
+    id: "03",
+    eyebrow: "Method / 03",
     title: "Follow with the device.",
-    body: "Use the absorption and massage device as the companion ritual that follows application.",
+    body: "Continue with the absorption and massage device according to its product instructions, keeping the ritual measured and intentional.",
     note: "ABSORPTION + MASSAGE DEVICE",
+  },
+  {
+    id: "04",
+    eyebrow: "Complete / 04",
+    title: "Return to your routine.",
+    body: "When the two-step ritual is complete, continue with the rest of your regular skincare routine as desired.",
+    note: "A CONSIDERED DAILY RITUAL",
   },
 ];
 
@@ -202,7 +216,7 @@ export default function Home() {
                     aria-pressed={activeStep === index}
                   >
                     <span>{item.id}</span>
-                    <strong>{index === 0 ? "Formula" : "Method"}</strong>
+                    <strong>{["Prepare", "Formula", "Method", "Complete"][index]}</strong>
                     {activeStep === index ? <Minus size={18} /> : <Plus size={18} />}
                   </button>
                 ))}
@@ -214,6 +228,34 @@ export default function Home() {
                 <div className="protocol-reading__note"><span /> {activeProtocol.note}</div>
               </div>
             </div>
+            <div className="protocol-guidance">
+              <span className="molecular-waypoint" aria-hidden="true"><i /><i /><i /></span>
+              <p><b>Care note</b> Keep the routine simple, use both products only as directed, and pause use if discomfort occurs. If you have a skin concern or a question about compatibility, seek advice from a qualified clinician.</p>
+            </div>
+          </div>
+        </section>
+
+        <section className="application-map" aria-labelledby="application-map-title">
+          <div className="application-map__head">
+            <div className="section-kicker">04 / System logic</div>
+            <h2 id="application-map-title">One formula.<br /><em>One follow-through.</em></h2>
+          </div>
+          <p className="application-map__intro">A clear order of application: the formula begins the ritual, then the device follows as its purposeful companion step.</p>
+          <div className="application-map__cards">
+            <article className="system-role-card">
+              <div className="system-role-card__index"><span>01</span><span>FORMULA</span></div>
+              <div className="silver-specimen"><span>Serum</span><i /><i /><i /><i /></div>
+              <h3>The opening layer</h3>
+              <p>The Bioactive Renewal Serum is the first applied component: a focused formula step placed directly after cleansing.</p>
+              <span className="system-role-card__tag">CLEAN SKIN → SERUM</span>
+            </article>
+            <article className="system-role-card system-role-card--method">
+              <div className="system-role-card__index"><span>02</span><span>METHOD</span></div>
+              <div className="silver-specimen silver-specimen--device"><img src={ASSETS.logo} alt="" /><i /><i /><i /></div>
+              <h3>The companion step</h3>
+              <p>The absorption and massage device follows the serum, turning application into a deliberate, tactile part of the ritual.</p>
+              <span className="system-role-card__tag">SERUM → DEVICE</span>
+            </article>
           </div>
         </section>
 
