@@ -149,7 +149,46 @@ h1 em, h2 em { font-style: normal; color: var(--ink); }
 .assembly-render::before { position: absolute; z-index: 1; top: 0; bottom: 0; left: 50%; width: 1px; content: ""; background: rgba(0,111,88,0.13); }
 .assembly-render::after { position: absolute; z-index: 1; right: 0; bottom: 0; left: 0; height: 1px; content: ""; background: linear-gradient(90deg, transparent 0 11%, rgba(0,111,88,0.36) 11% 29%, transparent 29% 71%, rgba(0,111,88,0.36) 71% 89%, transparent 89%); }
 .assembly-frame { position: absolute; z-index: 2; top: 50%; left: 50%; width: 100%; height: 100%; object-fit: cover; object-position: center; opacity: 0; transform: translate(-50%, -50%) scale(0.98); transition: opacity 460ms cubic-bezier(0.23, 1, 0.32, 1), transform 640ms cubic-bezier(0.23, 1, 0.32, 1); }
-.assembly-scroller--stage-0 .assembly-frame--assembled, .assembly-scroller--stage-1 .assembly-frame--mid, .assembly-scroller--stage-2 .assembly-frame--exploded { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.assembly-scroller--stage-0 .assembly-frame--assembled { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.internal-assembly { position: absolute; z-index: 3; top: 50%; left: 50%; width: min(52%, 350px); height: 74%; opacity: 0; transform: translate(-50%, -50%) scale(0.94); transition: opacity 360ms ease, transform 620ms cubic-bezier(0.23, 1, 0.32, 1); }
+.assembly-scroller--stage-1 .internal-assembly, .assembly-scroller--stage-2 .internal-assembly { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+.internal-part { position: absolute; right: 0; left: 0; margin: auto; border: 1px solid rgba(56,78,72,0.21); background: linear-gradient(145deg, #fbfdfb, #dce5df 48%, #f9fbf9 72%, #c9d4ce); box-shadow: 0 8px 14px rgba(39,57,51,0.14), inset 0 1px 1px rgba(255,255,255,0.92); transition: transform 620ms cubic-bezier(0.23, 1, 0.32, 1); }
+.internal-part--cap { z-index: 9; top: 2%; width: 64%; height: 11%; border-radius: 52% 52% 40% 40%; }
+.internal-part--cap span { position: absolute; inset: 19% 13%; border: 1px solid rgba(0,111,88,0.25); border-radius: 50%; background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(207,218,211,0.46)); }
+.internal-part--ring { z-index: 8; top: 15%; width: 82%; height: 5%; border-color: rgba(0,111,88,0.48); border-radius: 50%; background: linear-gradient(90deg, #bac7c1, #fff 37%, #bbc8c2 63%, #fbfdfc); }
+.internal-part--ring span { position: absolute; inset: 21% 11%; border: 1px solid rgba(0,111,88,0.34); border-radius: 50%; }
+.internal-part--faceplate { z-index: 7; top: 23%; width: 94%; height: 16%; border-radius: 48% 48% 42% 42%; }
+.internal-power { position: absolute; top: 50%; left: 50%; width: 22%; aspect-ratio: 1; border: 2px solid var(--emerald); border-radius: 50%; transform: translate(-50%, -50%); }
+.internal-power::before { position: absolute; top: -20%; bottom: 46%; left: 50%; width: 2px; content: ""; background: var(--emerald); transform: translateX(-50%); }
+.internal-part--module { z-index: 6; top: 43%; width: 67%; height: 9%; border-radius: 14px; background: linear-gradient(145deg, #cad3cf, #f5f8f5 47%, #adbdb5); }
+.internal-part--module span { position: absolute; top: 23%; left: 11%; width: 24%; height: 54%; border: 1px solid rgba(0,111,88,0.34); border-radius: 50%; }
+.internal-part--module i { position: relative; top: 36%; left: 47%; display: inline-block; width: 5px; height: 5px; margin-right: 8px; border-radius: 50%; background: var(--emerald); }
+.internal-part--board { z-index: 5; top: 55%; width: 72%; height: 10%; border-radius: 6px; background: linear-gradient(145deg, #36463f, #667a70 42%, #23312d); }
+.internal-part--board span { position: absolute; inset: 19% 13%; border: 1px solid rgba(183,212,199,0.64); }
+.internal-part--board i { position: relative; top: 45%; left: 29%; display: inline-block; width: 6px; height: 6px; margin-right: 12px; background: #dce7df; }
+.internal-part--cell { z-index: 4; top: 68%; display: grid; width: 57%; height: 11%; border-radius: 12px; color: #e7eee9; font-family: "DM Mono", monospace; font-size: 6px; letter-spacing: 0.1em; place-items: center; background: linear-gradient(145deg, #849b90, #3b5349 58%, #758d82); }
+.internal-part--flex { z-index: 3; top: 82%; width: 40%; height: 4%; border-radius: 50%; background: linear-gradient(90deg, #caa859, #f6e4a0, #b88c38); }
+.internal-part--flex span { position: absolute; top: 20%; right: 9%; bottom: 20%; left: 9%; border: 1px solid rgba(79,63,27,0.36); border-radius: 50%; }
+.internal-part--chassis { z-index: 2; top: 88%; display: grid; width: 88%; height: 11%; border-radius: 46% 46% 41% 41%; place-items: center; }
+.internal-part--chassis img { width: 29px; height: 29px; object-fit: contain; }
+.internal-part--base { z-index: 1; top: 99%; width: 62%; height: 4%; border-radius: 50%; }
+.internal-part--base span { position: absolute; inset: 20% 15%; border-radius: 50%; background: rgba(0,111,88,0.22); }
+.assembly-scroller--stage-1 .internal-part--cap { transform: translateY(-18px); }
+.assembly-scroller--stage-1 .internal-part--ring { transform: translateY(-9px); }
+.assembly-scroller--stage-1 .internal-part--module { transform: translateY(7px); }
+.assembly-scroller--stage-1 .internal-part--board { transform: translateY(15px); }
+.assembly-scroller--stage-1 .internal-part--cell { transform: translateY(25px); }
+.assembly-scroller--stage-1 .internal-part--flex { transform: translateY(30px); }
+.assembly-scroller--stage-1 .internal-part--chassis { transform: translateY(37px); }
+.assembly-scroller--stage-2 .internal-part--cap { transform: translateY(-42px); }
+.assembly-scroller--stage-2 .internal-part--ring { transform: translateY(-24px); }
+.assembly-scroller--stage-2 .internal-part--faceplate { transform: translateY(-4px); }
+.assembly-scroller--stage-2 .internal-part--module { transform: translateY(15px); }
+.assembly-scroller--stage-2 .internal-part--board { transform: translateY(38px); }
+.assembly-scroller--stage-2 .internal-part--cell { transform: translateY(65px); }
+.assembly-scroller--stage-2 .internal-part--flex { transform: translateY(90px); }
+.assembly-scroller--stage-2 .internal-part--chassis { transform: translateY(117px); }
+.assembly-scroller--stage-2 .internal-part--base { transform: translateY(139px); }
 .assembly-callout { position: absolute; z-index: 5; display: flex; align-items: center; gap: 7px; color: var(--emerald); font-family: "DM Mono", monospace; font-size: 7.5px; letter-spacing: 0.055em; line-height: 1.5; opacity: 0; pointer-events: none; transition: opacity 260ms ease 120ms; }
 .assembly-callout i { display: block; width: clamp(32px, 5vw, 72px); border-top: 1px solid rgba(0,111,88,0.65); }
 .assembly-scroller--stage-2 .assembly-callout { opacity: 1; }

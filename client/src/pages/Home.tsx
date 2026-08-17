@@ -19,8 +19,6 @@ const ASSETS = {
   serum: "/manus-storage/bns-serum-laboratory_969683fc.jpg",
   device: "/manus-storage/bns-device-precision_66879012.jpg",
   deviceInternalAssembled: "/manus-storage/bns-device-internal-assembled_622a9b8a.jpg",
-  deviceInternalMid: "/manus-storage/bns-device-internal-mid_e504260a.jpg",
-  deviceInternalExploded: "/manus-storage/bns-device-internal-exploded_25eb25bc.jpg",
   ritualMotion: "/manus-storage/bns-blonde-device-ritual-motion_68f91816.mp4",
   ritualMineralStill: "/manus-storage/bns-blonde-device-ritual-mineral-keyframe_7a913bcc.png",
   ingredientMap: "/manus-storage/bns-skin-layer-ingredient-map_07772248.jpg",
@@ -241,8 +239,17 @@ export default function Home() {
             </div>
             <div className="assembly-render" aria-label="Illustrative internal exploded assembly of the Bella Nissa Science device">
               <img className="assembly-frame assembly-frame--assembled" src={ASSETS.deviceInternalAssembled} alt="Bella Nissa device in its assembled form" />
-              <img className="assembly-frame assembly-frame--mid" src={ASSETS.deviceInternalMid} alt="Bella Nissa device with its outer layers beginning to separate" />
-              <img className="assembly-frame assembly-frame--exploded" src={ASSETS.deviceInternalExploded} alt="Bella Nissa device in an illustrative internal exploded assembly" />
+              <div className="internal-assembly" aria-hidden="true">
+                <div className="internal-part internal-part--cap"><span /></div>
+                <div className="internal-part internal-part--ring"><span /></div>
+                <div className="internal-part internal-part--faceplate"><span className="internal-power" /></div>
+                <div className="internal-part internal-part--module"><span /><i /><i /></div>
+                <div className="internal-part internal-part--board"><span /><i /><i /><i /></div>
+                <div className="internal-part internal-part--cell"><span>POWER</span></div>
+                <div className="internal-part internal-part--flex"><span /></div>
+                <div className="internal-part internal-part--chassis"><img src={ASSETS.logo} alt="" /></div>
+                <div className="internal-part internal-part--base"><span /></div>
+              </div>
               <div className="assembly-callout assembly-callout--cap"><i /><span>CURVED<br />TREATMENT CAP</span></div>
               <div className="assembly-callout assembly-callout--ring"><i /><span>CONDUCTIVE<br />CONTACT RING</span></div>
               <div className="assembly-callout assembly-callout--board"><i /><span>CONTROL +<br />INTERFACE BOARD</span></div>

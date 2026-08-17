@@ -39,3 +39,6 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Generate actual-device internal exploded-assembly visual states.
 - [x] Implement a scroll-driven assembled-to-exploded-to-reassembled interaction with labelled callouts.
 - [x] Review the new assembly interaction across desktop and mobile before saving.
+- [x] Diagnose the failed internal assembly asset references.
+- [x] Replace failed generation assets with a reliable rendering approach.
+- [x] Verify the repaired scroll assembly on desktop and mobile.
