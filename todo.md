@@ -76,4 +76,4 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Inspect the live CSS cascade for the four named dark-context anchors and identify the exact winning color override.
 - [x] Capture a screenshot of the running preview and sample painted link/background pixels for the header wordmark, hero CTA, serum link, and device link.
 - [x] Apply a narrowly scoped dark-context link override that preserves light-panel ink links.
-- [ ] Re-sample rendered screenshot pixels, calculate each contrast ratio, run pnpm check/build, and push the verified fix to GitHub main.
+- [x] Re-sample rendered screenshot pixels, calculate each contrast ratio, run pnpm check/build, and push the verified fix to GitHub main.
