@@ -594,3 +594,10 @@ h1 em, h2 em { font-style: normal; color: var(--ink); }
   .ritual-image { animation: mineral-ritual-drift 8s cubic-bezier(0.45, 0.02, 0.25, 1) infinite alternate; }
 }
 @keyframes mineral-ritual-drift { from { transform: scale(1.025) translate3d(0, 0, 0); } to { transform: scale(1.065) translate3d(-1.5%, -0.7%, 0); } }
+
+/* Ritual fallback enhancement: richer grade, warmer surround, and a plant accent while the upgraded motion render is unavailable. */
+.ritual-video { object-position: 52% 48%; filter: saturate(1.12) contrast(1.15) brightness(0.96) sepia(0.08); opacity: 0.98; }
+.motion-education__visual::before { background: linear-gradient(145deg, rgba(255,238,211,0.15), rgba(249,249,240,0.02) 44%, rgba(20,76,50,0.12)); mix-blend-mode: normal; }
+.motion-education__visual::after { background: linear-gradient(180deg, rgba(21,24,20,0.03), transparent 42%, rgba(7,9,8,0.56)); }
+.ritual-plant-overlay { position: absolute; z-index: 1; right: 2%; bottom: -2%; width: 31%; max-width: 230px; opacity: 0.96; filter: drop-shadow(0 10px 18px rgba(16,38,25,0.24)); mix-blend-mode: multiply; pointer-events: none; }
+@media (max-width: 680px) { .ritual-video { object-position: 52% center; } .ritual-plant-overlay { right: -4%; bottom: -1%; width: 36%; } }
