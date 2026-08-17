@@ -42,3 +42,6 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Diagnose the failed internal assembly asset references.
 - [x] Replace failed generation assets with a reliable rendering approach.
 - [x] Verify the repaired scroll assembly on desktop and mobile.
+- [x] Attempt an enhanced 4K device-use video with deeper contrast, warm surround lighting, and a green plant accent; the 4K render was blocked by the daily video-generation limit.
+- [x] Replace or preserve a reliable motion fallback for the ritual video.
+- [x] Reframe the ritual video for the page and verify desktop/mobile presentation.

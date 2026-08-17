@@ -272,6 +272,7 @@ export default function Home() {
               playsInline
               aria-label="A blonde woman using the Bella Nissa Science absorption and massage device as part of her skincare ritual"
             />
+            <img className="ritual-plant-overlay" src="/manus-storage/bns-ritual-plant-overlay_3afd3bb6.png" alt="" aria-hidden="true" />
             <div className="motion-education__visual-mark" aria-hidden="true">
               <img src={ASSETS.logo} alt="" />
               <span>RITUAL / IN MOTION</span>
