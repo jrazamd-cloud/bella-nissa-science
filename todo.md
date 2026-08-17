@@ -11,3 +11,8 @@
 - [x] Generate a lifelike skin-layer illustration tailored to the Bella Nissa serum-and-device ritual.
 - [x] Add the skin visual, ingredient callouts, and active-ingredient bullet list beneath it.
 - [x] Review the revised educational module on desktop and mobile before saving the update.
+- [x] Define evidence-aware copy boundaries for formula testing and active-ingredient substantiation.
+- [x] Create the Formula Detail page and connect it to the site navigation.
+- [x] Add the step-by-step serum-and-device use accordion beneath the ingredient list.
+- [x] Add responsive hover and focus tooltips to the skin-layer visual, with “EGF” placed after the peptide-complex label.
+- [x] Review the new page and interactions across desktop and mobile before saving the update.

@@ -19,6 +19,7 @@ const ASSETS = {
   serum: "/manus-storage/bns-serum-laboratory_969683fc.jpg",
   device: "/manus-storage/bns-device-precision_66879012.jpg",
   ritualMotion: "/manus-storage/bns-blonde-device-ritual-motion_68f91816.mp4",
+  ritualMineralStill: "/manus-storage/bns-blonde-device-ritual-mineral-keyframe_7a913bcc.png",
   ingredientMap: "/manus-storage/bns-skin-layer-ingredient-map_07772248.jpg",
 };
 
@@ -53,6 +54,13 @@ const protocol = [
   },
 ];
 
+const usageSteps = [
+  { id: "01", title: "Cleanse, then prepare", body: "Begin with clean, dry skin. Keep the application simple and use the serum and device only as directed in their final product instructions.", note: "START WITH FRESHLY CLEANSED SKIN" },
+  { id: "02", title: "Apply the serum", body: "Dispense the Bioactive Renewal Serum and spread it in a light, even layer across the areas you want to include in your ritual.", note: "FORMULA / THE FIRST STEP" },
+  { id: "03", title: "Follow with the device", body: "After application, use the companion device in gentle, deliberate passes over the serum layer. Do not treat this as a deep-delivery or therapeutic step.", note: "METHOD / GUIDED SURFACE APPLICATION" },
+  { id: "04", title: "Complete your routine", body: "Allow the ritual to settle, then continue with the remainder of your usual skincare routine as desired. Pause use if discomfort occurs.", note: "RETURN TO YOUR ROUTINE" },
+];
+
 function Wordmark({ inverse = false }: { inverse?: boolean }) {
   return (
     <div className={`wordmark ${inverse ? "wordmark--inverse" : ""}`} aria-label="Bella Nissa Science">
@@ -65,6 +73,7 @@ function Wordmark({ inverse = false }: { inverse?: boolean }) {
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
+  const [openUsageStep, setOpenUsageStep] = useState<number | null>(0);
 
   const activeProtocol = protocol[activeStep];
 
@@ -78,7 +87,7 @@ export default function Home() {
 
         <nav className="desktop-nav" aria-label="Primary navigation">
           <a href="#system">The system</a>
-          <a href="#formula">The formula</a>
+          <a href="/formula">Formula detail</a>
           <a href="#method">The method</a>
         </nav>
 
@@ -100,7 +109,7 @@ export default function Home() {
       {menuOpen && (
         <nav className="mobile-nav" aria-label="Mobile navigation">
           <a href="#system" onClick={() => setMenuOpen(false)}>The system</a>
-          <a href="#formula" onClick={() => setMenuOpen(false)}>The formula</a>
+          <a href="/formula" onClick={() => setMenuOpen(false)}>Formula detail</a>
           <a href="#method" onClick={() => setMenuOpen(false)}>The method</a>
           <a href="#protocol" onClick={() => setMenuOpen(false)}>View protocol</a>
         </nav>
@@ -199,14 +208,10 @@ export default function Home() {
 
         <section className="motion-education" id="ritual" aria-labelledby="ritual-title">
           <div className="motion-education__visual">
-            <video
-              className="ritual-video"
-              src={ASSETS.ritualMotion}
-              autoPlay
-              muted
-              loop
-              playsInline
-              aria-label="A blonde woman using the Bella Nissa Science absorption and massage device as part of her skincare ritual"
+            <img
+              className="ritual-image"
+              src={ASSETS.ritualMineralStill}
+              alt="A blonde woman using the Bella Nissa Science absorption and massage device as part of her skincare ritual"
             />
             <div className="motion-education__visual-mark" aria-hidden="true">
               <img src={ASSETS.logo} alt="" />
@@ -267,6 +272,10 @@ export default function Home() {
 
           <figure className="ingredient-figure">
             <img src={ASSETS.ingredientMap} alt="Bella Nissa Science skin-layer illustration with active serum ingredient groupings and the device shown in guided surface application" />
+            <button className="ingredient-hotspot ingredient-hotspot--peptides" type="button" aria-label="Peptide complex and EGF benefit details"><span>01</span><i className="ingredient-tooltip"><b>Peptide complex (EGF)</b> Cosmetic-facing formula support for the appearance of smoothness and skin conditioning.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--nad" type="button" aria-label="NAD plus and niacinamide benefit details"><span>02</span><i className="ingredient-tooltip"><b>NAD+ + niacinamide</b> Vitality-minded formulation context with barrier- and tone-focused cosmetic support.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--moisture" type="button" aria-label="Hyaluronic acid ectoin and glutathione benefit details"><span>03</span><i className="ingredient-tooltip"><b>Hydration + antioxidant context</b> A surface-focused pairing for a hydrated feel and environmental comfort story.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--device" type="button" aria-label="Companion device application details"><span>04</span><i className="ingredient-tooltip"><b>Companion device</b> Follows serum as a guided surface-application pass; it is not presented as a clinical-delivery tool.</i></button>
             <figcaption><span>FORMULA / SURFACE-LEVEL STORY</span><span>DEVICE / GUIDED APPLICATION PASS</span></figcaption>
           </figure>
 
@@ -279,7 +288,7 @@ export default function Home() {
             <ul className="ingredient-list">
               <li>
                 <span className="ingredient-list__dot">01</span>
-                <div><strong>sh-Oligopeptide-1 + peptide complex</strong><p>A formula-focused peptide group, including copper tripeptide-1, acetyl octapeptide-3, and palmitoyl tripeptide-5, positioned around the appearance of smoothness and skin conditioning.</p></div>
+                <div><strong>sh-Oligopeptide-1 + peptide complex (EGF)</strong><p>A formula-focused peptide group, including copper tripeptide-1, acetyl octapeptide-3, and palmitoyl tripeptide-5, positioned around the appearance of smoothness and skin conditioning.</p></div>
               </li>
               <li>
                 <span className="ingredient-list__dot">02</span>
@@ -299,6 +308,26 @@ export default function Home() {
           <div className="ingredient-science__note">
             <span className="molecular-waypoint" aria-hidden="true"><i /><i /><i /></span>
             <p><b>Formula note</b> Ingredient descriptions are cosmetic education only. This surface-level map does not represent clinical penetration, medical treatment, or a guarantee of individual results.</p>
+          </div>
+        </section>
+
+        <section className="use-accordion" aria-labelledby="use-accordion-title">
+          <div className="use-accordion__intro">
+            <div className="section-kicker">05 / Use sequence</div>
+            <h2 id="use-accordion-title">Formula first.<br /><em>Method follows.</em></h2>
+            <p>Open each step for a clear, measured order of use. This routine describes cosmetic application only; always follow the final product directions.</p>
+            <a href="/formula" className="formula-link">Read the formula dossier <ArrowUpRight size={16} /></a>
+          </div>
+          <div className="use-accordion__steps">
+            {usageSteps.map((step, index) => {
+              const isOpen = openUsageStep === index;
+              return <article className={`use-step ${isOpen ? "use-step--open" : ""}`} key={step.id}>
+                <button type="button" onClick={() => setOpenUsageStep(isOpen ? null : index)} aria-expanded={isOpen}>
+                  <span>{step.id}</span><strong>{step.title}</strong><i>{isOpen ? "−" : "+"}</i>
+                </button>
+                <div className="use-step__content" aria-hidden={!isOpen}><div><p>{step.body}</p><small>{step.note}</small></div></div>
+              </article>;
+            })}
           </div>
         </section>
 
