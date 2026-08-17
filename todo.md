@@ -57,3 +57,9 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Convert the device assembly from thresholded stages to continuous scroll-scrubbed separation and reseating.
 - [x] Verify the refined experience at a tablet breakpoint and push the final revision to GitHub main.
 - [x] Add continuous component-layer separation and reseating over the actual exploded product photograph, then commit and push the reconciled main branch.
+- [x] Replace the photo-sliced device anatomy treatment with a hand-authored inline SVG composed of six observable parts.
+- [x] Add continuous assembled–exploded–assembled vector motion, attached leader lines, label gutter, reduced-motion static state, and mobile simplification.
+- [x] Move the device anatomy caption into a padded safe area and remove excess spacing before the ritual section.
+- [x] Audit every anchor across the Home and Formula pages to eliminate default indigo/blue states and retain visible focus treatment.
+- [x] Eliminate the orphaned hero-to-system gap at 1440px, 1024px, and 390px.
+- [ ] Run validation and push the completed revision to jrazamd-cloud/bella-nissa-science main, reporting the commit SHA.

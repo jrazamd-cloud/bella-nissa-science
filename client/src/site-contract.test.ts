@@ -14,9 +14,15 @@ describe("Bella Nissa Science experience contract", () => {
     expect(home).toContain('href="#system"');
   });
 
-  it("uses the actual exploded asset and a customer-facing caption", () => {
-    expect(home).toContain("bns-actual-device-exploded_e7963143.jpg");
-    expect(home).toContain("VISIBLE COMPONENTS, SHOWN APART");
+  it("uses a six-part observable vector anatomy and a customer-facing caption", () => {
+    expect(home).toContain("function DeviceAnatomySvg");
+    expect(home).toContain('id="treatment-head"');
+    expect(home).toContain('id="upper-housing-shell"');
+    expect(home).toContain('id="lower-housing-shell"');
+    expect(home).toContain('id="internal-core"');
+    expect(home).toContain('id="power-cell"');
+    expect(home).toContain('id="base-cap"');
+    expect(home).toContain("OBSERVABLE PARTS, SHOWN APART");
     expect(home).not.toContain("PENDING PRODUCTION CAD");
   });
 

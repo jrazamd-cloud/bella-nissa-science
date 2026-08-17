@@ -72,6 +72,35 @@ function Wordmark({ inverse = false }: { inverse?: boolean }) {
   );
 }
 
+function DeviceAnatomySvg({ progress }: { progress: number }) {
+  const move = (distance: number) => Math.round(distance * progress);
+  const anchorY = {
+    treatment: 196 - move(112),
+    upper: 264 - move(55),
+    lower: 350 + move(2),
+    core: 319 + move(44),
+    cell: 405 + move(87),
+    base: 520 + move(132),
+  };
+  const leader = (fromY: number, toY: number) => `402,${fromY} 486,${fromY} 520,${toY}`;
+
+  return (
+    <svg className="device-anatomy-svg" viewBox="0 0 760 720" role="img" aria-labelledby="device-anatomy-svg-title device-anatomy-svg-desc">
+      <title id="device-anatomy-svg-title">Bella Nissa Science device anatomy</title>
+      <desc id="device-anatomy-svg-desc">A line-art orthographic elevation of the companion device. Six named parts separate vertically as the page scrolls, then reseat into the finished device.</desc>
+      <g className="device-anatomy-svg__axis" aria-hidden="true"><path d="M304 56V672" /><path d="M294 56h20M294 672h20" /></g>
+      <g id="treatment-head" transform={`translate(0 ${-move(112)})`}><path className="device-part device-part--plate" d="M224 188c0-16 13-28 30-28h101c17 0 30 12 30 28v17c0 11-9 20-20 20H244c-11 0-20-9-20-20z" /><path className="device-detail" d="M246 192h117M261 176h87" /></g>
+      <g id="upper-housing-shell" transform={`translate(0 ${-move(55)})`}><path className="device-part" d="M191 240c0-42 34-76 76-76h75c42 0 76 34 76 76v32H191z" /><path className="device-detail" d="M205 260h199" /></g>
+      <g id="lower-housing-shell" transform={`translate(0 ${move(2)})`}><path className="device-part" d="M190 278h229v135c0 74-51 128-114 128-64 0-115-54-115-128z" /><path className="device-detail" d="M202 309h205M216 503c51 17 127 17 178 0" /><circle className="device-control" cx="305" cy="355" r="24" /><path className="device-detail" d="M305 340v17m-10-7a14 14 0 1 0 20 0" /></g>
+      <g id="internal-core" transform={`translate(0 ${move(44)})`}><path className="device-part device-part--internal" d="M238 315h134v52H238z" /><path className="device-detail" d="M257 331h42m15 0h29m-86 18h86" /></g>
+      <g id="power-cell" transform={`translate(0 ${move(87)})`}><rect className="device-part device-part--internal" x="250" y="397" width="110" height="72" rx="12" /><path className="device-detail" d="M273 421h64v24h-64zM360 421h8v24h-8" /></g>
+      <g id="base-cap" transform={`translate(0 ${move(132)})`}><path className="device-part" d="M225 515c23 17 137 17 160 0l-9 23c-18 17-128 17-146 0z" /><path className="device-detail" d="M240 536h130" /></g>
+      <g className="device-anatomy-svg__leaders" aria-hidden="true"><polyline points={leader(anchorY.treatment, 111)} /><polyline points={leader(anchorY.upper, 193)} /><polyline points={leader(anchorY.lower, 275)} /><polyline points={leader(anchorY.core, 397)} /><polyline points={leader(anchorY.cell, 479)} /><polyline points={leader(anchorY.base, 605)} /></g>
+      <g className="device-anatomy-svg__labels" aria-hidden="true"><text x="536" y="107"><tspan>01 / TREATMENT HEAD</tspan><tspan x="536" dy="14">CONTACT PLATE</tspan></text><text x="536" y="189"><tspan>02 / UPPER</tspan><tspan x="536" dy="14">HOUSING SHELL</tspan></text><text x="536" y="271"><tspan>03 / LOWER</tspan><tspan x="536" dy="14">HOUSING SHELL</tspan></text><text x="536" y="393"><tspan>04 / INTERNAL CORE</tspan></text><text x="536" y="475"><tspan>05 / POWER CELL</tspan></text><text x="536" y="601"><tspan>06 / BASE CAP</tspan></text></g>
+    </svg>
+  );
+}
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
@@ -86,6 +115,13 @@ export default function Home() {
 
   useEffect(() => {
     const updateScrollScenes = () => {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reducedMotion) {
+        setHeroProgress(1);
+        setAssemblyProgress(1);
+        setAssemblyStage(2);
+        return;
+      }
       const hero = heroRef.current;
       if (hero) {
         const heroTop = hero.getBoundingClientRect().top + window.scrollY;
@@ -252,19 +288,17 @@ export default function Home() {
               <div className="assembly-copy__seal"><img src={ASSETS.logo} alt="BNS molecular badge" /><span>BNS / DEVICE<br />ANATOMY STUDY</span></div>
               <div className="assembly-progress" aria-label="Assembly sequence progress"><span className={assemblyStage >= 0 ? "is-active" : ""}>01 / ASSEMBLED</span><span className={assemblyStage >= 1 ? "is-active" : ""}>02 / OPEN</span><span className={assemblyStage >= 2 ? "is-active" : ""}>03 / EXPLODED</span></div>
             </div>
-            <div className="assembly-render" aria-label="Scroll-scrubbed exploded view of the Bella Nissa Science device" style={{ "--assembly-progress": assemblyProgress } as React.CSSProperties}>
-              <img className="assembly-frame assembly-frame--assembled" src={ASSETS.deviceInternalAssembled} alt="Bella Nissa device in its assembled form" />
-              <img className="assembly-frame assembly-frame--exploded" src={ASSETS.deviceExploded} alt="Bella Nissa device with its visible components separated for inspection" />
-              <div className="exploded-layer exploded-layer--top" aria-hidden="true"><img src={ASSETS.deviceExploded} alt="" /></div>
-              <div className="exploded-layer exploded-layer--middle" aria-hidden="true"><img src={ASSETS.deviceExploded} alt="" /></div>
-              <div className="exploded-layer exploded-layer--lower" aria-hidden="true"><img src={ASSETS.deviceExploded} alt="" /></div>
-              <div className="assembly-callout assembly-callout--cap"><i /><span>CURVED<br />TREATMENT CAP</span></div>
-              <div className="assembly-callout assembly-callout--ring"><i /><span>CONDUCTIVE<br />CONTACT RING</span></div>
-              <div className="assembly-callout assembly-callout--board"><i /><span>CONTROL +<br />INTERFACE BOARD</span></div>
-              <div className="assembly-callout assembly-callout--cell"><i /><span>RECHARGEABLE<br />POWER CELL</span></div>
-              <div className="assembly-callout assembly-callout--flex"><i /><span>CONTACT<br />FLEX LAYER</span></div>
-              <div className="assembly-callout assembly-callout--base"><i /><span>LOWER<br />SUPPORT BASE</span></div>
-              <div className="assembly-render__note"><img src={ASSETS.logo} alt="" /><span>DEVICE ANATOMY /<br />VISIBLE COMPONENTS, SHOWN APART</span></div>
+            <div className="assembly-render" aria-label="Scroll-scrubbed vector anatomy of the Bella Nissa Science device">
+              <DeviceAnatomySvg progress={assemblyProgress} />
+              <ol className="device-anatomy-mobile-legend" aria-label="Device anatomy labels">
+                <li>01 / Treatment head · contact plate</li>
+                <li>02 / Upper housing shell</li>
+                <li>03 / Lower housing shell</li>
+                <li>04 / Internal core</li>
+                <li>05 / Power cell</li>
+                <li>06 / Base cap</li>
+              </ol>
+              <div className="assembly-render__note"><img src={ASSETS.logo} alt="" /><span>DEVICE ANATOMY /<br />OBSERVABLE PARTS, SHOWN APART</span></div>
             </div>
           </div>
         </section>
