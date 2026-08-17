@@ -19,6 +19,7 @@ const ASSETS = {
   serum: "/manus-storage/bns-serum-laboratory_969683fc.jpg",
   device: "/manus-storage/bns-device-precision_66879012.jpg",
   deviceInternalAssembled: "/manus-storage/bns-device-internal-assembled_622a9b8a.jpg",
+  deviceExploded: "/manus-storage/bns-actual-device-exploded_e7963143.jpg",
   ritualMotion: "/manus-storage/bns-blonde-device-ritual-motion_68f91816.mp4",
   ritualMineralStill: "/manus-storage/bns-blonde-device-ritual-mineral-keyframe_7a913bcc.png",
   ingredientMap: "/manus-storage/bns-skin-layer-ingredient-map_07772248.jpg",
@@ -76,32 +77,43 @@ export default function Home() {
   const [activeStep, setActiveStep] = useState(0);
   const [openUsageStep, setOpenUsageStep] = useState<number | null>(0);
   const [assemblyStage, setAssemblyStage] = useState(0);
+  const [assemblyProgress, setAssemblyProgress] = useState(0);
+  const [heroProgress, setHeroProgress] = useState(0);
   const assemblyRef = useRef<HTMLElement | null>(null);
+  const heroRef = useRef<HTMLElement | null>(null);
 
   const activeProtocol = protocol[activeStep];
 
   useEffect(() => {
-    const updateAssemblyStage = () => {
+    const updateScrollScenes = () => {
+      const hero = heroRef.current;
+      if (hero) {
+        const heroTop = hero.getBoundingClientRect().top + window.scrollY;
+        const heroTravel = Math.max(1, hero.offsetHeight - window.innerHeight);
+        setHeroProgress(Math.min(1, Math.max(0, (window.scrollY - heroTop) / heroTravel)));
+      }
       const section = assemblyRef.current;
-      if (!section) return;
-      const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-      const travel = Math.max(1, section.offsetHeight - window.innerHeight);
-      const progress = Math.min(1, Math.max(0, (window.scrollY - sectionTop) / travel));
-      setAssemblyStage(progress < 0.32 ? 0 : progress < 0.7 ? 1 : 2);
+      if (section) {
+        const sectionTop = section.getBoundingClientRect().top + window.scrollY;
+        const travel = Math.max(1, section.offsetHeight - window.innerHeight);
+        const progress = Math.min(1, Math.max(0, (window.scrollY - sectionTop) / travel));
+        setAssemblyProgress(progress < 0.5 ? progress * 2 : (1 - progress) * 2);
+        setAssemblyStage(progress < 0.32 ? 0 : progress < 0.7 ? 1 : 2);
+      }
     };
-    updateAssemblyStage();
-    window.addEventListener("scroll", updateAssemblyStage, { passive: true });
-    window.addEventListener("resize", updateAssemblyStage);
+    updateScrollScenes();
+    window.addEventListener("scroll", updateScrollScenes, { passive: true });
+    window.addEventListener("resize", updateScrollScenes);
     return () => {
-      window.removeEventListener("scroll", updateAssemblyStage);
-      window.removeEventListener("resize", updateAssemblyStage);
+      window.removeEventListener("scroll", updateScrollScenes);
+      window.removeEventListener("resize", updateScrollScenes);
     };
   }, []);
 
   return (
     <div className="site-shell">
       <header className="site-header">
-        <a className="brand" href="#top" aria-label="Bella Nissa Science home">
+          <a className="brand site-link" href="#top" aria-label="Bella Nissa Science home">
           <img src={ASSETS.logo} alt="BNS scientific emblem" />
           <Wordmark />
         </a>
@@ -112,7 +124,7 @@ export default function Home() {
           <a href="#method">The method</a>
         </nav>
 
-        <a className="header-action" href="#protocol">
+        <a className="header-action site-link" href="#protocol">
           View protocol <ArrowUpRight size={14} strokeWidth={1.7} />
         </a>
 
@@ -137,15 +149,17 @@ export default function Home() {
       )}
 
       <main id="top">
-        <section className="hero" aria-labelledby="hero-title">
+        <section ref={heroRef} className="hero hero--pinned" aria-labelledby="hero-title" style={{ "--hero-progress": heroProgress } as React.CSSProperties}>
           <div className="hero-copy">
             <div className="section-kicker">
               <span className="kicker-dot" />
               Clinical skincare, calibrated
             </div>
             <h1 id="hero-title">
-              A serum designed<br />
-              <em>to meet its method.</em>
+              <span className="hero-line">A serum</span>
+              <span className="hero-line">designed to</span>
+              <span className="hero-line hero-line--accent">meet its</span>
+              <span className="hero-line hero-line--accent">method.</span>
             </h1>
             <p className="hero-description">
               Bella Nissa Science connects a precision formula with a purposeful absorption ritual—one quiet, considered system.
@@ -154,14 +168,15 @@ export default function Home() {
               <a className="button button--emerald" href="#system">
                 Explore the system <ArrowDownRight size={17} />
               </a>
-              <a className="text-link" href="#protocol">
-                See the two-step protocol <ChevronRight size={17} />
-              </a>
             </div>
           </div>
 
           <div className="hero-stage" aria-label="Bella Nissa Science serum and device">
             <img className="hero-image" src={ASSETS.hero} alt="Bella Nissa Science serum and absorption device" />
+            <div className="hero-stage__visual hero-stage__visual--serum" aria-hidden="true"><img src={ASSETS.serum} alt="" /></div>
+            <div className="hero-stage__visual hero-stage__visual--device" aria-hidden="true"><img src={ASSETS.device} alt="" /></div>
+            <div className="hero-stage__signal hero-stage__signal--serum"><span>FORMULA / 01</span><i /></div>
+            <div className="hero-stage__signal hero-stage__signal--device"><span>METHOD / 02</span><i /></div>
             <div className="hero-stage__badge">
               <span>System / 02 components</span>
               <i />
@@ -234,29 +249,22 @@ export default function Home() {
               <p className="assembly-copy__index">DEVICE / 02</p>
               <h2 id="assembly-title">The system,<br /><em>held within.</em></h2>
               <p>The companion device opens from a complete object to an internal assembly, then returns to its finished form as you scroll back through the sequence.</p>
-              <div className="assembly-copy__seal"><img src={ASSETS.logo} alt="BNS molecular badge" /><span>BNS / INTERNAL<br />ASSEMBLY CONCEPT</span></div>
+              <div className="assembly-copy__seal"><img src={ASSETS.logo} alt="BNS molecular badge" /><span>BNS / DEVICE<br />ANATOMY STUDY</span></div>
               <div className="assembly-progress" aria-label="Assembly sequence progress"><span className={assemblyStage >= 0 ? "is-active" : ""}>01 / ASSEMBLED</span><span className={assemblyStage >= 1 ? "is-active" : ""}>02 / OPEN</span><span className={assemblyStage >= 2 ? "is-active" : ""}>03 / EXPLODED</span></div>
             </div>
-            <div className="assembly-render" aria-label="Illustrative internal exploded assembly of the Bella Nissa Science device">
+            <div className="assembly-render" aria-label="Scroll-scrubbed exploded view of the Bella Nissa Science device" style={{ "--assembly-progress": assemblyProgress } as React.CSSProperties}>
               <img className="assembly-frame assembly-frame--assembled" src={ASSETS.deviceInternalAssembled} alt="Bella Nissa device in its assembled form" />
-              <div className="internal-assembly" aria-hidden="true">
-                <div className="internal-part internal-part--cap"><span /></div>
-                <div className="internal-part internal-part--ring"><span /></div>
-                <div className="internal-part internal-part--faceplate"><span className="internal-power" /></div>
-                <div className="internal-part internal-part--module"><span /><i /><i /></div>
-                <div className="internal-part internal-part--board"><span /><i /><i /><i /></div>
-                <div className="internal-part internal-part--cell"><span>POWER</span></div>
-                <div className="internal-part internal-part--flex"><span /></div>
-                <div className="internal-part internal-part--chassis"><img src={ASSETS.logo} alt="" /></div>
-                <div className="internal-part internal-part--base"><span /></div>
-              </div>
+              <img className="assembly-frame assembly-frame--exploded" src={ASSETS.deviceExploded} alt="Bella Nissa device with its visible components separated for inspection" />
+              <div className="exploded-layer exploded-layer--top" aria-hidden="true"><img src={ASSETS.deviceExploded} alt="" /></div>
+              <div className="exploded-layer exploded-layer--middle" aria-hidden="true"><img src={ASSETS.deviceExploded} alt="" /></div>
+              <div className="exploded-layer exploded-layer--lower" aria-hidden="true"><img src={ASSETS.deviceExploded} alt="" /></div>
               <div className="assembly-callout assembly-callout--cap"><i /><span>CURVED<br />TREATMENT CAP</span></div>
               <div className="assembly-callout assembly-callout--ring"><i /><span>CONDUCTIVE<br />CONTACT RING</span></div>
               <div className="assembly-callout assembly-callout--board"><i /><span>CONTROL +<br />INTERFACE BOARD</span></div>
               <div className="assembly-callout assembly-callout--cell"><i /><span>RECHARGEABLE<br />POWER CELL</span></div>
               <div className="assembly-callout assembly-callout--flex"><i /><span>CONTACT<br />FLEX LAYER</span></div>
               <div className="assembly-callout assembly-callout--base"><i /><span>LOWER<br />SUPPORT BASE</span></div>
-              <div className="assembly-render__note"><img src={ASSETS.logo} alt="" /><span>ILLUSTRATIVE INTERNAL CONCEPT<br />PENDING PRODUCTION CAD</span></div>
+              <div className="assembly-render__note"><img src={ASSETS.logo} alt="" /><span>DEVICE ANATOMY /<br />VISIBLE COMPONENTS, SHOWN APART</span></div>
             </div>
           </div>
         </section>
@@ -455,7 +463,7 @@ export default function Home() {
           </div>
         </section>
 
-        <section className="closing-section" aria-labelledby="closing-title">
+        <section className="closing-section closing-section--single-card" aria-labelledby="closing-title">
           <div className="closing-copy">
             <div className="section-kicker">A clinical ritual, made considered</div>
             <h2 id="closing-title">The science<br /><em>is in the pairing.</em></h2>
@@ -472,7 +480,7 @@ export default function Home() {
       </main>
 
       <footer className="site-footer">
-        <a className="brand brand--footer" href="#top">
+        <a className="brand brand--footer site-link" href="#top">
           <img src={ASSETS.logo} alt="BNS scientific emblem" />
           <Wordmark inverse />
         </a>

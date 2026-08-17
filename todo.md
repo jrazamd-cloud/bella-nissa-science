@@ -45,3 +45,15 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Attempt an enhanced 4K device-use video with deeper contrast, warm surround lighting, and a green plant accent; the 4K render was blocked by the daily video-generation limit.
 - [x] Replace or preserve a reliable motion fallback for the ritual video.
 - [x] Reframe the ritual video for the page and verify desktop/mobile presentation.
+
+- [x] Fix the empty closing card and rebalance the closing layout at desktop, tablet, and mobile widths.
+- [x] Normalize every anchor to brand link tokens with default, hover, visited, and focus-visible states.
+- [x] Resolve the excessive black gap between the hero CTA and the system heading.
+- [x] Replace the internal device note with a customer-facing caption.
+- [x] Rebuild the hero as a pinned, scroll-driven sequence with semantic text, reduced-motion fallback, and a mobile fallback.
+- [x] Upgrade the device exploded view using actual product assets, scroll scrubbing, observable callouts, reduced-motion fallback, and simplified mobile behavior.
+- [x] Run pnpm check and pnpm build, verify responsive widths, commit to main, and push to GitHub.
+- [x] Refine the pinned hero to a dark clinical canvas with separate serum/device visuals, true masked line reveals, and continuous scroll-linked cross-fades.
+- [x] Convert the device assembly from thresholded stages to continuous scroll-scrubbed separation and reseating.
+- [x] Verify the refined experience at a tablet breakpoint and push the final revision to GitHub main.
+- [x] Add continuous component-layer separation and reseating over the actual exploded product photograph, then commit and push the reconciled main branch.
