@@ -18,6 +18,7 @@ const ASSETS = {
   hero: "/manus-storage/bns-hero-system_78a7dae4.jpg",
   serum: "/manus-storage/bns-serum-laboratory_969683fc.jpg",
   device: "/manus-storage/bns-device-precision_66879012.jpg",
+  deviceExploded: "/manus-storage/bns-actual-device-exploded_8be9e5f4.jpg",
   ritualMotion: "/manus-storage/bns-blonde-device-ritual-motion_68f91816.mp4",
   ritualMineralStill: "/manus-storage/bns-blonde-device-ritual-mineral-keyframe_7a913bcc.png",
   ingredientMap: "/manus-storage/bns-skin-layer-ingredient-map_07772248.jpg",
@@ -214,13 +215,8 @@ export default function Home() {
             <p className="device-explainer__note">Component names describe the visible product architecture shown here; they do not represent proprietary internal specifications.</p>
           </div>
           <div className="device-explainer__stage" aria-label="Animated exploded view of the Bella Nissa Science companion device">
-            <div className="exploded-device" aria-hidden="true">
-              <div className="device-layer device-layer--top"><span /></div>
-              <div className="device-layer device-layer--ring"><span /></div>
-              <div className="device-layer device-layer--core"><span className="device-power" /></div>
-              <div className="device-layer device-layer--shell"><img src={ASSETS.logo} alt="" /></div>
-              <div className="device-layer device-layer--base"><span /></div>
-            </div>
+            <img className="actual-device actual-device--assembled" src={ASSETS.device} alt="Bella Nissa Science device in its assembled form" />
+            <img className="actual-device actual-device--exploded" src={ASSETS.deviceExploded} alt="Bella Nissa Science device shown as an exploded assembly" />
             <div className="device-callout device-callout--treatment"><i /><span>CONTOURED<br />TREATMENT SURFACE</span></div>
             <div className="device-callout device-callout--interface"><i /><span>POWER + STATUS<br />INTERFACE</span></div>
             <div className="device-callout device-callout--housing"><i /><span>PRECISION OUTER<br />HOUSING</span></div>
