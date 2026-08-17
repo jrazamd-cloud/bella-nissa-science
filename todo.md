@@ -62,4 +62,4 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Move the device anatomy caption into a padded safe area and remove excess spacing before the ritual section.
 - [x] Audit every anchor across the Home and Formula pages to eliminate default indigo/blue states and retain visible focus treatment.
 - [x] Eliminate the orphaned hero-to-system gap at 1440px, 1024px, and 390px.
-- [ ] Run validation and push the completed revision to jrazamd-cloud/bella-nissa-science main, reporting the commit SHA.
+- [x] Run validation and push the completed revision to jrazamd-cloud/bella-nissa-science main, reporting the commit SHA.
