@@ -18,6 +18,7 @@ const ASSETS = {
   hero: "/manus-storage/bns-hero-system_78a7dae4.jpg",
   serum: "/manus-storage/bns-serum-laboratory_969683fc.jpg",
   device: "/manus-storage/bns-device-precision_66879012.jpg",
+  ritualMotion: "/manus-storage/bns-blonde-device-ritual-motion_68f91816.mp4",
 };
 
 const protocol = [
@@ -193,6 +194,62 @@ export default function Home() {
               <a className="product-link" href="#protocol">Explore device <ArrowUpRight size={17} /></a>
             </div>
           </article>
+        </section>
+
+        <section className="motion-education" id="ritual" aria-labelledby="ritual-title">
+          <div className="motion-education__visual">
+            <video
+              className="ritual-video"
+              src={ASSETS.ritualMotion}
+              autoPlay
+              muted
+              loop
+              playsInline
+              aria-label="A blonde woman using the Bella Nissa Science absorption and massage device as part of her skincare ritual"
+            />
+            <div className="motion-education__visual-mark" aria-hidden="true">
+              <img src={ASSETS.logo} alt="" />
+              <span>RITUAL / IN MOTION</span>
+            </div>
+            <p className="motion-education__caption">A calm, deliberate moment after formula application.</p>
+          </div>
+
+          <div className="motion-education__copy">
+            <div className="section-kicker">03 / Beyond the formula</div>
+            <h2 id="ritual-title">Topical care begins<br />at the surface.</h2>
+            <p className="motion-education__lead">A well-made serum can be an essential step. Bella Nissa Science adds a purposeful device ritual, so application is treated as more than a final swipe of product.</p>
+            <div className="motion-education__rule"><span /><span /><span /></div>
+            <div className="motion-education__intro">
+              <h3>Visible change deserves a considered routine.</h3>
+              <p>Skin can look and feel different over time: less hydrated, less even, or simply less familiar. That does not call for an overcomplicated answer. It calls for a clear sequence you can return to—cleanse, apply the formula, then follow with the device as directed.</p>
+            </div>
+          </div>
+
+          <div className="concern-grid" aria-label="Bella Nissa Science skincare education">
+            <article className="concern-card">
+              <div className="concern-card__number">01</div>
+              <h3>Texture &amp; hydration</h3>
+              <p>When skin appears less smooth or comfortable, the formula step is where the ritual begins. Apply the serum to freshly cleansed skin as directed, with attention to the areas you want to treat with care.</p>
+              <span>FORMULA FIRST</span>
+            </article>
+            <article className="concern-card concern-card--feature">
+              <div className="concern-card__number">02</div>
+              <h3>The application moment</h3>
+              <p>Skincare can be both practical and tactile. The companion device is designed to follow serum application, turning a few intentional passes into a calm part of your routine.</p>
+              <span>SERUM → DEVICE</span>
+            </article>
+            <article className="concern-card">
+              <div className="concern-card__number">03</div>
+              <h3>Consistency &amp; care</h3>
+              <p>Visible skincare goals are personal. Keep your approach simple, follow the directions for each product, and let the system fit naturally into your established daily care.</p>
+              <span>RETURN TO THE RITUAL</span>
+            </article>
+          </div>
+
+          <div className="motion-education__care-note">
+            <span className="molecular-waypoint" aria-hidden="true"><i /><i /><i /></span>
+            <p><b>Care note</b> This content describes a cosmetic skincare ritual and is not a medical assessment. If you have a persistent skin concern or uncertainty about using a facial device, consult a qualified clinician.</p>
+          </div>
         </section>
 
         <section className="protocol-section" id="protocol" aria-labelledby="protocol-title">
