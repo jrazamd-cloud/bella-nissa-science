@@ -72,4 +72,4 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Remove the full device teardown section, its scroll state and listener, vector component, legend, caption, styles, and section-only assets.
 - [x] Close the preceding-to-ritual vertical rhythm with no empty anatomy container or scroll gap.
 - [x] Measure named anchor foreground/background contrast in the live preview and correct context-specific link classes to at least 4.5:1.
-- [ ] Run pnpm check and pnpm build, verify the live preview, and push the focused revision to GitHub main with recorded contrast ratios.
+- [x] Run pnpm check and pnpm build, verify the live preview, and push the focused revision to GitHub main with recorded contrast ratios.
