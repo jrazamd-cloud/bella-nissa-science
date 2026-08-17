@@ -208,10 +208,14 @@ export default function Home() {
 
         <section className="motion-education" id="ritual" aria-labelledby="ritual-title">
           <div className="motion-education__visual">
-            <img
-              className="ritual-image"
-              src={ASSETS.ritualMineralStill}
-              alt="A blonde woman using the Bella Nissa Science absorption and massage device as part of her skincare ritual"
+            <video
+              className="ritual-video"
+              src={ASSETS.ritualMotion}
+              autoPlay
+              muted
+              loop
+              playsInline
+              aria-label="A blonde woman using the Bella Nissa Science absorption and massage device as part of her skincare ritual"
             />
             <div className="motion-education__visual-mark" aria-hidden="true">
               <img src={ASSETS.logo} alt="" />

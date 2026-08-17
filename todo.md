@@ -16,3 +16,15 @@
 - [x] Add the step-by-step serum-and-device use accordion beneath the ingredient list.
 - [x] Add responsive hover and focus tooltips to the skin-layer visual, with “EGF” placed after the peptide-complex label.
 - [x] Review the new page and interactions across desktop and mobile before saving the update.
+
+- [x] Restore the previous working blonde ritual video in the website.
+- [x] Verify the restored motion section and responsive layout.
+- [ ] Generate a true 4K replacement video after the daily video-generation quota resets.
+- [ ] Save and deliver the motion restoration update.
+
+Note: the 4K generation attempt was blocked by the free plan’s daily video-generation limit; the previous working motion clip is restored.
+
+- [ ] Restore the previous motion asset and define the 4K replacement path
+- [ ] Generate or prepare the highest-quality motion asset available
+- [ ] Reintegrate the moving clip and verify the website presentation
+- [ ] Save and deliver the motion restoration update
