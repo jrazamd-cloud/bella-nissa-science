@@ -28,3 +28,6 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Generate or prepare the highest-quality available asset; the working motion clip is restored while the 1080p replacement remains quota-blocked.
 - [x] Reintegrate the moving clip and verify the website presentation.
 - [x] Save the motion restoration update checkpoint; user delivery follows in the final report.
+- [x] Define safe, observable device component labels for the exploded-view animation.
+- [x] Generate or compose a device exploded-view motion sequence with callouts and reassembly.
+- [x] Place the component explainer in the device story and verify the responsive presentation.

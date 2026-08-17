@@ -206,6 +206,32 @@ export default function Home() {
           </article>
         </section>
 
+        <section className="device-explainer" aria-labelledby="device-explainer-title">
+          <div className="device-explainer__intro">
+            <div className="section-kicker">03 / Device anatomy</div>
+            <h2 id="device-explainer-title">A considered object.<br /><em>Shown in sequence.</em></h2>
+            <p>The companion device is presented as an assembled ritual tool: its visible layers separate, pause in view, then return to one calm, ready-to-use form.</p>
+            <p className="device-explainer__note">Component names describe the visible product architecture shown here; they do not represent proprietary internal specifications.</p>
+          </div>
+          <div className="device-explainer__stage" aria-label="Animated exploded view of the Bella Nissa Science companion device">
+            <div className="exploded-device" aria-hidden="true">
+              <div className="device-layer device-layer--top"><span /></div>
+              <div className="device-layer device-layer--ring"><span /></div>
+              <div className="device-layer device-layer--core"><span className="device-power" /></div>
+              <div className="device-layer device-layer--shell"><img src={ASSETS.logo} alt="" /></div>
+              <div className="device-layer device-layer--base"><span /></div>
+            </div>
+            <div className="device-callout device-callout--treatment"><i /><span>CONTOURED<br />TREATMENT SURFACE</span></div>
+            <div className="device-callout device-callout--interface"><i /><span>POWER + STATUS<br />INTERFACE</span></div>
+            <div className="device-callout device-callout--housing"><i /><span>PRECISION OUTER<br />HOUSING</span></div>
+            <div className="device-callout device-callout--base"><i /><span>LOWER SUPPORT<br />BASE</span></div>
+            <div className="device-stage-meta"><span>EXPLODE → OBSERVE → REASSEMBLE</span><span>DEVICE / 02</span></div>
+          </div>
+          <div className="device-explainer__legend">
+            <span><b>01</b> Treatment surface</span><span><b>02</b> Interface</span><span><b>03</b> Outer housing</span><span><b>04</b> Support base</span>
+          </div>
+        </section>
+
         <section className="motion-education" id="ritual" aria-labelledby="ritual-title">
           <div className="motion-education__visual">
             <video
