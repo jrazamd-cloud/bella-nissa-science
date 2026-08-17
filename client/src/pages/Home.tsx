@@ -89,10 +89,10 @@ function DeviceAnatomySvg({ progress }: { progress: number }) {
       <title id="device-anatomy-svg-title">Bella Nissa Science device anatomy</title>
       <desc id="device-anatomy-svg-desc">A line-art orthographic elevation of the companion device. Six named parts separate vertically as the page scrolls, then reseat into the finished device.</desc>
       <g className="device-anatomy-svg__axis" aria-hidden="true"><path d="M304 56V672" /><path d="M294 56h20M294 672h20" /></g>
-      <g id="treatment-head" transform={`translate(0 ${-move(112)})`}><path className="device-part device-part--plate" d="M224 188c0-16 13-28 30-28h101c17 0 30 12 30 28v17c0 11-9 20-20 20H244c-11 0-20-9-20-20z" /><path className="device-detail" d="M246 192h117M261 176h87" /></g>
-      <g id="upper-housing-shell" transform={`translate(0 ${-move(55)})`}><path className="device-part" d="M191 240c0-42 34-76 76-76h75c42 0 76 34 76 76v32H191z" /><path className="device-detail" d="M205 260h199" /></g>
-      <g id="lower-housing-shell" transform={`translate(0 ${move(2)})`}><path className="device-part" d="M190 278h229v135c0 74-51 128-114 128-64 0-115-54-115-128z" /><path className="device-detail" d="M202 309h205M216 503c51 17 127 17 178 0" /><circle className="device-control" cx="305" cy="355" r="24" /><path className="device-detail" d="M305 340v17m-10-7a14 14 0 1 0 20 0" /></g>
-      <g id="internal-core" transform={`translate(0 ${move(44)})`}><path className="device-part device-part--internal" d="M238 315h134v52H238z" /><path className="device-detail" d="M257 331h42m15 0h29m-86 18h86" /></g>
+      <g id="treatment-head" transform={`translate(0 ${-move(112)})`}><path className="device-part device-part--plate" d="M218 190c5-20 24-34 46-34h82c22 0 41 14 46 34l2 11H216z" /><path className="device-detail" d="M236 189c15-10 29-14 69-14s54 4 69 14M232 201h146" /></g>
+      <g id="upper-housing-shell" transform={`translate(0 ${-move(55)})`}><path className="device-part" d="M190 281v-31c0-49 31-80 70-90 28-7 63-7 91 0 39 10 70 41 70 90v31z" /><path className="device-detail" d="M204 270h202M219 244c26-23 145-23 172 0" /></g>
+      <g id="lower-housing-shell" transform={`translate(0 ${move(2)})`}><path className="device-part" d="M190 291h231v119c0 76-52 128-116 128-63 0-115-52-115-128z" /><path className="device-detail" d="M202 307h207M214 501c46 16 137 16 182 0M230 526c38 8 112 8 150 0" /><circle className="device-control" cx="305" cy="363" r="24" /><path className="device-detail" d="M305 348v17m-10-7a14 14 0 1 0 20 0" /></g>
+      <g id="internal-core" transform={`translate(0 ${move(44)})`}><path className="device-part device-part--internal" d="M236 326h138v55H236z" /><path className="device-detail" d="M252 340h28v27h-28zM290 340h30v27h-30zM330 340h28v27h-28zM265 334v-13m40 13v-13m40 13v-13M252 373h106" /><circle className="device-control" cx="265" cy="353" r="3" /><circle className="device-control" cx="305" cy="353" r="3" /><circle className="device-control" cx="344" cy="353" r="3" /></g>
       <g id="power-cell" transform={`translate(0 ${move(87)})`}><rect className="device-part device-part--internal" x="250" y="397" width="110" height="72" rx="12" /><path className="device-detail" d="M273 421h64v24h-64zM360 421h8v24h-8" /></g>
       <g id="base-cap" transform={`translate(0 ${move(132)})`}><path className="device-part" d="M225 515c23 17 137 17 160 0l-9 23c-18 17-128 17-146 0z" /><path className="device-detail" d="M240 536h130" /></g>
       <g className="device-anatomy-svg__leaders" aria-hidden="true"><polyline points={leader(anchorY.treatment, 111)} /><polyline points={leader(anchorY.upper, 193)} /><polyline points={leader(anchorY.lower, 275)} /><polyline points={leader(anchorY.core, 397)} /><polyline points={leader(anchorY.cell, 479)} /><polyline points={leader(anchorY.base, 605)} /></g>
@@ -149,18 +149,18 @@ export default function Home() {
   return (
     <div className="site-shell">
       <header className="site-header">
-          <a className="brand site-link" href="#top" aria-label="Bella Nissa Science home">
+          <a className="brand site-link brand-link brand-link--header" href="#top" aria-label="Bella Nissa Science home">
           <img src={ASSETS.logo} alt="BNS scientific emblem" />
           <Wordmark />
         </a>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
-          <a href="#system">The system</a>
-          <a href="/formula">Formula detail</a>
-          <a href="#method">The method</a>
+          <a className="brand-link" href="#system">The system</a>
+          <a className="brand-link" href="/formula">Formula detail</a>
+          <a className="brand-link" href="#method">The method</a>
         </nav>
 
-        <a className="header-action site-link" href="#protocol">
+        <a className="header-action site-link brand-link" href="#protocol">
           View protocol <ArrowUpRight size={14} strokeWidth={1.7} />
         </a>
 
@@ -177,10 +177,10 @@ export default function Home() {
 
       {menuOpen && (
         <nav className="mobile-nav" aria-label="Mobile navigation">
-          <a href="#system" onClick={() => setMenuOpen(false)}>The system</a>
-          <a href="/formula" onClick={() => setMenuOpen(false)}>Formula detail</a>
-          <a href="#method" onClick={() => setMenuOpen(false)}>The method</a>
-          <a href="#protocol" onClick={() => setMenuOpen(false)}>View protocol</a>
+          <a className="brand-link" href="#system" onClick={() => setMenuOpen(false)}>The system</a>
+          <a className="brand-link" href="/formula" onClick={() => setMenuOpen(false)}>Formula detail</a>
+          <a className="brand-link" href="#method" onClick={() => setMenuOpen(false)}>The method</a>
+          <a className="brand-link" href="#protocol" onClick={() => setMenuOpen(false)}>View protocol</a>
         </nav>
       )}
 
@@ -201,7 +201,7 @@ export default function Home() {
               Bella Nissa Science connects a precision formula with a purposeful absorption ritual—one quiet, considered system.
             </p>
             <div className="hero-actions">
-              <a className="button button--emerald" href="#system">
+              <a className="button button--emerald brand-link brand-link--action" href="#system">
                 Explore the system <ArrowDownRight size={17} />
               </a>
             </div>
@@ -211,8 +211,10 @@ export default function Home() {
             <img className="hero-image" src={ASSETS.hero} alt="Bella Nissa Science serum and absorption device" />
             <div className="hero-stage__visual hero-stage__visual--serum" aria-hidden="true"><img src={ASSETS.serum} alt="" /></div>
             <div className="hero-stage__visual hero-stage__visual--device" aria-hidden="true"><img src={ASSETS.device} alt="" /></div>
-            <div className="hero-stage__signal hero-stage__signal--serum"><span>FORMULA / 01</span><i /></div>
-            <div className="hero-stage__signal hero-stage__signal--device"><span>METHOD / 02</span><i /></div>
+            <div className="hero-epilogue" aria-label="System specification">
+              <div><b>FORMULA</b><span>01</span><i /></div>
+              <div><b>METHOD</b><span>02</span><i /></div>
+            </div>
             <div className="hero-stage__badge">
               <span>System / 02 components</span>
               <i />
@@ -238,7 +240,7 @@ export default function Home() {
           </div>
           <div className="system-statement">
             <p>Two components, each with a distinct role. The serum begins the ritual; the device is made to follow it.</p>
-            <a className="text-link" href="#protocol">Understand the protocol <ArrowDownRight size={17} /></a>
+            <a className="text-link brand-link" href="#protocol">Understand the protocol <ArrowDownRight size={17} /></a>
           </div>
         </section>
 
@@ -256,7 +258,7 @@ export default function Home() {
               <p className="product-label">Bioactive Renewal Serum</p>
               <h3>Start with the formula.</h3>
               <p>Frosted glass, measured presentation, and a formula-first point of entry for the Bella Nissa Science system.</p>
-              <a className="product-link" href="#protocol">Explore serum <ArrowUpRight size={17} /></a>
+              <a className="product-link brand-link" href="#protocol">Explore serum <ArrowUpRight size={17} /></a>
             </div>
           </article>
 
@@ -273,7 +275,7 @@ export default function Home() {
               <p className="product-label">Absorption + Massage Device</p>
               <h3>Continue with purpose.</h3>
               <p>A compact companion designed to make the application ritual feel purposeful, tactile, and complete.</p>
-              <a className="product-link" href="#protocol">Explore device <ArrowUpRight size={17} /></a>
+              <a className="product-link brand-link" href="#protocol">Explore device <ArrowUpRight size={17} /></a>
             </div>
           </article>
         </section>
@@ -418,7 +420,7 @@ export default function Home() {
             <div className="section-kicker">05 / Use sequence</div>
             <h2 id="use-accordion-title">Formula first.<br /><em>Method follows.</em></h2>
             <p>Open each step for a clear, measured order of use. This routine describes cosmetic application only; always follow the final product directions.</p>
-            <a href="/formula" className="formula-link">Read the formula dossier <ArrowUpRight size={16} /></a>
+            <a href="/formula" className="formula-link brand-link">Read the formula dossier <ArrowUpRight size={16} /></a>
           </div>
           <div className="use-accordion__steps">
             {usageSteps.map((step, index) => {
@@ -514,7 +516,7 @@ export default function Home() {
       </main>
 
       <footer className="site-footer">
-        <a className="brand brand--footer site-link" href="#top">
+        <a className="brand brand--footer site-link brand-link brand-link--footer" href="#top">
           <img src={ASSETS.logo} alt="BNS scientific emblem" />
           <Wordmark inverse />
         </a>

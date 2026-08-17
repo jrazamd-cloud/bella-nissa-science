@@ -63,3 +63,8 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Audit every anchor across the Home and Formula pages to eliminate default indigo/blue states and retain visible focus treatment.
 - [x] Eliminate the orphaned hero-to-system gap at 1440px, 1024px, and 390px.
 - [x] Run validation and push the completed revision to jrazamd-cloud/bella-nissa-science main, reporting the commit SHA.
+- [x] Inspect the live computed colors of the six named Home anchors and record the actual resolved values.
+- [x] Apply explicit element-level brand-link classes to the named anchors with foreground default, emerald hover, and visible focus styling.
+- [x] Refine the SVG device silhouette from the actual product reference and add observable internal-core drawing detail.
+- [x] Tighten and strengthen the hero formula/method specification epilogue at 550px and 768px.
+- [ ] Reinspect computed link colors, validate requested responsive widths, run pnpm check/build, and push the targeted revision to GitHub main.
