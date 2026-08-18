@@ -226,8 +226,10 @@ h1 em, h2 em { font-style: normal; color: var(--ink); }
 .ingredient-tooltip { position: absolute; z-index: 5; bottom: calc(100% + 12px); left: 50%; width: 210px; padding: 12px 13px; border: 1px solid rgba(0,111,88,0.28); background: rgba(251,252,249,0.98); box-shadow: 0 12px 28px rgba(23,47,41,0.15); color: var(--slate); font-size: 10px; font-style: normal; font-weight: 500; line-height: 1.55; opacity: 0; pointer-events: none; text-align: left; transform: translate(-50%, 5px); transition: opacity 160ms ease, transform 160ms ease; }
 .ingredient-tooltip b { display: block; margin-bottom: 4px; color: var(--emerald); font-family: var(--font-mono); font-size: 8px; font-style: normal; font-weight: 400; font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.14em; }
 .ingredient-hotspot:hover .ingredient-tooltip, .ingredient-hotspot:focus-visible .ingredient-tooltip { opacity: 1; transform: translate(-50%, 0); }
+.ingredient-hotspot[data-tooltip-open="true"] .ingredient-tooltip { opacity: 1; transform: translate(-50%, 0); }
 .ingredient-hotspot--device .ingredient-tooltip { right: 0; left: auto; transform: translate(0, 5px); }
 .ingredient-hotspot--device:hover .ingredient-tooltip, .ingredient-hotspot--device:focus-visible .ingredient-tooltip { transform: translate(0, 0); }
+.ingredient-hotspot--device[data-tooltip-open="true"] .ingredient-tooltip { transform: translate(0, 0); }
 .ingredient-figure figcaption { position: absolute; right: 22px; bottom: 19px; left: 22px; display: flex; justify-content: space-between; gap: 20px; color: rgba(255,255,255,0.93); font-family: var(--font-mono); font-size: 8px; font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.14em; text-shadow: 0 1px 5px rgba(0,0,0,0.65); }
 .ingredient-science__body { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 8vw; padding: 8vw 0 7.4vw; }
 .ingredient-science__body { position: relative; }

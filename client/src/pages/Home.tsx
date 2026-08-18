@@ -2,7 +2,7 @@
  * Clinical Atelier design system: luminous white fields, silver hardware, and calibration-emerald accents.
  * The layout treats Bella Nissa Science as a connected serum-and-device protocol rather than a conventional beauty catalogue.
  */
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type FocusEvent, type PointerEvent } from "react";
 import ArrowDownRight from "lucide-react/dist/esm/icons/arrow-down-right";
 import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
 import ChevronRight from "lucide-react/dist/esm/icons/chevron-right";
@@ -36,7 +36,26 @@ function ResponsiveImage({ name, alt, className, loading = "lazy", fetchPriority
   const image = RESPONSIVE_IMAGES[name];
   return <picture className="responsive-picture"><source type="image/webp" srcSet={image.webp} sizes={image.sizes} /><img className={className} src={image.src} srcSet={image.fallback} sizes={image.sizes} alt={alt} width={image.width} height={image.height} loading={loading} decoding="async" fetchPriority={fetchPriority} /></picture>;
 }
-
+function setHotspotTooltip(button: HTMLButtonElement, open: boolean) {
+  const tooltip = button.querySelector<HTMLElement>(".ingredient-tooltip");
+  if (!tooltip) return;
+  if (open) {
+    button.dataset.tooltipOpen = "true";
+    tooltip.style.setProperty("opacity", "1", "important");
+    tooltip.style.setProperty("transform", button.classList.contains("ingredient-hotspot--device") ? "translate(0, 0)" : "translate(-50%, 0)", "important");
+    return;
+  }
+  delete button.dataset.tooltipOpen;
+  tooltip.style.removeProperty("opacity");
+  tooltip.style.removeProperty("transform");
+}
+const hotspotInteractionProps = {
+  onPointerEnter: (event: PointerEvent<HTMLButtonElement>) => { setHotspotTooltip(event.currentTarget, true); },
+  onPointerLeave: (event: PointerEvent<HTMLButtonElement>) => { setHotspotTooltip(event.currentTarget, false); },
+  onFocus: (event: FocusEvent<HTMLButtonElement>) => { setHotspotTooltip(event.currentTarget, true); },
+  onBlur: (event: FocusEvent<HTMLButtonElement>) => { setHotspotTooltip(event.currentTarget, false); },
+  onClick: (event: React.MouseEvent<HTMLButtonElement>) => { setHotspotTooltip(event.currentTarget, true); },
+};
 const protocol = [
   {
     id: "01",
@@ -400,13 +419,13 @@ export default function Home() {
 
           <figure className="ingredient-figure">
             <ResponsiveImage name="ingredientMap" alt="Bella Nissa Science skin-layer illustration with active serum ingredient groupings and the device shown in guided surface application" />
-            <button className="ingredient-hotspot ingredient-hotspot--peptides" type="button" aria-label="Epidermal growth factor and peptide benefit details"><span>01</span><i className="ingredient-tooltip"><b>01 / EGF + peptides</b> Helps improve the appearance of texture, firmness, elasticity, and smoother-looking expression lines.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--nad" type="button" aria-label="NAD plus benefit details"><span>02</span><i className="ingredient-tooltip"><b>02 / NAD+</b> Supports a vital-looking, firm-looking surface in an environmental-stress care story.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--niacinamide" type="button" aria-label="Niacinamide and adenosine benefit details"><span>03</span><i className="ingredient-tooltip"><b>03 / B3 + adenosine</b> Helps even the look of tone and supports a smoother-looking, firmer-looking finish.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--ectoin" type="button" aria-label="Ectoin benefit details"><span>04</span><i className="ingredient-tooltip"><b>04 / ectoin</b> Supports a calm, resilient, moisturised-feeling barrier in a daily stress-exposure story.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--hyaluronic" type="button" aria-label="Hyaluronic acid benefit details"><span>05</span><i className="ingredient-tooltip"><b>05 / sodium hyaluronate</b> Helps skin look plumper and more dewy while softening the look of dehydration lines.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--glutathione" type="button" aria-label="Topical glutathione benefit details"><span>06</span><i className="ingredient-tooltip"><b>06 / glutathione</b> Supports a more even-looking, luminous complexion in an antioxidant-focused formula story.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--device" type="button" aria-label="Companion device application details"><span>07</span><i className="ingredient-tooltip"><b>07 / Companion device</b> Follows serum as a guided surface-application pass; it is not presented as a clinical-delivery tool.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--peptides" type="button" aria-label="Epidermal growth factor and peptide benefit details" {...hotspotInteractionProps}><span>01</span><i className="ingredient-tooltip"><b>01 / EGF + peptides</b> Helps improve the appearance of texture, firmness, elasticity, and smoother-looking expression lines.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--nad" type="button" aria-label="NAD plus benefit details" {...hotspotInteractionProps}><span>02</span><i className="ingredient-tooltip"><b>02 / NAD+</b> Supports a vital-looking, firm-looking surface in an environmental-stress care story.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--niacinamide" type="button" aria-label="Niacinamide and adenosine benefit details" {...hotspotInteractionProps}><span>03</span><i className="ingredient-tooltip"><b>03 / B3 + adenosine</b> Helps even the look of tone and supports a smoother-looking, firmer-looking finish.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--ectoin" type="button" aria-label="Ectoin benefit details" {...hotspotInteractionProps}><span>04</span><i className="ingredient-tooltip"><b>04 / ectoin</b> Supports a calm, resilient, moisturised-feeling barrier in a daily stress-exposure story.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--hyaluronic" type="button" aria-label="Hyaluronic acid benefit details" {...hotspotInteractionProps}><span>05</span><i className="ingredient-tooltip"><b>05 / sodium hyaluronate</b> Helps skin look plumper and more dewy while softening the look of dehydration lines.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--glutathione" type="button" aria-label="Topical glutathione benefit details" {...hotspotInteractionProps}><span>06</span><i className="ingredient-tooltip"><b>06 / glutathione</b> Supports a more even-looking, luminous complexion in an antioxidant-focused formula story.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--device" type="button" aria-label="Companion device application details" {...hotspotInteractionProps}><span>07</span><i className="ingredient-tooltip"><b>07 / Companion device</b> Follows serum as a guided surface-application pass; it is not presented as a clinical-delivery tool.</i></button>
             <figcaption><span>FORMULA / SURFACE-LEVEL STORY</span><span>DEVICE / GUIDED APPLICATION PASS</span></figcaption>
           </figure>
 

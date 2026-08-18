@@ -56,6 +56,8 @@ describe("Bella Nissa Science experience contract", () => {
     expect(styles).toContain(".protocol-guidance p { max-width: 62ch");
     expect(home).toContain("Two components.<br /><em>One coordinated ritual.</em>");
     expect(home).toContain('<span>07</span><i className="ingredient-tooltip"><b>07 / Companion device</b>');
+    expect(home).toContain("hotspotInteractionProps");
+    expect(styles).toContain('.ingredient-hotspot[data-tooltip-open="true"] .ingredient-tooltip');
     expect(styles).toContain(".ingredient-hotspot--device { top: 16%; right: 12%; }");
   });
 
