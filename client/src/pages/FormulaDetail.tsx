@@ -1,7 +1,9 @@
 /**
  * Clinical Atelier formula dossier: sourced ingredient context, clear substantiation boundaries, frosted specimen panels, and BNS authority marks.
  */
-import { ArrowLeft, ArrowUpRight, ChevronRight } from "lucide-react";
+import ArrowLeft from "lucide-react/dist/esm/icons/arrow-left";
+import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
+import ChevronRight from "lucide-react/dist/esm/icons/chevron-right";
 
 const ASSETS = {
   logo: "/manus-storage/bns-emblem_58bd568a.svg",

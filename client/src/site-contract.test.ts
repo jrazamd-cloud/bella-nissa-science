@@ -8,6 +8,8 @@ const home = readFileSync(resolve(here, "pages/Home.tsx"), "utf8");
 const formula = readFileSync(resolve(here, "pages/FormulaDetail.tsx"), "utf8");
 const styles = readFileSync(resolve(here, "index.css"), "utf8");
 const documentHead = readFileSync(resolve(here, "../index.html"), "utf8");
+const app = readFileSync(resolve(here, "App.tsx"), "utf8");
+const server = readFileSync(resolve(here, "../../server/index.ts"), "utf8");
 
 describe("Bella Nissa Science experience contract", () => {
   it("keeps the hero headline as staged semantic text", () => {
@@ -57,7 +59,7 @@ describe("Bella Nissa Science experience contract", () => {
     expect(styles).toContain(".ingredient-hotspot--device { top: 16%; right: 12%; }");
   });
 
-  it("renders six formula cards and a contiguous eight-source reference list", () => {
+  it("renders six formula cards and a contiguous seven-source reference list", () => {
     expect(home).toContain("const formulaEntries");
     expect(home).toContain("Topical glutathione");
     expect(home).toContain("const formulaReferences");
@@ -71,11 +73,12 @@ describe("Bella Nissa Science experience contract", () => {
     expect(home).not.toContain("23417317");
     expect(home).toContain('citationSentences: [');
     expect(home).toContain('more radiant-looking complexion.", refs: [1]');
-    expect(home).toContain('Argireline / SNAP-8), and palmitoyl tripeptide-5 complete the peptide complex, supporting the appearance of elasticity, resilience, and smoother-looking expression lines.", refs: [2]');
+    expect(home).toContain('Argireline / SNAP-8), and palmitoyl tripeptide-5 complete the peptide complex, supporting the appearance of elasticity, resilience, and smoother-looking expression lines.", refs: []');
+    expect(home).not.toContain("Peptides: Emerging Candidates for the Prevention and Treatment of Skin Aging");
     const referenceIds = Array.from(home.matchAll(/\{ id: (\d+), title:/g), (match) => Number(match[1]));
     const markers = Array.from(home.matchAll(/refs: \[([\d, ]+)\]/g), (match) => (match[1].match(/\d+/g) ?? []).map(Number)).flat();
-    expect(referenceIds).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
-    expect(markers).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+    expect(referenceIds).toEqual([1, 2, 3, 4, 5, 6, 7]);
+    expect(markers).toEqual([1, 2, 3, 4, 5, 6, 7]);
   });
 
   it("uses responsive, prioritized LCP media and compact in-page emblem delivery", () => {
@@ -108,6 +111,20 @@ describe("Bella Nissa Science experience contract", () => {
     expect(home).toContain('preload="metadata"');
     expect(home).toContain('bns-ritual-two-step_74502cd2.webm');
     expect(home).toContain('karger.com/spp/article/17/5/232/295389');
+  });
+
+  it("keeps Cycle 6 production splitting, cache policy, and minimum target-size safeguards", () => {
+    expect(home).toContain('from "lucide-react/dist/esm/icons/arrow-down-right"');
+    expect(home).not.toContain('from "lucide-react"');
+    expect(app).toContain('const FormulaDetail = lazy(() => import("./pages/FormulaDetail"))');
+    expect(app).toContain("<Suspense fallback={null}>");
+    expect(app).not.toContain("components/ui/sonner");
+    expect(app).not.toContain("components/ui/tooltip");
+    expect(server).toContain('"public, max-age=31536000, immutable"');
+    expect(server).toContain('res.setHeader("Cache-Control", "no-cache")');
+    expect(styles).toContain('.ingredient-hotspot { position: absolute; z-index: 3; display: grid; width: 24px; height: 24px;');
+    expect(styles).toContain('.ingredient-hotspot { width: 24px; height: 24px; margin: -2.5px; }');
+    expect(styles).toContain('.desktop-nav a::after, .brand::after, .header-action::after, .product-link::after, .formula-link::after, .ingredient-references a::after');
   });
 });
 

@@ -1,22 +1,23 @@
-import { Toaster } from "@/components/ui/sonner";
-import { TooltipProvider } from "@/components/ui/tooltip";
-import NotFound from "@/pages/NotFound";
+import { lazy, Suspense } from "react";
 import { Route, Switch } from "wouter";
 import ErrorBoundary from "./components/ErrorBoundary";
 import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
-import FormulaDetail from "./pages/FormulaDetail";
+const FormulaDetail = lazy(() => import("./pages/FormulaDetail"));
+const NotFound = lazy(() => import("./pages/NotFound"));
 
 
 function Router() {
   return (
-    <Switch>
-      <Route path={"/"} component={Home} />
-      <Route path={"/formula"} component={FormulaDetail} />
-      <Route path={"/404"} component={NotFound} />
-      {/* Final fallback route */}
-      <Route component={NotFound} />
-    </Switch>
+    <Suspense fallback={null}>
+      <Switch>
+        <Route path={"/"} component={Home} />
+        <Route path={"/formula"} component={FormulaDetail} />
+        <Route path={"/404"} component={NotFound} />
+        {/* Final fallback route */}
+        <Route component={NotFound} />
+      </Switch>
+    </Suspense>
   );
 }
 
@@ -32,10 +33,7 @@ function App() {
         defaultTheme="light"
         // switchable
       >
-        <TooltipProvider>
-          <Toaster />
-          <Router />
-        </TooltipProvider>
+        <Router />
       </ThemeProvider>
     </ErrorBoundary>
   );

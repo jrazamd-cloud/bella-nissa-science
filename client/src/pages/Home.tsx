@@ -3,15 +3,13 @@
  * The layout treats Bella Nissa Science as a connected serum-and-device protocol rather than a conventional beauty catalogue.
  */
 import { useEffect, useRef, useState } from "react";
-import {
-  ArrowDownRight,
-  ArrowUpRight,
-  ChevronRight,
-  Menu,
-  Minus,
-  Plus,
-  X,
-} from "lucide-react";
+import ArrowDownRight from "lucide-react/dist/esm/icons/arrow-down-right";
+import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
+import ChevronRight from "lucide-react/dist/esm/icons/chevron-right";
+import Menu from "lucide-react/dist/esm/icons/menu";
+import Minus from "lucide-react/dist/esm/icons/minus";
+import Plus from "lucide-react/dist/esm/icons/plus";
+import X from "lucide-react/dist/esm/icons/x";
 
 const ASSETS = {
   logo: "/manus-storage/bns-emblem_58bd568a.svg",
@@ -86,50 +84,49 @@ const formulaEntries: FormulaEntry[] = [
     name: "Epidermal growth factor (sh-Oligopeptide-1) and peptides",
     citationSentences: [
       { copy: "sh-Oligopeptide-1 is a bioengineered signalling protein associated with skin’s natural renewal, helping improve the appearance of texture and firmness for a more radiant-looking complexion.", refs: [1] },
-      { copy: "Copper tripeptide-1, acetyl octapeptide-3 (Argireline / SNAP-8), and palmitoyl tripeptide-5 complete the peptide complex, supporting the appearance of elasticity, resilience, and smoother-looking expression lines.", refs: [2] },
+      { copy: "Copper tripeptide-1, acetyl octapeptide-3 (Argireline / SNAP-8), and palmitoyl tripeptide-5 complete the peptide complex, supporting the appearance of elasticity, resilience, and smoother-looking expression lines.", refs: [] },
     ],
   },
   {
     id: "02",
     name: "NAD+",
     copy: "NAD+ is a coenzyme present in living cells. In a topical formula, it is positioned as a cellular-fuel story associated with mitochondrial energy, helping skin look vital, firm, and better defended against the visible effects of environmental stress.",
-    refs: [3],
+    refs: [2],
   },
   {
     id: "03",
     name: "Niacinamide (vitamin B3) and adenosine",
     copy: "Niacinamide visibly brightens and helps even the look of tone and dark spots while supporting a moisture-barrier story. Adenosine helps smooth the look of the surface and soften the appearance of wrinkles for a firmer-looking finish.",
-    refs: [4, 5],
+    refs: [3, 4],
   },
   {
     id: "04",
     name: "Ectoin",
     copy: "Ectoin is a natural extremolyte associated with hydration-shell support. It helps buffer the visible effects of pollution, UV-induced stress, and allergens, keeping the barrier feeling calm, resilient, and moisturised.",
-    refs: [6],
+    refs: [5],
   },
   {
     id: "05",
     name: "Hyaluronic acid (sodium hyaluronate)",
     copy: "Hyaluronic acid and sodium hyaluronate are humectants associated with surface hydration. In topical use, they help skin look instantly plumper, soften the look of dehydration lines, and leave the complexion looking dewy and quenched.",
-    refs: [7],
+    refs: [6],
   },
   {
     id: "06",
     name: "Topical glutathione",
     copy: "Topical glutathione is widely used in antioxidant-focused formulas. It helps defend against environmental aggressors while supporting the appearance of more even-looking tone and a more luminous complexion.",
-    refs: [8],
+    refs: [7],
   },
 ];
 
 const formulaReferences = [
   { id: 1, title: "Improved texture and appearance of human facial skin after daily topical application of barley produced, synthetic, human-like epidermal growth factor (EGF) serum", journal: "Journal of Drugs in Dermatology", citation: "2012 May;11(5):613-20. PMID: 22527430.", href: "https://pubmed.ncbi.nlm.nih.gov/22527430/" },
-  { id: 2, title: "Peptides: Emerging Candidates for the Prevention and Treatment of Skin Aging", journal: "International Journal of Molecular Sciences", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11762834/" },
-  { id: 3, title: "Novel Approach to Skin Anti-Aging: Boosting Pharmacological Strategies", journal: "Antioxidants (Basel)", href: "https://pubmed.ncbi.nlm.nih.gov/39513906/" },
-  { id: 4, title: "Mechanistic Insights into the Multiple Functions of Niacinamide", journal: "International Journal of Molecular Sciences", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11047333/" },
-  { id: 5, title: "The possible role of the nucleoside adenosine in countering skin aging", journal: "Ageing Research Reviews", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9804842/" },
-  { id: 6, title: "Ectoin: An Effective Natural Substance to Prevent UVA-Induced Premature Photoaging", journal: "Skin Pharmacology and Physiology", href: "https://karger.com/spp/article/17/5/232/295389/Ectoin-An-Effective-Natural-Substance-to-Prevent" },
-  { id: 7, title: "Benefits of topical hyaluronic acid for skin quality and signs of skin aging", journal: "Dermatology and Therapy", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10078143/" },
-  { id: 8, title: "Exploring the Safety and Efficacy of Glutathione", journal: "Antioxidants", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11862975/" },
+  { id: 2, title: "Novel Approach to Skin Anti-Aging: Boosting Pharmacological Strategies", journal: "Antioxidants (Basel)", href: "https://pubmed.ncbi.nlm.nih.gov/39513906/" },
+  { id: 3, title: "Mechanistic Insights into the Multiple Functions of Niacinamide", journal: "International Journal of Molecular Sciences", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11047333/" },
+  { id: 4, title: "The possible role of the nucleoside adenosine in countering skin aging", journal: "Ageing Research Reviews", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9804842/" },
+  { id: 5, title: "Ectoin: An Effective Natural Substance to Prevent UVA-Induced Premature Photoaging", journal: "Skin Pharmacology and Physiology", href: "https://karger.com/spp/article/17/5/232/295389/Ectoin-An-Effective-Natural-Substance-to-Prevent" },
+  { id: 6, title: "Benefits of topical hyaluronic acid for skin quality and signs of skin aging", journal: "Dermatology and Therapy", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10078143/" },
+  { id: 7, title: "Exploring the Safety and Efficacy of Glutathione", journal: "Antioxidants", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11862975/" },
 ];
 
 function CitationMarkers({ references }: { references: number[] }) {
