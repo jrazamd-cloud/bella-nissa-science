@@ -111,3 +111,4 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Append bottle-label, pale-pink product-background, red-serum still/alt-text, and matching deferred-media validation requirements to the consolidated quota-reset brief without generating media now.
 - [x] Validate the eight-reference citation revision, push its substantive commit to GitHub main, and save a checkpoint.
 - [ ] Deferred with the consolidated media pass: apply the Bottle Label lockup to every serum asset, use the chosen normal-composite pale-pink product backdrop, regenerate red-serum stills/alt text and ingredient map, and validate label and pink-surface contrast.
+- [x] Place the JDD EGF marker after the EGF sentence and the peptide-review marker after the peptide-complex sentence in Entry 01, then revalidate and push the correction.

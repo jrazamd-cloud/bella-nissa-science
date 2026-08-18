@@ -77,12 +77,17 @@ const usageSteps = [
   { id: "04", title: "Complete your routine", body: "Allow the ritual to settle, then continue with the remainder of your usual skincare routine as desired. Pause use if discomfort occurs.", note: "RETURN TO YOUR ROUTINE" },
 ];
 
-const formulaEntries = [
+type CitationSentence = { copy: string; refs: number[] };
+type FormulaEntry = { id: string; name: string; copy?: string; refs?: number[]; citationSentences?: CitationSentence[] };
+
+const formulaEntries: FormulaEntry[] = [
   {
     id: "01",
     name: "Epidermal growth factor (sh-Oligopeptide-1) and peptides",
-    copy: "sh-Oligopeptide-1 is a bioengineered signalling protein associated with skin’s natural renewal, helping improve the appearance of texture and firmness for a more radiant-looking complexion. Copper tripeptide-1, acetyl octapeptide-3, and palmitoyl tripeptide-5 complete the peptide complex, supporting the appearance of elasticity, resilience, and smoother-looking expression lines.",
-    refs: [1, 2],
+    citationSentences: [
+      { copy: "sh-Oligopeptide-1 is a bioengineered signalling protein associated with skin’s natural renewal, helping improve the appearance of texture and firmness for a more radiant-looking complexion.", refs: [1] },
+      { copy: "Copper tripeptide-1, acetyl octapeptide-3 (Argireline / SNAP-8), and palmitoyl tripeptide-5 complete the peptide complex, supporting the appearance of elasticity, resilience, and smoother-looking expression lines.", refs: [2] },
+    ],
   },
   {
     id: "02",
@@ -126,6 +131,10 @@ const formulaReferences = [
   { id: 7, title: "Benefits of topical hyaluronic acid for skin quality and signs of skin aging", journal: "Dermatology and Therapy", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10078143/" },
   { id: 8, title: "Exploring the Safety and Efficacy of Glutathione", journal: "Antioxidants", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11862975/" },
 ];
+
+function CitationMarkers({ references }: { references: number[] }) {
+  return <>{references.map((reference) => <sup key={reference}><a className="brand-link brand-link--on-light" href={`#ingredient-ref-${reference}`} aria-label={`Read reference ${reference}`}>{reference}</a></sup>)}</>;
+}
 
 function Wordmark({ inverse = false }: { inverse?: boolean }) {
   return (
@@ -416,7 +425,7 @@ export default function Home() {
                   <span className="ingredient-list__dot">{entry.id}</span>
                   <div>
                     <strong>{entry.name}</strong>
-                    <p>{entry.copy} {entry.refs.map((reference) => <sup key={reference}><a className="brand-link brand-link--on-light" href={`#ingredient-ref-${reference}`} aria-label={`Read reference ${reference}`}>{reference}</a></sup>)}</p>
+                    <p>{entry.citationSentences ? entry.citationSentences.map((sentence) => <span key={sentence.copy}>{sentence.copy} <CitationMarkers references={sentence.refs} /> </span>) : <>{entry.copy} <CitationMarkers references={entry.refs ?? []} /></>}</p>
                   </div>
                 </li>
               ))}
