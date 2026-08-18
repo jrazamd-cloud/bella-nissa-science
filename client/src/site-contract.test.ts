@@ -57,13 +57,22 @@ describe("Bella Nissa Science experience contract", () => {
     expect(styles).toContain(".ingredient-hotspot--device { top: 16%; right: 12%; }");
   });
 
-  it("renders six formula cards and a nine-source reference list", () => {
+  it("renders six formula cards and a contiguous eight-source reference list", () => {
     expect(home).toContain("const formulaEntries");
     expect(home).toContain("Topical glutathione");
     expect(home).toContain("const formulaReferences");
     expect(home).toContain("References describe published research on individual ingredients.");
     expect(home).toContain('rel="noopener noreferrer"');
     expect((home.match(/ingredient-hotspot ingredient-hotspot--/g) ?? []).length).toBe(7);
+    expect(home).toContain("https://pubmed.ncbi.nlm.nih.gov/22527430/");
+    expect(home).toContain("Journal of Drugs in Dermatology");
+    expect(home).toContain("2012 May;11(5):613-20. PMID: 22527430.");
+    expect(home).not.toContain("37452558");
+    expect(home).not.toContain("23417317");
+    const referenceIds = Array.from(home.matchAll(/\{ id: (\d+), title:/g), (match) => Number(match[1]));
+    const markers = Array.from(home.matchAll(/refs: \[([\d, ]+)\]/g), (match) => (match[1].match(/\d+/g) ?? []).map(Number)).flat();
+    expect(referenceIds).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
+    expect(markers).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
   });
 
   it("uses responsive, prioritized LCP media and compact in-page emblem delivery", () => {
