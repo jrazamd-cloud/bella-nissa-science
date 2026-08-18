@@ -84,3 +84,10 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Rebuild Formula in Context as six cosmetic-safe evidence cards with remapped hotspots, superscript citations, nine external references, and disclaimer.
 - [x] Reconcile the hero source/render treatment and verify the requested rendering at 1440px, 1024px, and 390px.
 - [x] Run pnpm check/build, restart the preview, test all reference links, and push the completed revision to GitHub main.
+
+- [x] Audit all current image and font payloads, usage, intrinsic dimensions, and baseline cold-load timings at desktop and 390px.
+- [x] Replace in-page emblem raster use with a compact SVG and retain only favicon-sized PNG derivatives.
+- [x] Create responsive optimized raster variants for the hero, product columns, ingredient map, and ritual plant overlay without visual changes.
+- [x] Add image dimensions, loading/decoding directives, responsive srcset/sizes, LCP preload, and specified eager priority discipline.
+- [x] Preload only Newsreader and Inter, improve Newsreader subsetting/metrics, and retain font-display swap.
+- [ ] Verify pixel parity at 1440px, 1024px, and 390px; measure responsive cold payloads and request timing; run pnpm check/build; push the substantive revision to GitHub main.
