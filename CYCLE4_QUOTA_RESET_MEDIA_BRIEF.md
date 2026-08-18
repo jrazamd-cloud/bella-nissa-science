@@ -28,6 +28,24 @@ The prior serum-consistency audit found these confirmed conflicts with the red-s
 
 The ingredient-map has no bottle but depicts a near-colourless “SERUM FILM,” so treat it as a potential rather than confirmed conflict. Update the still visuals and applicable alternative text to a visually consistent red-serum direction after confirming the new video. Preserve the actual device silhouette, BNS identity, current image dimensions, responsive source structure, loading discipline, share-image budget, and all cosmetic-safe copy. Do not alter page layout.
 
+## Cycle 5 Consolidated Visual-System Requirements
+
+Execute the following requirements together with the replacement ritual media after the generation quota resets. **Do not attempt isolated media retries before that consolidated pass.**
+
+### Bottle label lockup
+
+Apply the exact label hierarchy to every asset in which the serum bottle appears: the hero sources, standalone-serum sources, social share image, ingredient map, replacement video poster, and replacement video. Above the monogram, centre `Bella Nissa` on its own line and `Science` directly beneath it. Below the monogram, centre `Rejuvenating Bioactive Precision Serum`, followed by `30mL (1.01 fl.oz)`.
+
+Use the site’s own type system: **Newsreader** for `Bella Nissa`; **IBM Plex Mono**, uppercase with `0.14em` tracking, for `Science`, the product name, and volume. Ensure the complete lockup remains legible at the smallest approximately 184px rendered bottle width, without changing page layout.
+
+### Pale-pink product backgrounds
+
+Replace near-white product backdrops with one very soft, desaturated pale-pink system across the hero and every product panel. **Chosen compositing treatment: remove the hero image’s `mix-blend-mode: multiply` and display the new pale-pink image background normally.** This prevents a pink photograph from becoming muddy against an underlying grey-green stage. Retain the light clinical hero hierarchy and verify a minimum 4.5:1 contrast ratio for every mono label, badge, and rail over the new pale pink.
+
+### Red-serum consistency
+
+Regenerate the hero, standalone-serum, and 1200×630 share visuals to depict the intended translucent, low-viscosity red serum, not an opaque frosted-white serum. Rewrite every relevant alternative-text string, including the Open Graph image alt, to describe the actual red-serum visual honestly. **The ingredient map’s near-colourless serum film also needs revision**: represent it as a restrained translucent red formula layer while keeping it distinct from the residue-free skin required for the device beat. Preserve the actual device form, BNS identity, responsive image dimensions and delivery strategy, and the share-image budget.
+
 ## Required Validation
 
 Before delivery, validate all of the following.
@@ -38,6 +56,7 @@ Before delivery, validate all of the following.
 4. Run `pnpm test`, `pnpm check`, and `pnpm build`; restart the preview; validate the page at 1440px, 1024px, 768px, 680px, and 390px.
 5. Confirm the rebuilt social share image remains 1200×630 and under 120KB, and confirm all revised serum-related `alt` strings describe the actual visual honestly.
 6. Commit the substantive update, push it to `jrazamd-cloud/bella-nissa-science` on `main`, save a project checkpoint, and report the substantive SHA, contrast ratio, final media byte sizes, and duration.
+7. Verify the bottle-label hierarchy is legible at its smallest rendered scale and that the pale-pink background treatment meets the stated 4.5:1 contrast requirement for every mono label, badge, and rail.
 
 ## Deferred-Work Boundary
 

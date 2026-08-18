@@ -82,50 +82,49 @@ const formulaEntries = [
     id: "01",
     name: "Epidermal growth factor (sh-Oligopeptide-1) and peptides",
     copy: "sh-Oligopeptide-1 is a bioengineered signalling protein associated with skin’s natural renewal, helping improve the appearance of texture and firmness for a more radiant-looking complexion. Copper tripeptide-1, acetyl octapeptide-3, and palmitoyl tripeptide-5 complete the peptide complex, supporting the appearance of elasticity, resilience, and smoother-looking expression lines.",
-    refs: [1, 2, 3],
+    refs: [1, 2],
   },
   {
     id: "02",
     name: "NAD+",
     copy: "NAD+ is a coenzyme present in living cells. In a topical formula, it is positioned as a cellular-fuel story associated with mitochondrial energy, helping skin look vital, firm, and better defended against the visible effects of environmental stress.",
-    refs: [4],
+    refs: [3],
   },
   {
     id: "03",
     name: "Niacinamide (vitamin B3) and adenosine",
     copy: "Niacinamide visibly brightens and helps even the look of tone and dark spots while supporting a moisture-barrier story. Adenosine helps smooth the look of the surface and soften the appearance of wrinkles for a firmer-looking finish.",
-    refs: [5, 6],
+    refs: [4, 5],
   },
   {
     id: "04",
     name: "Ectoin",
     copy: "Ectoin is a natural extremolyte associated with hydration-shell support. It helps buffer the visible effects of pollution, UV-induced stress, and allergens, keeping the barrier feeling calm, resilient, and moisturised.",
-    refs: [7],
+    refs: [6],
   },
   {
     id: "05",
     name: "Hyaluronic acid (sodium hyaluronate)",
     copy: "Hyaluronic acid and sodium hyaluronate are humectants associated with surface hydration. In topical use, they help skin look instantly plumper, soften the look of dehydration lines, and leave the complexion looking dewy and quenched.",
-    refs: [8],
+    refs: [7],
   },
   {
     id: "06",
     name: "Topical glutathione",
     copy: "Topical glutathione is widely used in antioxidant-focused formulas. It helps defend against environmental aggressors while supporting the appearance of more even-looking tone and a more luminous complexion.",
-    refs: [9],
+    refs: [8],
   },
 ];
 
 const formulaReferences = [
-  { id: 1, title: "Topical application of sh-oligopeptide-1 and clinical trials", journal: "Journal of Cosmetic Dermatology", href: "https://pubmed.ncbi.nlm.nih.gov/37452558/" },
-  { id: 2, title: "The anti-wrinkle efficacy of argireline, a synthetic hexapeptide", journal: "Journal of Cosmetic Science", href: "https://pubmed.ncbi.nlm.nih.gov/23417317/" },
-  { id: 3, title: "Peptides: Emerging Candidates for the Prevention and Treatment of Skin Aging", journal: "International Journal of Molecular Sciences", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11762834/" },
-  { id: 4, title: "Novel Approach to Skin Anti-Aging: Boosting Pharmacological Strategies", journal: "Antioxidants (Basel)", href: "https://pubmed.ncbi.nlm.nih.gov/39513906/" },
-  { id: 5, title: "Mechanistic Insights into the Multiple Functions of Niacinamide", journal: "International Journal of Molecular Sciences", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11047333/" },
-  { id: 6, title: "The possible role of the nucleoside adenosine in countering skin aging", journal: "Ageing Research Reviews", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9804842/" },
-  { id: 7, title: "Ectoin: An Effective Natural Substance to Prevent UVA-Induced Premature Photoaging", journal: "Skin Pharmacology and Physiology", href: "https://karger.com/spp/article/17/5/232/295389/Ectoin-An-Effective-Natural-Substance-to-Prevent" },
-  { id: 8, title: "Benefits of topical hyaluronic acid for skin quality and signs of skin aging", journal: "Dermatology and Therapy", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10078143/" },
-  { id: 9, title: "Exploring the Safety and Efficacy of Glutathione", journal: "Antioxidants", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11862975/" },
+  { id: 1, title: "Improved texture and appearance of human facial skin after daily topical application of barley produced, synthetic, human-like epidermal growth factor (EGF) serum", journal: "Journal of Drugs in Dermatology", citation: "2012 May;11(5):613-20. PMID: 22527430.", href: "https://pubmed.ncbi.nlm.nih.gov/22527430/" },
+  { id: 2, title: "Peptides: Emerging Candidates for the Prevention and Treatment of Skin Aging", journal: "International Journal of Molecular Sciences", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11762834/" },
+  { id: 3, title: "Novel Approach to Skin Anti-Aging: Boosting Pharmacological Strategies", journal: "Antioxidants (Basel)", href: "https://pubmed.ncbi.nlm.nih.gov/39513906/" },
+  { id: 4, title: "Mechanistic Insights into the Multiple Functions of Niacinamide", journal: "International Journal of Molecular Sciences", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11047333/" },
+  { id: 5, title: "The possible role of the nucleoside adenosine in countering skin aging", journal: "Ageing Research Reviews", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9804842/" },
+  { id: 6, title: "Ectoin: An Effective Natural Substance to Prevent UVA-Induced Premature Photoaging", journal: "Skin Pharmacology and Physiology", href: "https://karger.com/spp/article/17/5/232/295389/Ectoin-An-Effective-Natural-Substance-to-Prevent" },
+  { id: 7, title: "Benefits of topical hyaluronic acid for skin quality and signs of skin aging", journal: "Dermatology and Therapy", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10078143/" },
+  { id: 8, title: "Exploring the Safety and Efficacy of Glutathione", journal: "Antioxidants", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11862975/" },
 ];
 
 function Wordmark({ inverse = false }: { inverse?: boolean }) {
@@ -428,7 +427,7 @@ export default function Home() {
             {formulaReferences.map((reference) => (
               <li id={`ingredient-ref-${reference.id}`} key={reference.id}>
                 <span>{reference.id}</span>
-                <p><cite>{reference.title}</cite><em>{reference.journal}</em></p>
+                <p><cite>{reference.title}</cite><em>{reference.journal}</em>{reference.citation ? <small>{reference.citation}</small> : null}</p>
                 <a className="brand-link brand-link--on-light" href={reference.href} target="_blank" rel="noopener noreferrer">View study <ArrowUpRight size={14} /></a>
               </li>
             ))}
