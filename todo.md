@@ -97,4 +97,4 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Restore pinch zoom, add a focus-revealed skip link, and add protocol panel and stepper accessibility state semantics.
 - [x] Add canonical, Open Graph, Twitter, and cosmetic-safe Organization/Product JSON-LD metadata with an optimized 1200×630 share image.
 - [x] Replace the ritual clip with a muted two-step serum-then-device portrait sequence, poster frame, H.264/WebM sources, metadata preload, and verified chip contrast.
-- [ ] Validate at 1440px, 1024px, and 390px; check accessibility and links; run pnpm check/build; and push the substantive Cycle 3 revision to GitHub main.
+- [x] Validate at 1440px, 1024px, and 390px; check accessibility and links; run pnpm check/build; and push the substantive Cycle 3 revision to GitHub main.
