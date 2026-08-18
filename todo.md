@@ -105,3 +105,4 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [ ] Deferred by user approval: produce and integrate a slower 14–18s two-step ritual video with the prescribed red-serum and device coverage after video generation quota is available.
 - [x] Validate the approved non-video scope at 1440/1024/768/680/390, confirm the retained media metrics, run test/typecheck/build, and push the substantive Cycle 4 revision to GitHub main.
 - [ ] Deferred with the replacement video: verify ritual-chip contrast against the brightest new frame and record final MP4/WebM bytes and duration.
+- [x] Provide the user with a copy-ready quota-reset task description for the deferred ritual-media revision.
