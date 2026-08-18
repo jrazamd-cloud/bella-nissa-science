@@ -119,4 +119,4 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Measure baseline production chunks, reduce verified unused payload, lazy-load non-home routes, and report before/after raw and gzip totals.
 - [x] Configure immutable caching for hashed static assets and no-cache HTML, then verify document and asset response headers.
 - [x] Raise hotspot hit areas and address named link target sizing without visual geometry, global link-rule, or layout changes.
-- [ ] Validate citations, target sizes, cache policy, functionality, responsive rendering, test/typecheck/build, then push the substantive Cycle 6 revision and save a checkpoint.
+- [x] Validate citations, target sizes, cache policy, functionality, responsive rendering, test/typecheck/build, then push the substantive Cycle 6 revision and save a checkpoint.
