@@ -18,7 +18,9 @@ const ASSETS = {
   hero: "/manus-storage/bns-hero-system-1368_9c59f914.jpg",
   serum: "/manus-storage/bns-serum-laboratory-768_3ee41f64.jpg",
   device: "/manus-storage/bns-device-precision-768_8b639173.jpg",
-  ritualMotion: "/manus-storage/bns-blonde-device-ritual-motion_68f91816.mp4",
+  ritualMotion: "/manus-storage/bns-ritual-two-step_de344aae.mp4",
+  ritualWebm: "/manus-storage/bns-ritual-two-step_74502cd2.webm",
+  ritualPoster: "/manus-storage/bns-ritual-two-step-poster_c33fb4c4.jpg",
   ritualMineralStill: "/manus-storage/bns-blonde-device-ritual-mineral-keyframe_7a913bcc.png",
   ingredientMap: "/manus-storage/bns-skin-layer-ingredient-map-1368_bb80f4fd.jpg",
 };
@@ -121,7 +123,7 @@ const formulaReferences = [
   { id: 4, title: "Novel Approach to Skin Anti-Aging: Boosting Pharmacological Strategies", journal: "Antioxidants (Basel)", href: "https://pubmed.ncbi.nlm.nih.gov/39513906/" },
   { id: 5, title: "Mechanistic Insights into the Multiple Functions of Niacinamide", journal: "International Journal of Molecular Sciences", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11047333/" },
   { id: 6, title: "The possible role of the nucleoside adenosine in countering skin aging", journal: "Ageing Research Reviews", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9804842/" },
-  { id: 7, title: "Ectoin: An Effective Natural Substance to Prevent UVA-Induced Premature Photoaging", journal: "Skin Pharmacology and Physiology", href: "https://pubmed.ncbi.nlm.nih.gov/15452409/" },
+  { id: 7, title: "Ectoin: An Effective Natural Substance to Prevent UVA-Induced Premature Photoaging", journal: "Skin Pharmacology and Physiology", href: "https://karger.com/spp/article/17/5/232/295389/Ectoin-An-Effective-Natural-Substance-to-Prevent" },
   { id: 8, title: "Benefits of topical hyaluronic acid for skin quality and signs of skin aging", journal: "Dermatology and Therapy", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10078143/" },
   { id: 9, title: "Exploring the Safety and Efficacy of Glutathione", journal: "Antioxidants", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11862975/" },
 ];
@@ -187,7 +189,8 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="site-shell">
+    <div className="site-shell" id="top">
+      <a className="skip-link" href="#main-content">Skip to main content</a>
       <header className="site-header">
         <a className="brand site-link brand-link brand-link--on-light" href="#top" aria-label="Bella Nissa Science home">
           <img src={ASSETS.logo} alt="BNS scientific emblem" width="100" height="100" loading="eager" decoding="async" />
@@ -224,7 +227,7 @@ export default function Home() {
         </nav>
       )}
 
-      <main id="top">
+      <main id="main-content" tabIndex={-1}>
         <section ref={heroRef} className="hero hero--pinned" aria-labelledby="hero-title" style={{ "--hero-progress": heroProgress } as React.CSSProperties}>
           <div className="hero-copy">
             <div className="section-kicker">
@@ -324,13 +327,14 @@ export default function Home() {
           <div className="motion-education__visual">
             <video
               className="ritual-video"
-              src={ASSETS.ritualMotion}
               autoPlay
               muted
               loop
               playsInline
+              preload="metadata"
+              poster={ASSETS.ritualPoster}
               aria-label="A blonde woman using the Bella Nissa Science absorption and massage device as part of her skincare ritual"
-            />
+            ><source src={ASSETS.ritualWebm} type="video/webm" /><source src={ASSETS.ritualMotion} type="video/mp4" /></video>
             <img className="ritual-plant-overlay" src="/manus-storage/bns-ritual-plant-overlay-368_134c1e48.webp" alt="" aria-hidden="true" width="368" height="368" loading="lazy" decoding="async" />
             <div className={`motion-education__visual-mark ${ritualVisible ? "is-visible" : ""}`} aria-hidden="true">
               <img src={ASSETS.logo} alt="" width="100" height="100" loading="lazy" decoding="async" />
@@ -448,10 +452,10 @@ export default function Home() {
             {usageSteps.map((step, index) => {
               const isOpen = openUsageStep === index;
               return <article className={`use-step ${isOpen ? "use-step--open" : ""}`} key={step.id}>
-                <button type="button" onClick={() => setOpenUsageStep(isOpen ? null : index)} aria-expanded={isOpen}>
+                <button id={`use-step-control-${step.id}`} type="button" onClick={() => setOpenUsageStep(isOpen ? null : index)} aria-expanded={isOpen} aria-controls={`use-step-panel-${step.id}`}>
                   <span>{step.id}</span><strong>{step.title}</strong><i>{isOpen ? "−" : "+"}</i>
                 </button>
-                <div className="use-step__content" aria-hidden={!isOpen}><div><p>{step.body}</p><small>{step.note}</small></div></div>
+                <div id={`use-step-panel-${step.id}`} className="use-step__content" role="region" aria-labelledby={`use-step-control-${step.id}`} aria-hidden={!isOpen}><div><p>{step.body}</p><small>{step.note}</small></div></div>
               </article>;
             })}
           </div>
@@ -475,7 +479,9 @@ export default function Home() {
                     key={item.id}
                     type="button"
                     onClick={() => setActiveStep(index)}
-                    aria-pressed={activeStep === index}
+                    id={`protocol-step-${item.id}`}
+                    aria-current={activeStep === index ? "step" : undefined}
+                    aria-controls="protocol-reading-panel"
                   >
                     <span>{item.id}</span>
                     <strong>{["Prepare", "Formula", "Method", "Complete"][index]}</strong>
@@ -483,7 +489,7 @@ export default function Home() {
                   </button>
                 ))}
               </div>
-              <div className="protocol-reading" key={activeProtocol.id}>
+              <div id="protocol-reading-panel" className="protocol-reading" key={activeProtocol.id} role="region" aria-labelledby={`protocol-step-${activeProtocol.id}`} aria-live="polite">
                 <p className="mono-label">{activeProtocol.eyebrow}</p>
                 <h3>{activeProtocol.title}</h3>
                 <p>{activeProtocol.body}</p>

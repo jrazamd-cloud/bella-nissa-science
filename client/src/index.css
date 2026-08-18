@@ -6,13 +6,14 @@
 @font-face { font-family: "Newsreader"; src: url("/manus-storage/newsreader-latin-basic_93828df0.woff2") format("woff2"); font-style: normal; font-weight: 300 400; font-display: swap; }
 @font-face { font-family: "Inter"; src: url("/manus-storage/inter-latin_9b37a295.woff2") format("woff2"); font-style: normal; font-weight: 400 500; font-display: swap; }
 @font-face { font-family: "Inter Tight"; src: url("/manus-storage/inter-tight-latin_c84fe693.woff2") format("woff2"); font-style: normal; font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono Fallback"; src: local("Courier New"); size-adjust: 92%; ascent-override: 90%; descent-override: 22%; line-gap-override: 0%; }
 @font-face { font-family: "IBM Plex Mono"; src: url("/manus-storage/ibm-plex-mono-latin_3a647e54.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
 
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --font-sans: "Inter", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --font-mono: "IBM Plex Mono", "IBM Plex Mono Fallback", monospace;
   --color-background: var(--background);
   --color-foreground: var(--foreground);
   --color-border: var(--border);
@@ -40,11 +41,13 @@
   --font-display: "Newsreader", "Newsreader Fallback", Georgia, serif;
   --font-ui: "Inter", sans-serif;
   --font-tight: "Inter Tight", sans-serif;
-  --font-mono: "IBM Plex Mono", monospace;
+  --font-mono: "IBM Plex Mono", "IBM Plex Mono Fallback", monospace;
 }
 
 * { box-sizing: border-box; }
 .responsive-picture { display: contents; }
+.skip-link { position: fixed; z-index: 100; top: 12px; left: 12px; padding: 11px 14px; background: var(--emerald); color: #fff; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.1em; text-transform: uppercase; transform: translateY(-160%); }
+.skip-link:focus, .skip-link:focus-visible { transform: translateY(0) !important; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;

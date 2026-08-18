@@ -47,6 +47,7 @@ const evidenceRows = [
 export default function FormulaDetail() {
   return (
     <div className="formula-page">
+      <a className="skip-link" href="#formula-main-content">Skip to main content</a>
       <header className="formula-header">
         <a className="formula-brand site-link brand-link brand-link--on-light" href="/" aria-label="Return to Bella Nissa Science home">
           <img src={ASSETS.logo} alt="BNS scientific emblem" width="100" height="100" loading="eager" decoding="async" />
@@ -55,7 +56,7 @@ export default function FormulaDetail() {
         <a className="formula-back site-link brand-link brand-link--on-light" href="/"><ArrowLeft size={15} /> Return to the system</a>
       </header>
 
-      <main>
+      <main id="formula-main-content" tabIndex={-1}>
         <section className="formula-hero" aria-labelledby="formula-title">
           <div className="formula-hero__copy">
             <div className="section-kicker">Formula dossier / 01</div>
