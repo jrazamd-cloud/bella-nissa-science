@@ -4,8 +4,13 @@
 import { ArrowLeft, ArrowUpRight, ChevronRight } from "lucide-react";
 
 const ASSETS = {
-  logo: "/manus-storage/bns-emblem-transparent_78c3dda7.png",
-  serum: "/manus-storage/bns-serum-laboratory_969683fc.jpg",
+  logo: "/manus-storage/bns-emblem_58bd568a.svg",
+  serum: "/manus-storage/bns-serum-laboratory-768_3ee41f64.jpg",
+};
+
+const serumSources = {
+  webp: "/manus-storage/bns-serum-laboratory-480_47c0a106.webp 480w, /manus-storage/bns-serum-laboratory-768_4432b9ef.webp 768w, /manus-storage/bns-serum-laboratory-1024_b0f36db7.webp 1024w",
+  fallback: "/manus-storage/bns-serum-laboratory-480_85369883.jpg 480w, /manus-storage/bns-serum-laboratory-768_3ee41f64.jpg 768w, /manus-storage/bns-serum-laboratory-1024_0db91ad3.jpg 1024w",
 };
 
 const evidenceRows = [
@@ -44,7 +49,7 @@ export default function FormulaDetail() {
     <div className="formula-page">
       <header className="formula-header">
         <a className="formula-brand site-link brand-link brand-link--on-light" href="/" aria-label="Return to Bella Nissa Science home">
-          <img src={ASSETS.logo} alt="BNS scientific emblem" />
+          <img src={ASSETS.logo} alt="BNS scientific emblem" width="100" height="100" loading="eager" decoding="async" />
           <span><b>Bella Nissa</b><small>SCIENCE / BNS</small></span>
         </a>
         <a className="formula-back site-link brand-link brand-link--on-light" href="/"><ArrowLeft size={15} /> Return to the system</a>
@@ -59,8 +64,8 @@ export default function FormulaDetail() {
             <a className="formula-scroll site-link brand-link brand-link--on-light" href="#substantiation">Read the substantiation framework <ChevronRight size={16} /></a>
           </div>
           <div className="formula-hero__specimen">
-            <img src={ASSETS.serum} alt="Bella Nissa Science Bioactive Renewal Serum" />
-            <div className="formula-hero__seal"><img src={ASSETS.logo} alt="" /><span>BNS<br />FORMULA<br />DOSSIER</span></div>
+            <picture className="responsive-picture"><source type="image/webp" srcSet={serumSources.webp} sizes="(max-width: 680px) 100vw, 50vw" /><img src={ASSETS.serum} srcSet={serumSources.fallback} sizes="(max-width: 680px) 100vw, 50vw" alt="Bella Nissa Science Bioactive Renewal Serum" width="1024" height="1365" loading="lazy" decoding="async" /></picture>
+            <div className="formula-hero__seal"><img src={ASSETS.logo} alt="" width="100" height="100" loading="lazy" decoding="async" /><span>BNS<br />FORMULA<br />DOSSIER</span></div>
             <div className="formula-hero__measure"><span>FORMULA / 01</span><i /><span>ACTIVE CONTEXT</span></div>
           </div>
         </section>
@@ -99,7 +104,7 @@ export default function FormulaDetail() {
             <article><span>02 / Instrumental</span><h3>Measurable surface outcomes</h3><p>Where claims are proposed, suitable methods may include hydration or barrier-focused instrumental assessments with a defined protocol and qualified review.</p></article>
             <article><span>03 / Consumer</span><h3>Defined user experience</h3><p>Consumer perception work can assess how the finished serum feels and wears when used as directed, while maintaining a clear separation from medical or structural claims.</p></article>
           </div>
-          <div className="testing-note"><img src={ASSETS.logo} alt="BNS molecular badge" /><p><b>FORMULA STANDARD</b> Any public Bella Nissa Science performance claim should be supported by a finished-product protocol that matches the claim, the use directions, and the product as sold.</p></div>
+          <div className="testing-note"><img src={ASSETS.logo} alt="BNS molecular badge" width="100" height="100" loading="lazy" decoding="async" /><p><b>FORMULA STANDARD</b> Any public Bella Nissa Science performance claim should be supported by a finished-product protocol that matches the claim, the use directions, and the product as sold.</p></div>
         </section>
 
         <section className="formula-close">

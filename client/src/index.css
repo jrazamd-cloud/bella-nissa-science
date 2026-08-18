@@ -2,7 +2,8 @@
 @import "tailwindcss";
 @import "tw-animate-css";
 
-@font-face { font-family: "Newsreader"; src: url("/manus-storage/newsreader-latin_cc510764.woff2") format("woff2"); font-style: normal; font-weight: 200 400; font-display: swap; }
+@font-face { font-family: "Newsreader Fallback"; src: local("Georgia"); size-adjust: 97%; ascent-override: 93%; descent-override: 23%; line-gap-override: 0%; }
+@font-face { font-family: "Newsreader"; src: url("/manus-storage/newsreader-latin-basic_93828df0.woff2") format("woff2"); font-style: normal; font-weight: 300 400; font-display: swap; }
 @font-face { font-family: "Inter"; src: url("/manus-storage/inter-latin_9b37a295.woff2") format("woff2"); font-style: normal; font-weight: 400 500; font-display: swap; }
 @font-face { font-family: "Inter Tight"; src: url("/manus-storage/inter-tight-latin_c84fe693.woff2") format("woff2"); font-style: normal; font-weight: 400 500; font-display: swap; }
 @font-face { font-family: "IBM Plex Mono"; src: url("/manus-storage/ibm-plex-mono-latin_3a647e54.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
@@ -36,13 +37,14 @@
   --border: var(--line);
   --ring: var(--emerald);
   --radius: 0.75rem;
-  --font-display: "Newsreader", Georgia, serif;
+  --font-display: "Newsreader", "Newsreader Fallback", Georgia, serif;
   --font-ui: "Inter", sans-serif;
   --font-tight: "Inter Tight", sans-serif;
   --font-mono: "IBM Plex Mono", monospace;
 }
 
 * { box-sizing: border-box; }
+.responsive-picture { display: contents; }
 html { scroll-behavior: smooth; }
 body {
   margin: 0;

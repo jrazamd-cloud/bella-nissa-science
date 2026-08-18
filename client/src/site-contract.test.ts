@@ -6,6 +6,7 @@ import { dirname, resolve } from "node:path";
 const here = dirname(fileURLToPath(import.meta.url));
 const home = readFileSync(resolve(here, "pages/Home.tsx"), "utf8");
 const styles = readFileSync(resolve(here, "index.css"), "utf8");
+const documentHead = readFileSync(resolve(here, "../index.html"), "utf8");
 
 describe("Bella Nissa Science experience contract", () => {
   it("keeps the hero headline as staged semantic text", () => {
@@ -49,6 +50,18 @@ describe("Bella Nissa Science experience contract", () => {
     expect(home).toContain("References describe published research on individual ingredients.");
     expect(home).toContain('rel="noopener noreferrer"');
     expect((home.match(/ingredient-hotspot ingredient-hotspot--/g) ?? []).length).toBe(7);
+  });
+
+  it("uses responsive, prioritized LCP media and compact in-page emblem delivery", () => {
+    expect(home).toContain('type="image/webp"');
+    expect(home).toContain('loading="eager" fetchPriority="high"');
+    expect(home).toContain('decoding="async"');
+    expect(home).toContain('bns-emblem_58bd568a.svg');
+    expect(home).not.toContain('bns-emblem-transparent');
+    expect(documentHead).toContain('rel="preload" as="image"');
+    expect(documentHead).toContain('fetchpriority="high"');
+    expect(documentHead).toContain('newsreader-latin-basic_93828df0.woff2');
+    expect(documentHead).toContain('inter-latin_9b37a295.woff2');
   });
 });
 
