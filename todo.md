@@ -90,4 +90,4 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Create responsive optimized raster variants for the hero, product columns, ingredient map, and ritual plant overlay without visual changes.
 - [x] Add image dimensions, loading/decoding directives, responsive srcset/sizes, LCP preload, and specified eager priority discipline.
 - [x] Preload only Newsreader and Inter, improve Newsreader subsetting/metrics, and retain font-display swap.
-- [ ] Verify pixel parity at 1440px, 1024px, and 390px; measure responsive cold payloads and request timing; run pnpm check/build; push the substantive revision to GitHub main.
+- [x] Verify pixel parity at 1440px, 1024px, and 390px; measure responsive cold payloads and request timing; run pnpm check/build; push the substantive revision to GitHub main.
