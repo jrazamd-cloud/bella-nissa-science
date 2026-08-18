@@ -44,6 +44,19 @@ describe("Bella Nissa Science experience contract", () => {
     expect(styles).toContain("background: rgba(5, 16, 12, 0.82)");
   });
 
+  it("keeps one light hero treatment and the requested precision corrections", () => {
+    expect(styles).toContain(".hero--pinned { position: relative; height: 285vh; min-height: 0; align-items: start; background: var(--paper); }");
+    expect(styles).toContain(".hero-image { width: 100%; height: 100%; min-height: 560px; object-fit: cover; object-position: center; mix-blend-mode: multiply; }");
+    expect(styles).not.toContain("background: #101b18");
+    expect(styles).toContain("outline-offset: 3px");
+    expect(styles).toContain(".motion-education__care-note p { max-width: 62ch");
+    expect(styles).toContain(".ingredient-science__note p { max-width: 62ch");
+    expect(styles).toContain(".protocol-guidance p { max-width: 62ch");
+    expect(home).toContain("Two components.<br /><em>One coordinated ritual.</em>");
+    expect(home).toContain('<span>07</span><i className="ingredient-tooltip"><b>07 / Companion device</b>');
+    expect(styles).toContain(".ingredient-hotspot--device { top: 16%; right: 12%; }");
+  });
+
   it("renders six formula cards and a nine-source reference list", () => {
     expect(home).toContain("const formulaEntries");
     expect(home).toContain("Topical glutathione");
