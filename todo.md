@@ -91,3 +91,10 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Add image dimensions, loading/decoding directives, responsive srcset/sizes, LCP preload, and specified eager priority discipline.
 - [x] Preload only Newsreader and Inter, improve Newsreader subsetting/metrics, and retain font-display swap.
 - [x] Verify pixel parity at 1440px, 1024px, and 390px; measure responsive cold payloads and request timing; run pnpm check/build; push the substantive revision to GitHub main.
+
+- [x] Preload IBM Plex Mono, add a metric-matched local fallback, and measure mono response timing.
+- [x] Re-encode the 180px Apple touch icon below 8KB and restore the specified Karger citation for Reference 7.
+- [x] Restore pinch zoom, add a focus-revealed skip link, and add protocol panel and stepper accessibility state semantics.
+- [x] Add canonical, Open Graph, Twitter, and cosmetic-safe Organization/Product JSON-LD metadata with an optimized 1200×630 share image.
+- [x] Replace the ritual clip with a muted two-step serum-then-device portrait sequence, poster frame, H.264/WebM sources, metadata preload, and verified chip contrast.
+- [x] Validate at 1440px, 1024px, and 390px; check accessibility and links; run pnpm check/build; and push the substantive Cycle 3 revision to GitHub main.

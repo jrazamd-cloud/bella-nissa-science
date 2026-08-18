@@ -5,6 +5,7 @@ import { dirname, resolve } from "node:path";
 
 const here = dirname(fileURLToPath(import.meta.url));
 const home = readFileSync(resolve(here, "pages/Home.tsx"), "utf8");
+const formula = readFileSync(resolve(here, "pages/FormulaDetail.tsx"), "utf8");
 const styles = readFileSync(resolve(here, "index.css"), "utf8");
 const documentHead = readFileSync(resolve(here, "../index.html"), "utf8");
 
@@ -62,6 +63,26 @@ describe("Bella Nissa Science experience contract", () => {
     expect(documentHead).toContain('fetchpriority="high"');
     expect(documentHead).toContain('newsreader-latin-basic_93828df0.woff2');
     expect(documentHead).toContain('inter-latin_9b37a295.woff2');
+  });
+
+  it("preloads mono, preserves zoom and declares share-safe metadata", () => {
+    expect(documentHead).toContain('ibm-plex-mono-latin_3a647e54.woff2');
+    expect(styles).toContain('font-family: "IBM Plex Mono Fallback"');
+    expect(documentHead).not.toContain('maximum-scale=1');
+    expect(documentHead).toContain('property="og:title"');
+    expect(documentHead).toContain('name="twitter:card"');
+    expect(documentHead).toContain('"@type":"Organization"');
+    expect(documentHead).toContain('"@type":"Product"');
+  });
+
+  it("keeps skip navigation, accessible protocol wiring, the Karger citation, and the two-step video sources", () => {
+    expect(home).toContain('className="skip-link"');
+    expect(formula).toContain('className="skip-link"');
+    expect(home).toContain('aria-controls={`use-step-panel-${step.id}`}');
+    expect(home).toContain('aria-current={activeStep === index ? "step" : undefined}');
+    expect(home).toContain('preload="metadata"');
+    expect(home).toContain('bns-ritual-two-step_74502cd2.webm');
+    expect(home).toContain('karger.com/spp/article/17/5/232/295389');
   });
 });
 
