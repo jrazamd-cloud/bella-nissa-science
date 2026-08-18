@@ -77,3 +77,10 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Capture a screenshot of the running preview and sample painted link/background pixels for the header wordmark, hero CTA, serum link, and device link.
 - [x] Apply a narrowly scoped dark-context link override that preserves light-panel ink links.
 - [x] Re-sample rendered screenshot pixels, calculate each contrast ratio, run pnpm check/build, and push the verified fix to GitHub main.
+- [x] Replace Manrope and DM Mono with self-hosted Newsreader, Inter/Inter Tight, and IBM Plex Mono font stacks using latin subsets and font-display swap.
+- [x] Reclassify display, body/UI, heading, and mono/spec typography; remove every Manrope and DM Mono reference.
+- [x] Fix hero descender clipping and resting mask fade; reserve full layout width for the multi-dot kicker motif.
+- [x] Add an accessible RITUAL / IN MOTION chip scrim, reduced-motion-aware reveal, visible emerald focus treatment, and high-contrast link hover states.
+- [x] Rebuild Formula in Context as six cosmetic-safe evidence cards with remapped hotspots, superscript citations, nine external references, and disclaimer.
+- [x] Reconcile the hero source/render treatment and verify the requested rendering at 1440px, 1024px, and 390px.
+- [ ] Run pnpm check/build, restart the preview, test all reference links, and push the completed revision to GitHub main.

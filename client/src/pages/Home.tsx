@@ -61,6 +61,57 @@ const usageSteps = [
   { id: "04", title: "Complete your routine", body: "Allow the ritual to settle, then continue with the remainder of your usual skincare routine as desired. Pause use if discomfort occurs.", note: "RETURN TO YOUR ROUTINE" },
 ];
 
+const formulaEntries = [
+  {
+    id: "01",
+    name: "Epidermal growth factor (sh-Oligopeptide-1) and peptides",
+    copy: "sh-Oligopeptide-1 is a bioengineered signalling protein associated with skin’s natural renewal, helping improve the appearance of texture and firmness for a more radiant-looking complexion. Copper tripeptide-1, acetyl octapeptide-3, and palmitoyl tripeptide-5 complete the peptide complex, supporting the appearance of elasticity, resilience, and smoother-looking expression lines.",
+    refs: [1, 2, 3],
+  },
+  {
+    id: "02",
+    name: "NAD+",
+    copy: "NAD+ is a coenzyme present in living cells. In a topical formula, it is positioned as a cellular-fuel story associated with mitochondrial energy, helping skin look vital, firm, and better defended against the visible effects of environmental stress.",
+    refs: [4],
+  },
+  {
+    id: "03",
+    name: "Niacinamide (vitamin B3) and adenosine",
+    copy: "Niacinamide visibly brightens and helps even the look of tone and dark spots while supporting a moisture-barrier story. Adenosine helps smooth the look of the surface and soften the appearance of wrinkles for a firmer-looking finish.",
+    refs: [5, 6],
+  },
+  {
+    id: "04",
+    name: "Ectoin",
+    copy: "Ectoin is a natural extremolyte associated with hydration-shell support. It helps buffer the visible effects of pollution, UV-induced stress, and allergens, keeping the barrier feeling calm, resilient, and moisturised.",
+    refs: [7],
+  },
+  {
+    id: "05",
+    name: "Hyaluronic acid (sodium hyaluronate)",
+    copy: "Hyaluronic acid and sodium hyaluronate are humectants associated with surface hydration. In topical use, they help skin look instantly plumper, soften the look of dehydration lines, and leave the complexion looking dewy and quenched.",
+    refs: [8],
+  },
+  {
+    id: "06",
+    name: "Topical glutathione",
+    copy: "Topical glutathione is widely used in antioxidant-focused formulas. It helps defend against environmental aggressors while supporting the appearance of more even-looking tone and a more luminous complexion.",
+    refs: [9],
+  },
+];
+
+const formulaReferences = [
+  { id: 1, title: "Topical application of sh-oligopeptide-1 and clinical trials", journal: "Journal of Cosmetic Dermatology", href: "https://pubmed.ncbi.nlm.nih.gov/37452558/" },
+  { id: 2, title: "The anti-wrinkle efficacy of argireline, a synthetic hexapeptide", journal: "Journal of Cosmetic Science", href: "https://pubmed.ncbi.nlm.nih.gov/23417317/" },
+  { id: 3, title: "Peptides: Emerging Candidates for the Prevention and Treatment of Skin Aging", journal: "International Journal of Molecular Sciences", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11762834/" },
+  { id: 4, title: "Novel Approach to Skin Anti-Aging: Boosting Pharmacological Strategies", journal: "Antioxidants (Basel)", href: "https://pubmed.ncbi.nlm.nih.gov/39513906/" },
+  { id: 5, title: "Mechanistic Insights into the Multiple Functions of Niacinamide", journal: "International Journal of Molecular Sciences", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11047333/" },
+  { id: 6, title: "The possible role of the nucleoside adenosine in countering skin aging", journal: "Ageing Research Reviews", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9804842/" },
+  { id: 7, title: "Ectoin: An Effective Natural Substance to Prevent UVA-Induced Premature Photoaging", journal: "Skin Pharmacology and Physiology", href: "https://pubmed.ncbi.nlm.nih.gov/15452409/" },
+  { id: 8, title: "Benefits of topical hyaluronic acid for skin quality and signs of skin aging", journal: "Dermatology and Therapy", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10078143/" },
+  { id: 9, title: "Exploring the Safety and Efficacy of Glutathione", journal: "Antioxidants", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11862975/" },
+];
+
 function Wordmark({ inverse = false }: { inverse?: boolean }) {
   return (
     <div className={`wordmark ${inverse ? "wordmark--inverse" : ""}`} aria-label="Bella Nissa Science">
@@ -75,7 +126,9 @@ export default function Home() {
   const [activeStep, setActiveStep] = useState(0);
   const [openUsageStep, setOpenUsageStep] = useState<number | null>(0);
   const [heroProgress, setHeroProgress] = useState(0);
+  const [ritualVisible, setRitualVisible] = useState(false);
   const heroRef = useRef<HTMLElement | null>(null);
+  const ritualRef = useRef<HTMLElement | null>(null);
 
   const activeProtocol = protocol[activeStep];
 
@@ -100,6 +153,23 @@ export default function Home() {
       window.removeEventListener("scroll", updateScrollScenes);
       window.removeEventListener("resize", updateScrollScenes);
     };
+  }, []);
+
+  useEffect(() => {
+    const ritual = ritualRef.current;
+    if (!ritual) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setRitualVisible(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setRitualVisible(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.22 });
+    observer.observe(ritual);
+    return () => observer.disconnect();
   }, []);
 
   return (
@@ -236,7 +306,7 @@ export default function Home() {
           </article>
         </section>
 
-        <section className="motion-education" id="ritual" aria-labelledby="ritual-title">
+        <section ref={ritualRef} className="motion-education" id="ritual" aria-labelledby="ritual-title">
           <div className="motion-education__visual">
             <video
               className="ritual-video"
@@ -248,7 +318,7 @@ export default function Home() {
               aria-label="A blonde woman using the Bella Nissa Science absorption and massage device as part of her skincare ritual"
             />
             <img className="ritual-plant-overlay" src="/manus-storage/bns-ritual-plant-overlay_3afd3bb6.png" alt="" aria-hidden="true" />
-            <div className="motion-education__visual-mark" aria-hidden="true">
+            <div className={`motion-education__visual-mark ${ritualVisible ? "is-visible" : ""}`} aria-hidden="true">
               <img src={ASSETS.logo} alt="" />
               <span>RITUAL / IN MOTION</span>
             </div>
@@ -307,9 +377,12 @@ export default function Home() {
 
           <figure className="ingredient-figure">
             <img src={ASSETS.ingredientMap} alt="Bella Nissa Science skin-layer illustration with active serum ingredient groupings and the device shown in guided surface application" />
-            <button className="ingredient-hotspot ingredient-hotspot--peptides" type="button" aria-label="Peptide complex and EGF benefit details"><span>01</span><i className="ingredient-tooltip"><b>Peptide complex (EGF)</b> Cosmetic-facing formula support for the appearance of smoothness and skin conditioning.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--nad" type="button" aria-label="NAD plus and niacinamide benefit details"><span>02</span><i className="ingredient-tooltip"><b>NAD+ + niacinamide</b> Vitality-minded formulation context with barrier- and tone-focused cosmetic support.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--moisture" type="button" aria-label="Hyaluronic acid ectoin and glutathione benefit details"><span>03</span><i className="ingredient-tooltip"><b>Hydration + antioxidant context</b> A surface-focused pairing for a hydrated feel and environmental comfort story.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--peptides" type="button" aria-label="Epidermal growth factor and peptide benefit details"><span>01</span><i className="ingredient-tooltip"><b>01 / EGF + peptides</b> Helps improve the appearance of texture, firmness, elasticity, and smoother-looking expression lines.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--nad" type="button" aria-label="NAD plus benefit details"><span>02</span><i className="ingredient-tooltip"><b>02 / NAD+</b> Supports a vital-looking, firm-looking surface in an environmental-stress care story.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--niacinamide" type="button" aria-label="Niacinamide and adenosine benefit details"><span>03</span><i className="ingredient-tooltip"><b>03 / B3 + adenosine</b> Helps even the look of tone and supports a smoother-looking, firmer-looking finish.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--ectoin" type="button" aria-label="Ectoin benefit details"><span>04</span><i className="ingredient-tooltip"><b>04 / ectoin</b> Supports a calm, resilient, moisturised-feeling barrier in a daily stress-exposure story.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--hyaluronic" type="button" aria-label="Hyaluronic acid benefit details"><span>05</span><i className="ingredient-tooltip"><b>05 / sodium hyaluronate</b> Helps skin look plumper and more dewy while softening the look of dehydration lines.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--glutathione" type="button" aria-label="Topical glutathione benefit details"><span>06</span><i className="ingredient-tooltip"><b>06 / glutathione</b> Supports a more even-looking, luminous complexion in an antioxidant-focused formula story.</i></button>
             <button className="ingredient-hotspot ingredient-hotspot--device" type="button" aria-label="Companion device application details"><span>04</span><i className="ingredient-tooltip"><b>Companion device</b> Follows serum as a guided surface-application pass; it is not presented as a clinical-delivery tool.</i></button>
             <figcaption><span>FORMULA / SURFACE-LEVEL STORY</span><span>DEVICE / GUIDED APPLICATION PASS</span></figcaption>
           </figure>
@@ -317,28 +390,32 @@ export default function Home() {
           <div className="ingredient-science__body">
             <div className="ingredient-science__intro">
               <div className="section-kicker">The active system</div>
-              <h3>Four formulation stories.<br />One considered sequence.</h3>
-              <p>Each active group has been placed within the surface and upper-skin context appropriate to a cosmetic formula. Product performance depends on the full formulation and individual skin response.</p>
+              <h3>Six formulation stories.<br />One considered sequence.</h3>
+              <p>Each active is described in the cosmetic, surface-level context appropriate to a topical formula. Product performance depends on the full formulation and individual skin response.</p>
             </div>
             <ul className="ingredient-list">
-              <li>
-                <span className="ingredient-list__dot">01</span>
-                <div><strong>sh-Oligopeptide-1 + peptide complex (EGF)</strong><p>A formula-focused peptide group, including copper tripeptide-1, acetyl octapeptide-3, and palmitoyl tripeptide-5, positioned around the appearance of smoothness and skin conditioning.</p></div>
-              </li>
-              <li>
-                <span className="ingredient-list__dot">02</span>
-                <div><strong>NAD+ + niacinamide</strong><p>A coenzyme-and-vitamin B3 story for vitality-minded care, with niacinamide commonly used in cosmetic formulas that support a balanced-looking tone and skin barrier.</p></div>
-              </li>
-              <li>
-                <span className="ingredient-list__dot">03</span>
-                <div><strong>Adenosine + ectoin</strong><p>A comfort-focused pairing used to support a smooth-looking surface and help the formula feel protective in the context of everyday environmental exposure.</p></div>
-              </li>
-              <li>
-                <span className="ingredient-list__dot">04</span>
-                <div><strong>Hyaluronic acid + glutathione</strong><p>A moisture-and-antioxidant-focused pairing: sodium hyaluronate supports a hydrated feel, while glutathione completes the formula’s antioxidant-focused profile.</p></div>
-              </li>
+              {formulaEntries.map((entry) => (
+                <li key={entry.id} className="ingredient-card">
+                  <span className="ingredient-list__dot">{entry.id}</span>
+                  <div>
+                    <strong>{entry.name}</strong>
+                    <p>{entry.copy} {entry.refs.map((reference) => <sup key={reference}><a className="brand-link brand-link--on-light" href={`#ingredient-ref-${reference}`} aria-label={`Read reference ${reference}`}>{reference}</a></sup>)}</p>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
+
+          <ol className="ingredient-references" aria-label="Formula in Context references">
+            {formulaReferences.map((reference) => (
+              <li id={`ingredient-ref-${reference.id}`} key={reference.id}>
+                <span>{reference.id}</span>
+                <p><cite>{reference.title}</cite><em>{reference.journal}</em></p>
+                <a className="brand-link brand-link--on-light" href={reference.href} target="_blank" rel="noopener noreferrer">View study <ArrowUpRight size={14} /></a>
+              </li>
+            ))}
+          </ol>
+          <p className="ingredient-reference-disclaimer">References describe published research on individual ingredients. They are not claims about this finished product.</p>
 
           <div className="ingredient-science__note">
             <span className="molecular-waypoint" aria-hidden="true"><i /><i /><i /></span>
