@@ -14,9 +14,10 @@ describe("Bella Nissa Science experience contract", () => {
     expect(home).toContain('href="#system"');
   });
 
-  it("uses the actual exploded asset and a customer-facing caption", () => {
-    expect(home).toContain("bns-actual-device-exploded_e7963143.jpg");
-    expect(home).toContain("VISIBLE COMPONENTS, SHOWN APART");
+  it("removes the retired device teardown completely", () => {
+    expect(home).not.toContain("DeviceAnatomySvg");
+    expect(home).not.toContain("assembly-scroller");
+    expect(home).not.toContain("DEVICE ANATOMY");
     expect(home).not.toContain("PENDING PRODUCTION CAD");
   });
 
@@ -24,6 +25,30 @@ describe("Bella Nissa Science experience contract", () => {
     expect(styles).toContain("a:visited");
     expect(styles).toContain("a:focus-visible");
     expect(styles).toContain("prefers-reduced-motion: reduce");
+  });
+
+  it("uses the requested self-hosted scientific typography without legacy font families", () => {
+    expect(styles).toContain('font-family: "Newsreader"');
+    expect(styles).toContain('font-family: "IBM Plex Mono"');
+    expect(styles).toContain("font-display: swap");
+    expect(styles).not.toMatch(/Manr(?:ope)/);
+    expect(styles).not.toMatch(/DM\s+Mono/);
+  });
+
+  it("keeps hero glyphs intact and provides a contrast-safe ritual identifier", () => {
+    expect(styles).not.toContain("clip-path: inset(0 0 0 0)");
+    expect(styles).not.toContain("mask-image: linear-gradient");
+    expect(styles).toContain(".motion-education__visual-mark");
+    expect(styles).toContain("background: rgba(5, 16, 12, 0.82)");
+  });
+
+  it("renders six formula cards and a nine-source reference list", () => {
+    expect(home).toContain("const formulaEntries");
+    expect(home).toContain("Topical glutathione");
+    expect(home).toContain("const formulaReferences");
+    expect(home).toContain("References describe published research on individual ingredients.");
+    expect(home).toContain('rel="noopener noreferrer"');
+    expect((home.match(/ingredient-hotspot ingredient-hotspot--/g) ?? []).length).toBe(7);
   });
 });
 

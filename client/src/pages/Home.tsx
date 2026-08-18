@@ -18,8 +18,6 @@ const ASSETS = {
   hero: "/manus-storage/bns-hero-system_78a7dae4.jpg",
   serum: "/manus-storage/bns-serum-laboratory_969683fc.jpg",
   device: "/manus-storage/bns-device-precision_66879012.jpg",
-  deviceInternalAssembled: "/manus-storage/bns-device-internal-assembled_622a9b8a.jpg",
-  deviceExploded: "/manus-storage/bns-actual-device-exploded_e7963143.jpg",
   ritualMotion: "/manus-storage/bns-blonde-device-ritual-motion_68f91816.mp4",
   ritualMineralStill: "/manus-storage/bns-blonde-device-ritual-mineral-keyframe_7a913bcc.png",
   ingredientMap: "/manus-storage/bns-skin-layer-ingredient-map_07772248.jpg",
@@ -63,6 +61,57 @@ const usageSteps = [
   { id: "04", title: "Complete your routine", body: "Allow the ritual to settle, then continue with the remainder of your usual skincare routine as desired. Pause use if discomfort occurs.", note: "RETURN TO YOUR ROUTINE" },
 ];
 
+const formulaEntries = [
+  {
+    id: "01",
+    name: "Epidermal growth factor (sh-Oligopeptide-1) and peptides",
+    copy: "sh-Oligopeptide-1 is a bioengineered signalling protein associated with skin’s natural renewal, helping improve the appearance of texture and firmness for a more radiant-looking complexion. Copper tripeptide-1, acetyl octapeptide-3, and palmitoyl tripeptide-5 complete the peptide complex, supporting the appearance of elasticity, resilience, and smoother-looking expression lines.",
+    refs: [1, 2, 3],
+  },
+  {
+    id: "02",
+    name: "NAD+",
+    copy: "NAD+ is a coenzyme present in living cells. In a topical formula, it is positioned as a cellular-fuel story associated with mitochondrial energy, helping skin look vital, firm, and better defended against the visible effects of environmental stress.",
+    refs: [4],
+  },
+  {
+    id: "03",
+    name: "Niacinamide (vitamin B3) and adenosine",
+    copy: "Niacinamide visibly brightens and helps even the look of tone and dark spots while supporting a moisture-barrier story. Adenosine helps smooth the look of the surface and soften the appearance of wrinkles for a firmer-looking finish.",
+    refs: [5, 6],
+  },
+  {
+    id: "04",
+    name: "Ectoin",
+    copy: "Ectoin is a natural extremolyte associated with hydration-shell support. It helps buffer the visible effects of pollution, UV-induced stress, and allergens, keeping the barrier feeling calm, resilient, and moisturised.",
+    refs: [7],
+  },
+  {
+    id: "05",
+    name: "Hyaluronic acid (sodium hyaluronate)",
+    copy: "Hyaluronic acid and sodium hyaluronate are humectants associated with surface hydration. In topical use, they help skin look instantly plumper, soften the look of dehydration lines, and leave the complexion looking dewy and quenched.",
+    refs: [8],
+  },
+  {
+    id: "06",
+    name: "Topical glutathione",
+    copy: "Topical glutathione is widely used in antioxidant-focused formulas. It helps defend against environmental aggressors while supporting the appearance of more even-looking tone and a more luminous complexion.",
+    refs: [9],
+  },
+];
+
+const formulaReferences = [
+  { id: 1, title: "Topical application of sh-oligopeptide-1 and clinical trials", journal: "Journal of Cosmetic Dermatology", href: "https://pubmed.ncbi.nlm.nih.gov/37452558/" },
+  { id: 2, title: "The anti-wrinkle efficacy of argireline, a synthetic hexapeptide", journal: "Journal of Cosmetic Science", href: "https://pubmed.ncbi.nlm.nih.gov/23417317/" },
+  { id: 3, title: "Peptides: Emerging Candidates for the Prevention and Treatment of Skin Aging", journal: "International Journal of Molecular Sciences", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11762834/" },
+  { id: 4, title: "Novel Approach to Skin Anti-Aging: Boosting Pharmacological Strategies", journal: "Antioxidants (Basel)", href: "https://pubmed.ncbi.nlm.nih.gov/39513906/" },
+  { id: 5, title: "Mechanistic Insights into the Multiple Functions of Niacinamide", journal: "International Journal of Molecular Sciences", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11047333/" },
+  { id: 6, title: "The possible role of the nucleoside adenosine in countering skin aging", journal: "Ageing Research Reviews", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC9804842/" },
+  { id: 7, title: "Ectoin: An Effective Natural Substance to Prevent UVA-Induced Premature Photoaging", journal: "Skin Pharmacology and Physiology", href: "https://pubmed.ncbi.nlm.nih.gov/15452409/" },
+  { id: 8, title: "Benefits of topical hyaluronic acid for skin quality and signs of skin aging", journal: "Dermatology and Therapy", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10078143/" },
+  { id: 9, title: "Exploring the Safety and Efficacy of Glutathione", journal: "Antioxidants", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11862975/" },
+];
+
 function Wordmark({ inverse = false }: { inverse?: boolean }) {
   return (
     <div className={`wordmark ${inverse ? "wordmark--inverse" : ""}`} aria-label="Bella Nissa Science">
@@ -76,29 +125,25 @@ export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [activeStep, setActiveStep] = useState(0);
   const [openUsageStep, setOpenUsageStep] = useState<number | null>(0);
-  const [assemblyStage, setAssemblyStage] = useState(0);
-  const [assemblyProgress, setAssemblyProgress] = useState(0);
   const [heroProgress, setHeroProgress] = useState(0);
-  const assemblyRef = useRef<HTMLElement | null>(null);
+  const [ritualVisible, setRitualVisible] = useState(false);
   const heroRef = useRef<HTMLElement | null>(null);
+  const ritualRef = useRef<HTMLElement | null>(null);
 
   const activeProtocol = protocol[activeStep];
 
   useEffect(() => {
     const updateScrollScenes = () => {
+      const reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      if (reducedMotion) {
+        setHeroProgress(1);
+        return;
+      }
       const hero = heroRef.current;
       if (hero) {
         const heroTop = hero.getBoundingClientRect().top + window.scrollY;
         const heroTravel = Math.max(1, hero.offsetHeight - window.innerHeight);
         setHeroProgress(Math.min(1, Math.max(0, (window.scrollY - heroTop) / heroTravel)));
-      }
-      const section = assemblyRef.current;
-      if (section) {
-        const sectionTop = section.getBoundingClientRect().top + window.scrollY;
-        const travel = Math.max(1, section.offsetHeight - window.innerHeight);
-        const progress = Math.min(1, Math.max(0, (window.scrollY - sectionTop) / travel));
-        setAssemblyProgress(progress < 0.5 ? progress * 2 : (1 - progress) * 2);
-        setAssemblyStage(progress < 0.32 ? 0 : progress < 0.7 ? 1 : 2);
       }
     };
     updateScrollScenes();
@@ -110,21 +155,38 @@ export default function Home() {
     };
   }, []);
 
+  useEffect(() => {
+    const ritual = ritualRef.current;
+    if (!ritual) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setRitualVisible(true);
+      return;
+    }
+    const observer = new IntersectionObserver(([entry]) => {
+      if (entry.isIntersecting) {
+        setRitualVisible(true);
+        observer.disconnect();
+      }
+    }, { threshold: 0.22 });
+    observer.observe(ritual);
+    return () => observer.disconnect();
+  }, []);
+
   return (
     <div className="site-shell">
       <header className="site-header">
-          <a className="brand site-link" href="#top" aria-label="Bella Nissa Science home">
+          <a className="brand site-link brand-link brand-link--on-light" href="#top" aria-label="Bella Nissa Science home">
           <img src={ASSETS.logo} alt="BNS scientific emblem" />
           <Wordmark />
         </a>
 
         <nav className="desktop-nav" aria-label="Primary navigation">
-          <a href="#system">The system</a>
-          <a href="/formula">Formula detail</a>
-          <a href="#method">The method</a>
+          <a className="brand-link brand-link--on-light" href="#system">The system</a>
+          <a className="brand-link brand-link--on-light" href="/formula">Formula detail</a>
+          <a className="brand-link brand-link--on-light" href="#method">The method</a>
         </nav>
 
-        <a className="header-action site-link" href="#protocol">
+        <a className="header-action site-link brand-link brand-link--on-light" href="#protocol">
           View protocol <ArrowUpRight size={14} strokeWidth={1.7} />
         </a>
 
@@ -141,10 +203,10 @@ export default function Home() {
 
       {menuOpen && (
         <nav className="mobile-nav" aria-label="Mobile navigation">
-          <a href="#system" onClick={() => setMenuOpen(false)}>The system</a>
-          <a href="/formula" onClick={() => setMenuOpen(false)}>Formula detail</a>
-          <a href="#method" onClick={() => setMenuOpen(false)}>The method</a>
-          <a href="#protocol" onClick={() => setMenuOpen(false)}>View protocol</a>
+          <a className="brand-link brand-link--on-light" href="#system" onClick={() => setMenuOpen(false)}>The system</a>
+          <a className="brand-link brand-link--on-light" href="/formula" onClick={() => setMenuOpen(false)}>Formula detail</a>
+          <a className="brand-link brand-link--on-light" href="#method" onClick={() => setMenuOpen(false)}>The method</a>
+          <a className="brand-link brand-link--on-light" href="#protocol" onClick={() => setMenuOpen(false)}>View protocol</a>
         </nav>
       )}
 
@@ -165,7 +227,7 @@ export default function Home() {
               Bella Nissa Science connects a precision formula with a purposeful absorption ritual—one quiet, considered system.
             </p>
             <div className="hero-actions">
-              <a className="button button--emerald" href="#system">
+              <a className="button button--emerald brand-link brand-link--action brand-link--on-dark" href="#system">
                 Explore the system <ArrowDownRight size={17} />
               </a>
             </div>
@@ -175,8 +237,10 @@ export default function Home() {
             <img className="hero-image" src={ASSETS.hero} alt="Bella Nissa Science serum and absorption device" />
             <div className="hero-stage__visual hero-stage__visual--serum" aria-hidden="true"><img src={ASSETS.serum} alt="" /></div>
             <div className="hero-stage__visual hero-stage__visual--device" aria-hidden="true"><img src={ASSETS.device} alt="" /></div>
-            <div className="hero-stage__signal hero-stage__signal--serum"><span>FORMULA / 01</span><i /></div>
-            <div className="hero-stage__signal hero-stage__signal--device"><span>METHOD / 02</span><i /></div>
+            <div className="hero-epilogue" aria-label="System specification">
+              <div><b>FORMULA</b><span>01</span><i /></div>
+              <div><b>METHOD</b><span>02</span><i /></div>
+            </div>
             <div className="hero-stage__badge">
               <span>System / 02 components</span>
               <i />
@@ -202,7 +266,7 @@ export default function Home() {
           </div>
           <div className="system-statement">
             <p>Two components, each with a distinct role. The serum begins the ritual; the device is made to follow it.</p>
-            <a className="text-link" href="#protocol">Understand the protocol <ArrowDownRight size={17} /></a>
+            <a className="text-link brand-link brand-link--on-light" href="#protocol">Understand the protocol <ArrowDownRight size={17} /></a>
           </div>
         </section>
 
@@ -220,7 +284,7 @@ export default function Home() {
               <p className="product-label">Bioactive Renewal Serum</p>
               <h3>Start with the formula.</h3>
               <p>Frosted glass, measured presentation, and a formula-first point of entry for the Bella Nissa Science system.</p>
-              <a className="product-link" href="#protocol">Explore serum <ArrowUpRight size={17} /></a>
+              <a className="product-link brand-link brand-link--on-light" href="#protocol">Explore serum <ArrowUpRight size={17} /></a>
             </div>
           </article>
 
@@ -237,39 +301,12 @@ export default function Home() {
               <p className="product-label">Absorption + Massage Device</p>
               <h3>Continue with purpose.</h3>
               <p>A compact companion designed to make the application ritual feel purposeful, tactile, and complete.</p>
-              <a className="product-link" href="#protocol">Explore device <ArrowUpRight size={17} /></a>
+              <a className="product-link brand-link brand-link--on-light" href="#protocol">Explore device <ArrowUpRight size={17} /></a>
             </div>
           </article>
         </section>
 
-        <section ref={assemblyRef} className={`assembly-scroller assembly-scroller--stage-${assemblyStage}`} aria-labelledby="assembly-title">
-          <div className="assembly-sticky">
-            <div className="assembly-copy">
-              <div className="section-kicker">03 / Internal assembly</div>
-              <p className="assembly-copy__index">DEVICE / 02</p>
-              <h2 id="assembly-title">The system,<br /><em>held within.</em></h2>
-              <p>The companion device opens from a complete object to an internal assembly, then returns to its finished form as you scroll back through the sequence.</p>
-              <div className="assembly-copy__seal"><img src={ASSETS.logo} alt="BNS molecular badge" /><span>BNS / DEVICE<br />ANATOMY STUDY</span></div>
-              <div className="assembly-progress" aria-label="Assembly sequence progress"><span className={assemblyStage >= 0 ? "is-active" : ""}>01 / ASSEMBLED</span><span className={assemblyStage >= 1 ? "is-active" : ""}>02 / OPEN</span><span className={assemblyStage >= 2 ? "is-active" : ""}>03 / EXPLODED</span></div>
-            </div>
-            <div className="assembly-render" aria-label="Scroll-scrubbed exploded view of the Bella Nissa Science device" style={{ "--assembly-progress": assemblyProgress } as React.CSSProperties}>
-              <img className="assembly-frame assembly-frame--assembled" src={ASSETS.deviceInternalAssembled} alt="Bella Nissa device in its assembled form" />
-              <img className="assembly-frame assembly-frame--exploded" src={ASSETS.deviceExploded} alt="Bella Nissa device with its visible components separated for inspection" />
-              <div className="exploded-layer exploded-layer--top" aria-hidden="true"><img src={ASSETS.deviceExploded} alt="" /></div>
-              <div className="exploded-layer exploded-layer--middle" aria-hidden="true"><img src={ASSETS.deviceExploded} alt="" /></div>
-              <div className="exploded-layer exploded-layer--lower" aria-hidden="true"><img src={ASSETS.deviceExploded} alt="" /></div>
-              <div className="assembly-callout assembly-callout--cap"><i /><span>CURVED<br />TREATMENT CAP</span></div>
-              <div className="assembly-callout assembly-callout--ring"><i /><span>CONDUCTIVE<br />CONTACT RING</span></div>
-              <div className="assembly-callout assembly-callout--board"><i /><span>CONTROL +<br />INTERFACE BOARD</span></div>
-              <div className="assembly-callout assembly-callout--cell"><i /><span>RECHARGEABLE<br />POWER CELL</span></div>
-              <div className="assembly-callout assembly-callout--flex"><i /><span>CONTACT<br />FLEX LAYER</span></div>
-              <div className="assembly-callout assembly-callout--base"><i /><span>LOWER<br />SUPPORT BASE</span></div>
-              <div className="assembly-render__note"><img src={ASSETS.logo} alt="" /><span>DEVICE ANATOMY /<br />VISIBLE COMPONENTS, SHOWN APART</span></div>
-            </div>
-          </div>
-        </section>
-
-        <section className="motion-education" id="ritual" aria-labelledby="ritual-title">
+        <section ref={ritualRef} className="motion-education" id="ritual" aria-labelledby="ritual-title">
           <div className="motion-education__visual">
             <video
               className="ritual-video"
@@ -281,7 +318,7 @@ export default function Home() {
               aria-label="A blonde woman using the Bella Nissa Science absorption and massage device as part of her skincare ritual"
             />
             <img className="ritual-plant-overlay" src="/manus-storage/bns-ritual-plant-overlay_3afd3bb6.png" alt="" aria-hidden="true" />
-            <div className="motion-education__visual-mark" aria-hidden="true">
+            <div className={`motion-education__visual-mark ${ritualVisible ? "is-visible" : ""}`} aria-hidden="true">
               <img src={ASSETS.logo} alt="" />
               <span>RITUAL / IN MOTION</span>
             </div>
@@ -340,9 +377,12 @@ export default function Home() {
 
           <figure className="ingredient-figure">
             <img src={ASSETS.ingredientMap} alt="Bella Nissa Science skin-layer illustration with active serum ingredient groupings and the device shown in guided surface application" />
-            <button className="ingredient-hotspot ingredient-hotspot--peptides" type="button" aria-label="Peptide complex and EGF benefit details"><span>01</span><i className="ingredient-tooltip"><b>Peptide complex (EGF)</b> Cosmetic-facing formula support for the appearance of smoothness and skin conditioning.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--nad" type="button" aria-label="NAD plus and niacinamide benefit details"><span>02</span><i className="ingredient-tooltip"><b>NAD+ + niacinamide</b> Vitality-minded formulation context with barrier- and tone-focused cosmetic support.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--moisture" type="button" aria-label="Hyaluronic acid ectoin and glutathione benefit details"><span>03</span><i className="ingredient-tooltip"><b>Hydration + antioxidant context</b> A surface-focused pairing for a hydrated feel and environmental comfort story.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--peptides" type="button" aria-label="Epidermal growth factor and peptide benefit details"><span>01</span><i className="ingredient-tooltip"><b>01 / EGF + peptides</b> Helps improve the appearance of texture, firmness, elasticity, and smoother-looking expression lines.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--nad" type="button" aria-label="NAD plus benefit details"><span>02</span><i className="ingredient-tooltip"><b>02 / NAD+</b> Supports a vital-looking, firm-looking surface in an environmental-stress care story.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--niacinamide" type="button" aria-label="Niacinamide and adenosine benefit details"><span>03</span><i className="ingredient-tooltip"><b>03 / B3 + adenosine</b> Helps even the look of tone and supports a smoother-looking, firmer-looking finish.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--ectoin" type="button" aria-label="Ectoin benefit details"><span>04</span><i className="ingredient-tooltip"><b>04 / ectoin</b> Supports a calm, resilient, moisturised-feeling barrier in a daily stress-exposure story.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--hyaluronic" type="button" aria-label="Hyaluronic acid benefit details"><span>05</span><i className="ingredient-tooltip"><b>05 / sodium hyaluronate</b> Helps skin look plumper and more dewy while softening the look of dehydration lines.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--glutathione" type="button" aria-label="Topical glutathione benefit details"><span>06</span><i className="ingredient-tooltip"><b>06 / glutathione</b> Supports a more even-looking, luminous complexion in an antioxidant-focused formula story.</i></button>
             <button className="ingredient-hotspot ingredient-hotspot--device" type="button" aria-label="Companion device application details"><span>04</span><i className="ingredient-tooltip"><b>Companion device</b> Follows serum as a guided surface-application pass; it is not presented as a clinical-delivery tool.</i></button>
             <figcaption><span>FORMULA / SURFACE-LEVEL STORY</span><span>DEVICE / GUIDED APPLICATION PASS</span></figcaption>
           </figure>
@@ -350,28 +390,32 @@ export default function Home() {
           <div className="ingredient-science__body">
             <div className="ingredient-science__intro">
               <div className="section-kicker">The active system</div>
-              <h3>Four formulation stories.<br />One considered sequence.</h3>
-              <p>Each active group has been placed within the surface and upper-skin context appropriate to a cosmetic formula. Product performance depends on the full formulation and individual skin response.</p>
+              <h3>Six formulation stories.<br />One considered sequence.</h3>
+              <p>Each active is described in the cosmetic, surface-level context appropriate to a topical formula. Product performance depends on the full formulation and individual skin response.</p>
             </div>
             <ul className="ingredient-list">
-              <li>
-                <span className="ingredient-list__dot">01</span>
-                <div><strong>sh-Oligopeptide-1 + peptide complex (EGF)</strong><p>A formula-focused peptide group, including copper tripeptide-1, acetyl octapeptide-3, and palmitoyl tripeptide-5, positioned around the appearance of smoothness and skin conditioning.</p></div>
-              </li>
-              <li>
-                <span className="ingredient-list__dot">02</span>
-                <div><strong>NAD+ + niacinamide</strong><p>A coenzyme-and-vitamin B3 story for vitality-minded care, with niacinamide commonly used in cosmetic formulas that support a balanced-looking tone and skin barrier.</p></div>
-              </li>
-              <li>
-                <span className="ingredient-list__dot">03</span>
-                <div><strong>Adenosine + ectoin</strong><p>A comfort-focused pairing used to support a smooth-looking surface and help the formula feel protective in the context of everyday environmental exposure.</p></div>
-              </li>
-              <li>
-                <span className="ingredient-list__dot">04</span>
-                <div><strong>Hyaluronic acid + glutathione</strong><p>A moisture-and-antioxidant-focused pairing: sodium hyaluronate supports a hydrated feel, while glutathione completes the formula’s antioxidant-focused profile.</p></div>
-              </li>
+              {formulaEntries.map((entry) => (
+                <li key={entry.id} className="ingredient-card">
+                  <span className="ingredient-list__dot">{entry.id}</span>
+                  <div>
+                    <strong>{entry.name}</strong>
+                    <p>{entry.copy} {entry.refs.map((reference) => <sup key={reference}><a className="brand-link brand-link--on-light" href={`#ingredient-ref-${reference}`} aria-label={`Read reference ${reference}`}>{reference}</a></sup>)}</p>
+                  </div>
+                </li>
+              ))}
             </ul>
           </div>
+
+          <ol className="ingredient-references" aria-label="Formula in Context references">
+            {formulaReferences.map((reference) => (
+              <li id={`ingredient-ref-${reference.id}`} key={reference.id}>
+                <span>{reference.id}</span>
+                <p><cite>{reference.title}</cite><em>{reference.journal}</em></p>
+                <a className="brand-link brand-link--on-light" href={reference.href} target="_blank" rel="noopener noreferrer">View study <ArrowUpRight size={14} /></a>
+              </li>
+            ))}
+          </ol>
+          <p className="ingredient-reference-disclaimer">References describe published research on individual ingredients. They are not claims about this finished product.</p>
 
           <div className="ingredient-science__note">
             <span className="molecular-waypoint" aria-hidden="true"><i /><i /><i /></span>
@@ -384,7 +428,7 @@ export default function Home() {
             <div className="section-kicker">05 / Use sequence</div>
             <h2 id="use-accordion-title">Formula first.<br /><em>Method follows.</em></h2>
             <p>Open each step for a clear, measured order of use. This routine describes cosmetic application only; always follow the final product directions.</p>
-            <a href="/formula" className="formula-link">Read the formula dossier <ArrowUpRight size={16} /></a>
+            <a href="/formula" className="formula-link brand-link brand-link--on-light">Read the formula dossier <ArrowUpRight size={16} /></a>
           </div>
           <div className="use-accordion__steps">
             {usageSteps.map((step, index) => {
@@ -480,7 +524,7 @@ export default function Home() {
       </main>
 
       <footer className="site-footer">
-        <a className="brand brand--footer site-link" href="#top">
+        <a className="brand brand--footer site-link brand-link brand-link--footer brand-link--on-dark" href="#top">
           <img src={ASSETS.logo} alt="BNS scientific emblem" />
           <Wordmark inverse />
         </a>

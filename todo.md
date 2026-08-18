@@ -57,3 +57,30 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Convert the device assembly from thresholded stages to continuous scroll-scrubbed separation and reseating.
 - [x] Verify the refined experience at a tablet breakpoint and push the final revision to GitHub main.
 - [x] Add continuous component-layer separation and reseating over the actual exploded product photograph, then commit and push the reconciled main branch.
+- [x] Replace the photo-sliced device anatomy treatment with a hand-authored inline SVG composed of six observable parts.
+- [x] Add continuous assembled–exploded–assembled vector motion, attached leader lines, label gutter, reduced-motion static state, and mobile simplification.
+- [x] Move the device anatomy caption into a padded safe area and remove excess spacing before the ritual section.
+- [x] Audit every anchor across the Home and Formula pages to eliminate default indigo/blue states and retain visible focus treatment.
+- [x] Eliminate the orphaned hero-to-system gap at 1440px, 1024px, and 390px.
+- [x] Run validation and push the completed revision to jrazamd-cloud/bella-nissa-science main, reporting the commit SHA.
+- [x] Inspect the live computed colors of the six named Home anchors and record the actual resolved values.
+- [x] Apply explicit element-level brand-link classes to the named anchors with foreground default, emerald hover, and visible focus styling.
+- [x] Refine the SVG device silhouette from the actual product reference and add observable internal-core drawing detail.
+- [x] Tighten and strengthen the hero formula/method specification epilogue at 550px and 768px.
+- [x] Reinspect computed link colors, validate requested responsive widths, run pnpm check/build, and push the targeted revision to GitHub main.
+- [x] Restart the development server and confirm the preview loads the current committed code.
+- [x] Remove the full device teardown section, its scroll state and listener, vector component, legend, caption, styles, and section-only assets.
+- [x] Close the preceding-to-ritual vertical rhythm with no empty anatomy container or scroll gap.
+- [x] Measure named anchor foreground/background contrast in the live preview and correct context-specific link classes to at least 4.5:1.
+- [x] Run pnpm check and pnpm build, verify the live preview, and push the focused revision to GitHub main with recorded contrast ratios.
+- [x] Inspect the live CSS cascade for the four named dark-context anchors and identify the exact winning color override.
+- [x] Capture a screenshot of the running preview and sample painted link/background pixels for the header wordmark, hero CTA, serum link, and device link.
+- [x] Apply a narrowly scoped dark-context link override that preserves light-panel ink links.
+- [x] Re-sample rendered screenshot pixels, calculate each contrast ratio, run pnpm check/build, and push the verified fix to GitHub main.
+- [x] Replace Manrope and DM Mono with self-hosted Newsreader, Inter/Inter Tight, and IBM Plex Mono font stacks using latin subsets and font-display swap.
+- [x] Reclassify display, body/UI, heading, and mono/spec typography; remove every Manrope and DM Mono reference.
+- [x] Fix hero descender clipping and resting mask fade; reserve full layout width for the multi-dot kicker motif.
+- [x] Add an accessible RITUAL / IN MOTION chip scrim, reduced-motion-aware reveal, visible emerald focus treatment, and high-contrast link hover states.
+- [x] Rebuild Formula in Context as six cosmetic-safe evidence cards with remapped hotspots, superscript citations, nine external references, and disclaimer.
+- [x] Reconcile the hero source/render treatment and verify the requested rendering at 1440px, 1024px, and 390px.
+- [x] Run pnpm check/build, restart the preview, test all reference links, and push the completed revision to GitHub main.

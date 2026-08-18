@@ -43,11 +43,11 @@ export default function FormulaDetail() {
   return (
     <div className="formula-page">
       <header className="formula-header">
-        <a className="formula-brand site-link" href="/" aria-label="Return to Bella Nissa Science home">
+        <a className="formula-brand site-link brand-link brand-link--on-light" href="/" aria-label="Return to Bella Nissa Science home">
           <img src={ASSETS.logo} alt="BNS scientific emblem" />
           <span><b>Bella Nissa</b><small>SCIENCE / BNS</small></span>
         </a>
-        <a className="formula-back site-link" href="/"><ArrowLeft size={15} /> Return to the system</a>
+        <a className="formula-back site-link brand-link brand-link--on-light" href="/"><ArrowLeft size={15} /> Return to the system</a>
       </header>
 
       <main>
@@ -56,7 +56,7 @@ export default function FormulaDetail() {
             <div className="section-kicker">Formula dossier / 01</div>
             <h1 id="formula-title">The formula,<br /><em>under a clearer lens.</em></h1>
             <p>Ingredient rationale, evidence context, and the finished-formula questions that matter. This is not a claim catalogue; it is a precise view of how Bella Nissa Science approaches substantiation.</p>
-            <a className="formula-scroll site-link" href="#substantiation">Read the substantiation framework <ChevronRight size={16} /></a>
+            <a className="formula-scroll site-link brand-link brand-link--on-light" href="#substantiation">Read the substantiation framework <ChevronRight size={16} /></a>
           </div>
           <div className="formula-hero__specimen">
             <img src={ASSETS.serum} alt="Bella Nissa Science Bioactive Renewal Serum" />
@@ -83,7 +83,7 @@ export default function FormulaDetail() {
               <article className="evidence-row" key={row.group}>
                 <span className="evidence-row__number">0{index + 1}</span>
                 <div><h3>{row.group}</h3><p>{row.focus}</p></div>
-                <div className="evidence-row__copy"><p>{row.copy}</p><a className="site-link" href={row.href} target="_blank" rel="noreferrer">{row.source} <ArrowUpRight size={13} /></a></div>
+                <div className="evidence-row__copy"><p>{row.copy}</p><a className="site-link brand-link brand-link--on-light" href={row.href} target="_blank" rel="noreferrer">{row.source} <ArrowUpRight size={13} /></a></div>
               </article>
             ))}
           </div>
@@ -105,7 +105,7 @@ export default function FormulaDetail() {
         <section className="formula-close">
           <div><span className="molecular-waypoint"><i /><i /><i /></span><p>Formula first. Method follows.</p></div>
           <h2>Explore the system<br />as a measured ritual.</h2>
-          <a href="/" className="formula-return site-link">Back to the serum + device <ArrowUpRight size={17} /></a>
+          <a href="/" className="formula-return site-link brand-link brand-link--on-light">Back to the serum + device <ArrowUpRight size={17} /></a>
         </section>
       </main>
     </div>
