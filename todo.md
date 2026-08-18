@@ -103,5 +103,5 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Reconcile the hero to one responsive treatment, remove competing blend/backdrop and duplicate breakpoint rules, and keep the product visible from 1440px through 390px.
 - [x] Apply the three requested Cycle 3 fixes: 3px focus offsets, 62ch note-paragraph clamp, and non-colliding hotspot 07 label; replace the specified H2 copy only.
 - [ ] Deferred by user approval: produce and integrate a slower 14–18s two-step ritual video with the prescribed red-serum and device coverage after video generation quota is available.
-- [ ] Validate the approved non-video scope at 1440/1024/768/680/390, confirm the retained media metrics, run test/typecheck/build, and push the substantive Cycle 4 revision to GitHub main.
+- [x] Validate the approved non-video scope at 1440/1024/768/680/390, confirm the retained media metrics, run test/typecheck/build, and push the substantive Cycle 4 revision to GitHub main.
 - [ ] Deferred with the replacement video: verify ritual-chip contrast against the brightest new frame and record final MP4/WebM bytes and duration.
