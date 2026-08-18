@@ -69,6 +69,9 @@ describe("Bella Nissa Science experience contract", () => {
     expect(home).toContain("2012 May;11(5):613-20. PMID: 22527430.");
     expect(home).not.toContain("37452558");
     expect(home).not.toContain("23417317");
+    expect(home).toContain('citationSentences: [');
+    expect(home).toContain('more radiant-looking complexion.", refs: [1]');
+    expect(home).toContain('Argireline / SNAP-8), and palmitoyl tripeptide-5 complete the peptide complex, supporting the appearance of elasticity, resilience, and smoother-looking expression lines.", refs: [2]');
     const referenceIds = Array.from(home.matchAll(/\{ id: (\d+), title:/g), (match) => Number(match[1]));
     const markers = Array.from(home.matchAll(/refs: \[([\d, ]+)\]/g), (match) => (match[1].match(/\d+/g) ?? []).map(Number)).flat();
     expect(referenceIds).toEqual([1, 2, 3, 4, 5, 6, 7, 8]);
