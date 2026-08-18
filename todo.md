@@ -83,4 +83,4 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Add an accessible RITUAL / IN MOTION chip scrim, reduced-motion-aware reveal, visible emerald focus treatment, and high-contrast link hover states.
 - [x] Rebuild Formula in Context as six cosmetic-safe evidence cards with remapped hotspots, superscript citations, nine external references, and disclaimer.
 - [x] Reconcile the hero source/render treatment and verify the requested rendering at 1440px, 1024px, and 390px.
-- [ ] Run pnpm check/build, restart the preview, test all reference links, and push the completed revision to GitHub main.
+- [x] Run pnpm check/build, restart the preview, test all reference links, and push the completed revision to GitHub main.
