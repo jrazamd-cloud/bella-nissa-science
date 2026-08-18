@@ -46,6 +46,14 @@ Replace near-white product backdrops with one very soft, desaturated pale-pink s
 
 Regenerate the hero, standalone-serum, and 1200×630 share visuals to depict the intended translucent, low-viscosity red serum, not an opaque frosted-white serum. Rewrite every relevant alternative-text string, including the Open Graph image alt, to describe the actual red-serum visual honestly. **The ingredient map’s near-colourless serum film also needs revision**: represent it as a restrained translucent red formula layer while keeping it distinct from the residue-free skin required for the device beat. Preserve the actual device form, BNS identity, responsive image dimensions and delivery strategy, and the share-image budget.
 
+### Warm-polished-gold hardware and lettering
+
+Replace every silver or chrome product finish with restrained, warm polished gold. This includes the serum bottle monogram, cap, collar, dropper cap and hardware, all serum-label lettering, and every device wordmark, metallic trim, ring, or control detail. Apply it consistently across the hero, standalone serum, device, ingredient map, 1200×630 share image, replacement poster, and replacement ritual video—including the dropper in the serum beat. The finish must read expensive and warm, never brassy, yellow-green, or cool-grey, with no leftover chrome highlights. It must remain compatible with the required bottle-label lockup and translucent red serum; verify and report measured contrast for the gold lettering at the smallest approximately 184px bottle width.
+
+### Polished-black-marble stands
+
+Where either product sits on a stand, plinth, pedestal, or display surface, use shiny polished black marble with subtle white-grey veining and a restrained specular sheen. Keep the pale-pink background system unchanged: marble replaces **only** the supporting surface beneath the products. Verify and report measured contrast ratios for every mono label, badge, and rail positioned over the pale pink or black marble, as well as the gold-lettering result above.
+
 ## Required Validation
 
 Before delivery, validate all of the following.

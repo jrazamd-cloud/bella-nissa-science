@@ -112,3 +112,11 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Validate the eight-reference citation revision, push its substantive commit to GitHub main, and save a checkpoint.
 - [ ] Deferred with the consolidated media pass: apply the Bottle Label lockup to every serum asset, use the chosen normal-composite pale-pink product backdrop, regenerate red-serum stills/alt text and ingredient map, and validate label and pink-surface contrast.
 - [x] Place the JDD EGF marker after the EGF sentence and the peptide-review marker after the peptide-complex sentence in Entry 01, then revalidate and push the correction.
+
+- [x] Remove the uncited peptide-review source, remove the Argireline/SNAP-8 marker, and renumber all formula references, markers, and anchors to seven without changing other citation content.
+- [x] Append warm-polished-gold product hardware/lettering and polished-black-marble stand requirements to the quota-reset media brief without generating or editing media.
+- [ ] Deferred with the consolidated media pass: replace product silver/chrome with warm polished gold, render product supports in polished black marble, and report the required gold, pink, and marble contrast measurements.
+- [x] Measure baseline production chunks, reduce verified unused payload, lazy-load non-home routes, and report before/after raw and gzip totals.
+- [x] Configure immutable caching for hashed static assets and no-cache HTML, then verify document and asset response headers.
+- [x] Raise hotspot hit areas and address named link target sizing without visual geometry, global link-rule, or layout changes.
+- [x] Validate citations, target sizes, cache policy, functionality, responsive rendering, test/typecheck/build, then push the substantive Cycle 6 revision and save a checkpoint.

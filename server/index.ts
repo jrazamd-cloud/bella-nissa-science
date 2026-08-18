@@ -16,10 +16,18 @@ async function startServer() {
       ? path.resolve(__dirname, "public")
       : path.resolve(__dirname, "..", "dist", "public");
 
-  app.use(express.static(staticPath));
+  app.use(express.static(staticPath, {
+    index: false,
+    setHeaders: (res, filePath) => {
+      const relativePath = path.relative(staticPath, filePath).replace(/\\/g, "/");
+      const hasContentHash = /(?:^|\/)[^/]*[-_][A-Za-z0-9_-]{8,}\.(?:js|css|woff2?|png|jpe?g|webp|avif|svg|mp4|webm)$/i.test(relativePath);
+      res.setHeader("Cache-Control", hasContentHash ? "public, max-age=31536000, immutable" : "no-cache");
+    },
+  }));
 
   // Handle client-side routing - serve index.html for all routes
   app.get("*", (_req, res) => {
+    res.setHeader("Cache-Control", "no-cache");
     res.sendFile(path.join(staticPath, "index.html"));
   });
 

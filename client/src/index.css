@@ -211,9 +211,11 @@ h1 em, h2 em { font-style: normal; color: var(--ink); }
 .ingredient-figure { position: relative; margin: 0 -2.3vw; overflow: hidden; border: 1px solid rgba(58,74,69,0.18); background: #e1e6e1; box-shadow: inset 0 0 0 7px rgba(255,255,255,0.42); }
 .ingredient-figure::before { position: absolute; z-index: 1; top: 0; right: 0; left: 0; height: 3px; content: ""; background: linear-gradient(90deg, var(--emerald) 0 14%, rgba(0,111,88,0.22) 14% 43%, transparent 43% 57%, rgba(0,111,88,0.22) 57% 86%, var(--emerald) 86% 100%); }
 .ingredient-figure img { display: block; width: 100%; min-height: 390px; object-fit: cover; }
-.ingredient-hotspot { position: absolute; z-index: 3; display: grid; width: 23px; height: 23px; padding: 0; border: 1px solid var(--emerald); border-radius: 50%; background: rgba(248,252,249,0.94); box-shadow: 0 0 0 5px rgba(0,111,88,0.12); color: var(--emerald); cursor: help; place-items: center; transition: transform 160ms ease, background 160ms ease; }
-.ingredient-hotspot > span { font-family: var(--font-mono); font-size: 7px; font-variant-numeric: tabular-nums slashed-zero; }
-.ingredient-hotspot:hover, .ingredient-hotspot:focus-visible { background: var(--emerald); color: white; outline: none; transform: scale(1.12); }
+.ingredient-hotspot { position: absolute; z-index: 3; display: grid; width: 24px; height: 24px; margin: -0.5px; padding: 0; border: 0; border-radius: 50%; background: transparent; box-shadow: none; color: var(--emerald); cursor: help; place-items: center; transition: transform 160ms ease, color 160ms ease; }
+.ingredient-hotspot::before { position: absolute; inset: 0.5px; border: 1px solid var(--emerald); border-radius: 50%; background: rgba(248,252,249,0.94); box-shadow: 0 0 0 5px rgba(0,111,88,0.12); content: ""; transition: background 160ms ease; }
+.ingredient-hotspot > span { position: relative; z-index: 1; font-family: var(--font-mono); font-size: 7px; font-variant-numeric: tabular-nums slashed-zero; }
+.ingredient-hotspot:hover, .ingredient-hotspot:focus-visible { color: white; outline: none; transform: scale(1.12); }
+.ingredient-hotspot:hover::before, .ingredient-hotspot:focus-visible::before { background: var(--emerald); }
 .ingredient-hotspot--peptides { top: 35%; left: 25.5%; }
 .ingredient-hotspot--nad { top: 51%; left: 42%; }
 .ingredient-hotspot--niacinamide { top: 41%; left: 47%; }
@@ -224,8 +226,10 @@ h1 em, h2 em { font-style: normal; color: var(--ink); }
 .ingredient-tooltip { position: absolute; z-index: 5; bottom: calc(100% + 12px); left: 50%; width: 210px; padding: 12px 13px; border: 1px solid rgba(0,111,88,0.28); background: rgba(251,252,249,0.98); box-shadow: 0 12px 28px rgba(23,47,41,0.15); color: var(--slate); font-size: 10px; font-style: normal; font-weight: 500; line-height: 1.55; opacity: 0; pointer-events: none; text-align: left; transform: translate(-50%, 5px); transition: opacity 160ms ease, transform 160ms ease; }
 .ingredient-tooltip b { display: block; margin-bottom: 4px; color: var(--emerald); font-family: var(--font-mono); font-size: 8px; font-style: normal; font-weight: 400; font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.14em; }
 .ingredient-hotspot:hover .ingredient-tooltip, .ingredient-hotspot:focus-visible .ingredient-tooltip { opacity: 1; transform: translate(-50%, 0); }
+.ingredient-hotspot[data-tooltip-open="true"] .ingredient-tooltip { opacity: 1; transform: translate(-50%, 0); }
 .ingredient-hotspot--device .ingredient-tooltip { right: 0; left: auto; transform: translate(0, 5px); }
 .ingredient-hotspot--device:hover .ingredient-tooltip, .ingredient-hotspot--device:focus-visible .ingredient-tooltip { transform: translate(0, 0); }
+.ingredient-hotspot--device[data-tooltip-open="true"] .ingredient-tooltip { transform: translate(0, 0); }
 .ingredient-figure figcaption { position: absolute; right: 22px; bottom: 19px; left: 22px; display: flex; justify-content: space-between; gap: 20px; color: rgba(255,255,255,0.93); font-family: var(--font-mono); font-size: 8px; font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.14em; text-shadow: 0 1px 5px rgba(0,0,0,0.65); }
 .ingredient-science__body { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 8vw; padding: 8vw 0 7.4vw; }
 .ingredient-science__body { position: relative; }
@@ -607,6 +611,10 @@ a:focus-visible { outline: 2px solid var(--emerald); outline-offset: 3px; border
 .brand-link--footer:hover { color: #a7ddc4 !important; }
 .brand-link--on-light .wordmark, .brand-link--on-dark .wordmark { color: inherit !important; }
 
+/* Transparent target expansion preserves the existing visual rhythm while making compact mono links easier to activate. */
+.desktop-nav a, .brand, .header-action, .product-link, .formula-link, .ingredient-references a { position: relative; }
+.desktop-nav a::after, .brand::after, .header-action::after, .product-link::after, .formula-link::after, .ingredient-references a::after { position: absolute; top: 50%; left: 50%; width: max(100%, 24px); height: max(100%, 24px); content: ""; transform: translate(-50%, -50%); }
+
 .hero-epilogue { position: absolute; z-index: 4; right: 30px; bottom: 28px; left: 30px; display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 14px 16px; border-top: 1px solid rgba(0, 77, 62, 0.34); border-bottom: 1px solid rgba(0, 77, 62, 0.16); background: rgba(244, 248, 245, 0.72); backdrop-filter: blur(8px); color: #385247; font-family: var(--font-mono); font-variant-numeric: tabular-nums slashed-zero; }
 .hero-epilogue > div { display: grid; grid-template-columns: auto auto 1fr; align-items: center; gap: 8px; min-width: 0; }
 .hero-epilogue b { color: var(--emerald); font-size: 9px; font-weight: 500; letter-spacing: 0.12em; }
@@ -635,6 +643,8 @@ h3, h4, .product-feature h3, .concern-card h3, .ingredient-science__intro h3, .p
 
 @media (max-width: 680px) {
   .motion-education__visual-mark { top: 18px; left: 18px; font-size: 8px; }
+  .ingredient-hotspot { width: 24px; height: 24px; margin: -2.5px; }
+  .ingredient-hotspot::before { inset: 2.5px; }
   .ingredient-list li { min-height: 0; padding: 22px 18px; }
   .ingredient-references { grid-template-columns: 1fr; }
   .ingredient-references li { min-height: 0; padding: 18px; }
