@@ -98,3 +98,10 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Add canonical, Open Graph, Twitter, and cosmetic-safe Organization/Product JSON-LD metadata with an optimized 1200×630 share image.
 - [x] Replace the ritual clip with a muted two-step serum-then-device portrait sequence, poster frame, H.264/WebM sources, metadata preload, and verified chip contrast.
 - [x] Validate at 1440px, 1024px, and 390px; check accessibility and links; run pnpm check/build; and push the substantive Cycle 3 revision to GitHub main.
+
+- [x] Audit every serum visual, alt string, and share asset for consistency with the requested translucent-red serum; document any disagreements before regeneration.
+- [x] Reconcile the hero to one responsive treatment, remove competing blend/backdrop and duplicate breakpoint rules, and keep the product visible from 1440px through 390px.
+- [x] Apply the three requested Cycle 3 fixes: 3px focus offsets, 62ch note-paragraph clamp, and non-colliding hotspot 07 label; replace the specified H2 copy only.
+- [ ] Deferred by user approval: produce and integrate a slower 14–18s two-step ritual video with the prescribed red-serum and device coverage after video generation quota is available.
+- [x] Validate the approved non-video scope at 1440/1024/768/680/390, confirm the retained media metrics, run test/typecheck/build, and push the substantive Cycle 4 revision to GitHub main.
+- [ ] Deferred with the replacement video: verify ritual-chip contrast against the brightest new frame and record final MP4/WebM bytes and duration.

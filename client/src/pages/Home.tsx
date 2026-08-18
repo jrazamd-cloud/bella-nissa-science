@@ -279,7 +279,7 @@ export default function Home() {
         <section className="system-section" id="system" aria-labelledby="system-title">
           <div className="system-intro">
             <div className="section-kicker">01 / The system</div>
-            <h2 id="system-title">Not a collection.<br /><em>A coordinated ritual.</em></h2>
+            <h2 id="system-title">Two components.<br /><em>One coordinated ritual.</em></h2>
           </div>
           <div className="system-statement">
             <p>Two components, each with a distinct role. The serum begins the ritual; the device is made to follow it.</p>
@@ -401,7 +401,7 @@ export default function Home() {
             <button className="ingredient-hotspot ingredient-hotspot--ectoin" type="button" aria-label="Ectoin benefit details"><span>04</span><i className="ingredient-tooltip"><b>04 / ectoin</b> Supports a calm, resilient, moisturised-feeling barrier in a daily stress-exposure story.</i></button>
             <button className="ingredient-hotspot ingredient-hotspot--hyaluronic" type="button" aria-label="Hyaluronic acid benefit details"><span>05</span><i className="ingredient-tooltip"><b>05 / sodium hyaluronate</b> Helps skin look plumper and more dewy while softening the look of dehydration lines.</i></button>
             <button className="ingredient-hotspot ingredient-hotspot--glutathione" type="button" aria-label="Topical glutathione benefit details"><span>06</span><i className="ingredient-tooltip"><b>06 / glutathione</b> Supports a more even-looking, luminous complexion in an antioxidant-focused formula story.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--device" type="button" aria-label="Companion device application details"><span>04</span><i className="ingredient-tooltip"><b>Companion device</b> Follows serum as a guided surface-application pass; it is not presented as a clinical-delivery tool.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--device" type="button" aria-label="Companion device application details"><span>07</span><i className="ingredient-tooltip"><b>07 / Companion device</b> Follows serum as a guided surface-application pass; it is not presented as a clinical-delivery tool.</i></button>
             <figcaption><span>FORMULA / SURFACE-LEVEL STORY</span><span>DEVICE / GUIDED APPLICATION PASS</span></figcaption>
           </figure>
 
