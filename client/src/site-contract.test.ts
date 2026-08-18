@@ -48,7 +48,8 @@ describe("Bella Nissa Science experience contract", () => {
 
   it("keeps one light hero treatment and the requested precision corrections", () => {
     expect(styles).toContain(".hero--pinned { position: relative; height: 285vh; min-height: 0; align-items: start; background: var(--paper); }");
-    expect(styles).toContain(".hero-image { width: 100%; height: 100%; min-height: 560px; object-fit: cover; object-position: center; mix-blend-mode: multiply; }");
+    expect(styles).toContain(".hero-image { width: 100%; height: 100%; min-height: 560px; object-fit: cover; object-position: center; }");
+    expect(styles).not.toContain(".hero-image { width: 100%; height: 100%; min-height: 560px; object-fit: cover; object-position: center; mix-blend-mode: multiply; }");
     expect(styles).not.toContain("background: #101b18");
     expect(styles).toContain("outline-offset: 3px");
     expect(styles).toContain(".motion-education__care-note p { max-width: 62ch");
@@ -126,7 +127,7 @@ describe("Bella Nissa Science experience contract", () => {
     expect(server).toContain('res.setHeader("Cache-Control", "no-cache")');
     expect(styles).toContain('.ingredient-hotspot { position: absolute; z-index: 3; display: grid; width: 24px; height: 24px;');
     expect(styles).toContain('.ingredient-hotspot { width: 24px; height: 24px; margin: -2.5px; }');
-    expect(styles).toContain('.desktop-nav a::after, .brand::after, .header-action::after, .product-link::after, .formula-link::after, .ingredient-references a::after');
+    expect(styles).toContain('.desktop-nav a::after, .brand::after, .header-action::after, .text-link::after, .product-link::after, .formula-link::after, .ingredient-references a::after');
   });
 });
 

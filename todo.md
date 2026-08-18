@@ -120,3 +120,12 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Configure immutable caching for hashed static assets and no-cache HTML, then verify document and asset response headers.
 - [x] Raise hotspot hit areas and address named link target sizing without visual geometry, global link-rule, or layout changes.
 - [x] Validate citations, target sizes, cache policy, functionality, responsive rendering, test/typecheck/build, then push the substantive Cycle 6 revision and save a checkpoint.
+
+- [x] Resolve the consolidated-media brief’s silver/chrome conflict so warm polished gold wins everywhere, including the Serum beat dropper.
+- [x] Extend the named compact-link target overlay to the Understand the protocol link and measure its effective hit area without layout shift.
+- [ ] Generate and integrate the consolidated pale-pink, gold-hardware, black-marble, red-serum hero, standalone serum, device, ingredient map, share image, ritual poster, and two-beat ritual media system.
+- [x] Rewrite relevant serum and share-image alternative text for the translucent red serum and remove the hero multiply blend mode as specified.
+- [ ] Validate new media order, coverage, fidelity, size, duration, rendered contrast, responsive rendering, interactions, test/typecheck/build; then push Cycle 7 to GitHub main and save a checkpoint.
+- [x] Generate, integrate, and visually review the Cycle 7 non-video system: master hero, standalone serum, device, ingredient map, ritual poster, and a 1200×630 35,555-byte share image.
+- [x] Validate the integrated non-video Cycle 7 change set at 1440/1024/768/680/390, confirm 24px protocol-link targeting, sampled still/overlay contrast, clean console, and test/typecheck/build.
+- [ ] Deferred pending a video-generation quota that can support the complete deliverable: create and integrate a 14–18 second serum-then-device ritual video, encode MP4 under 2 MB plus WebM, and sample the chip against the brightest actual new video frame.

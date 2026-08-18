@@ -13,28 +13,30 @@ import X from "lucide-react/dist/esm/icons/x";
 
 const ASSETS = {
   logo: "/manus-storage/bns-emblem_58bd568a.svg",
-  hero: "/manus-storage/bns-hero-system-1368_9c59f914.jpg",
-  serum: "/manus-storage/bns-serum-laboratory-768_3ee41f64.jpg",
-  device: "/manus-storage/bns-device-precision-768_8b639173.jpg",
+  hero: "/manus-storage/bns-cycle7-master-product-system-final_9fe40db9.jpg",
+  serum: "/manus-storage/bns-cycle7-serum-final_2280009d.jpg",
+  device: "/manus-storage/bns-cycle7-device-final_0e062148.jpg",
   ritualMotion: "/manus-storage/bns-ritual-two-step_de344aae.mp4",
   ritualWebm: "/manus-storage/bns-ritual-two-step_74502cd2.webm",
-  ritualPoster: "/manus-storage/bns-ritual-two-step-poster_c33fb4c4.jpg",
+  ritualPoster: "/manus-storage/bns-cycle7-ritual-poster-final_bb2cc59e.jpg",
   ritualMineralStill: "/manus-storage/bns-blonde-device-ritual-mineral-keyframe_7a913bcc.png",
-  ingredientMap: "/manus-storage/bns-skin-layer-ingredient-map-1368_bb80f4fd.jpg",
+  ingredientMap: "/manus-storage/bns-cycle7-ingredient-map-final_1bd416de.jpg",
 };
 
-const RESPONSIVE_IMAGES = {
-  hero: { webp: "/manus-storage/bns-hero-system-768_b3408d56.webp 768w, /manus-storage/bns-hero-system-1368_2f9a82e9.webp 1368w, /manus-storage/bns-hero-system-2048_fd717296.webp 2048w", fallback: "/manus-storage/bns-hero-system-768_b7d3219d.jpg 768w, /manus-storage/bns-hero-system-1368_9c59f914.jpg 1368w, /manus-storage/bns-hero-system-2048_361bf880.jpg 2048w", src: "/manus-storage/bns-hero-system-1368_9c59f914.jpg", sizes: "(max-width: 600px) 100vw, 54vw", width: 2048, height: 1152 },
-  serum: { webp: "/manus-storage/bns-serum-laboratory-480_47c0a106.webp 480w, /manus-storage/bns-serum-laboratory-768_4432b9ef.webp 768w, /manus-storage/bns-serum-laboratory-1024_b0f36db7.webp 1024w", fallback: "/manus-storage/bns-serum-laboratory-480_85369883.jpg 480w, /manus-storage/bns-serum-laboratory-768_3ee41f64.jpg 768w, /manus-storage/bns-serum-laboratory-1024_0db91ad3.jpg 1024w", src: "/manus-storage/bns-serum-laboratory-768_3ee41f64.jpg", sizes: "(max-width: 680px) 100vw, 50vw", width: 1024, height: 1365 },
-  device: { webp: "/manus-storage/bns-device-precision-480_085284d2.webp 480w, /manus-storage/bns-device-precision-768_04de352e.webp 768w, /manus-storage/bns-device-precision-1024_13ead5f0.webp 1024w", fallback: "/manus-storage/bns-device-precision-480_73181fbb.jpg 480w, /manus-storage/bns-device-precision-768_8b639173.jpg 768w, /manus-storage/bns-device-precision-1024_5b10b393.jpg 1024w", src: "/manus-storage/bns-device-precision-768_8b639173.jpg", sizes: "(max-width: 680px) 100vw, 50vw", width: 1024, height: 1365 },
-  ingredientMap: { webp: "/manus-storage/bns-skin-layer-ingredient-map-768_b91dfb49.webp 768w, /manus-storage/bns-skin-layer-ingredient-map-1368_e9572ec6.webp 1368w, /manus-storage/bns-skin-layer-ingredient-map-2048_529d3f96.webp 2048w", fallback: "/manus-storage/bns-skin-layer-ingredient-map-768_217a8e07.jpg 768w, /manus-storage/bns-skin-layer-ingredient-map-1368_bb80f4fd.jpg 1368w, /manus-storage/bns-skin-layer-ingredient-map-2048_b488bcf7.jpg 2048w", src: "/manus-storage/bns-skin-layer-ingredient-map-1368_bb80f4fd.jpg", sizes: "(max-width: 680px) 100vw, 86vw", width: 2048, height: 1152 },
+type ResponsiveImageConfig = { src: string; sizes: string; width: number; height: number; webp?: string; fallback?: string };
+const RESPONSIVE_IMAGES: Record<"hero" | "serum" | "device" | "ingredientMap", ResponsiveImageConfig> = {
+  hero: { src: ASSETS.hero, sizes: "(max-width: 600px) 100vw, 54vw", width: 1536, height: 864 },
+  serum: { src: ASSETS.serum, sizes: "(max-width: 680px) 100vw, 50vw", width: 1024, height: 1365 },
+  device: { src: ASSETS.device, sizes: "(max-width: 680px) 100vw, 50vw", width: 1024, height: 1365 },
+  ingredientMap: { src: ASSETS.ingredientMap, sizes: "(max-width: 680px) 100vw, 86vw", width: 1536, height: 864 },
 };
 
 type ResponsiveImageName = keyof typeof RESPONSIVE_IMAGES;
 
 function ResponsiveImage({ name, alt, className, loading = "lazy", fetchPriority }: { name: ResponsiveImageName; alt: string; className?: string; loading?: "lazy" | "eager"; fetchPriority?: "high" | "low" | "auto" }) {
   const image = RESPONSIVE_IMAGES[name];
-  return <picture className="responsive-picture"><source type="image/webp" srcSet={image.webp} sizes={image.sizes} /><img className={className} src={image.src} srcSet={image.fallback} sizes={image.sizes} alt={alt} width={image.width} height={image.height} loading={loading} decoding="async" fetchPriority={fetchPriority} /></picture>;
+  const visual = <img className={className} src={image.src} srcSet={image.fallback} sizes={image.sizes} alt={alt} width={image.width} height={image.height} loading={loading} decoding="async" fetchPriority={fetchPriority} />;
+  return image.webp && image.fallback ? <picture className="responsive-picture"><source type="image/webp" srcSet={image.webp} sizes={image.sizes} />{visual}</picture> : <picture className="responsive-picture">{visual}</picture>;
 }
 function setHotspotTooltip(button: HTMLButtonElement, open: boolean) {
   const tooltip = button.querySelector<HTMLElement>(".ingredient-tooltip");
@@ -275,7 +277,7 @@ export default function Home() {
           </div>
 
           <div className="hero-stage" aria-label="Bella Nissa Science serum and device">
-            <ResponsiveImage name="hero" className="hero-image" alt="Bella Nissa Science serum and absorption device" loading="eager" fetchPriority="high" />
+            <ResponsiveImage name="hero" className="hero-image" alt="Bella Nissa Science translucent ruby-red serum with warm polished gold hardware beside the companion device" loading="eager" fetchPriority="high" />
             <div className="hero-stage__visual hero-stage__visual--serum" aria-hidden="true"><ResponsiveImage name="serum" alt="" /></div>
             <div className="hero-stage__visual hero-stage__visual--device" aria-hidden="true"><ResponsiveImage name="device" alt="" /></div>
             <div className="hero-epilogue" aria-label="System specification">
@@ -318,7 +320,7 @@ export default function Home() {
               <span>30 mL</span>
             </div>
             <div className="product-feature__image-wrap">
-              <ResponsiveImage name="serum" alt="Bioactive Renewal Serum in frosted white packaging" />
+              <ResponsiveImage name="serum" alt="Bella Nissa Science serum with a translucent ruby-red formula and warm polished gold label hardware" />
               <span className="image-index">BNS / 01</span>
             </div>
             <div className="product-feature__content">
@@ -357,7 +359,7 @@ export default function Home() {
               playsInline
               preload="metadata"
               poster={ASSETS.ritualPoster}
-              aria-label="A blonde woman using the Bella Nissa Science absorption and massage device as part of her skincare ritual"
+              aria-label="A blonde woman applies translucent ruby-red Bella Nissa Science serum, then uses the companion device as part of her skincare ritual"
             ><source src={ASSETS.ritualWebm} type="video/webm" /><source src={ASSETS.ritualMotion} type="video/mp4" /></video>
             <img className="ritual-plant-overlay" src="/manus-storage/bns-ritual-plant-overlay-368_134c1e48.webp" alt="" aria-hidden="true" width="368" height="368" loading="lazy" decoding="async" />
             <div className={`motion-education__visual-mark ${ritualVisible ? "is-visible" : ""}`} aria-hidden="true">
@@ -418,7 +420,7 @@ export default function Home() {
           </div>
 
           <figure className="ingredient-figure">
-            <ResponsiveImage name="ingredientMap" alt="Bella Nissa Science skin-layer illustration with active serum ingredient groupings and the device shown in guided surface application" />
+            <ResponsiveImage name="ingredientMap" alt="Bella Nissa Science skin-layer illustration with a translucent ruby-red serum film, active ingredient groupings, and the companion device shown in guided surface application" />
             <button className="ingredient-hotspot ingredient-hotspot--peptides" type="button" aria-label="Epidermal growth factor and peptide benefit details" {...hotspotInteractionProps}><span>01</span><i className="ingredient-tooltip"><b>01 / EGF + peptides</b> Helps improve the appearance of texture, firmness, elasticity, and smoother-looking expression lines.</i></button>
             <button className="ingredient-hotspot ingredient-hotspot--nad" type="button" aria-label="NAD plus benefit details" {...hotspotInteractionProps}><span>02</span><i className="ingredient-tooltip"><b>02 / NAD+</b> Supports a vital-looking, firm-looking surface in an environmental-stress care story.</i></button>
             <button className="ingredient-hotspot ingredient-hotspot--niacinamide" type="button" aria-label="Niacinamide and adenosine benefit details" {...hotspotInteractionProps}><span>03</span><i className="ingredient-tooltip"><b>03 / B3 + adenosine</b> Helps even the look of tone and supports a smoother-looking, firmer-looking finish.</i></button>
