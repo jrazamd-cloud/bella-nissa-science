@@ -107,8 +107,8 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [ ] Deferred with the replacement video: verify ritual-chip contrast against the brightest new frame and record final MP4/WebM bytes and duration.
 - [x] Provide the user with a copy-ready quota-reset task description for the deferred ritual-media revision.
 
-- [ ] Replace Entry 01’s two retired references with the verified JDD EGF citation, reassign the peptide-review marker, and renumber every formula reference marker, anchor, and index to eight.
+- [x] Replace Entry 01’s two retired references with the verified JDD EGF citation, reassign the peptide-review marker, and renumber every formula reference marker, anchor, and index to eight.
 - [x] Append bottle-label, pale-pink product-background, red-serum still/alt-text, and matching deferred-media validation requirements to the consolidated quota-reset brief without generating media now.
-- [ ] Validate the eight-reference citation revision, push its substantive commit to GitHub main, and save a checkpoint.
+- [x] Validate the eight-reference citation revision, push its substantive commit to GitHub main, and save a checkpoint.
 - [ ] Deferred with the consolidated media pass: apply the Bottle Label lockup to every serum asset, use the chosen normal-composite pale-pink product backdrop, regenerate red-serum stills/alt text and ingredient map, and validate label and pink-surface contrast.
-- [ ] Place the JDD EGF marker after the EGF sentence and the peptide-review marker after the peptide-complex sentence in Entry 01, then revalidate and push the correction.
+- [x] Place the JDD EGF marker after the EGF sentence and the peptide-review marker after the peptide-complex sentence in Entry 01, then revalidate and push the correction.
