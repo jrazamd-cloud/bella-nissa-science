@@ -169,3 +169,5 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Rewrite every visual, font, preload, favicon, responsive-srcset, metadata, JSON-LD, and server reference to local public paths without changing the canonical host.
 - [x] Add portability regression coverage and verify tests, type-check, build output, zero unresolved-storage warnings, asset inclusion, and before/after repository size.
 - [ ] Commit and push the complete portable-asset migration, save a checkpoint without publishing, and report the non-generative image-quota status.
+- [x] Remove the owner-approved unused ritualMineralStill registry entry and its oversized vendored PNG/build copy, then revise only the portable-asset count assertion to 56.
+- [ ] Rebuild the 56-asset portable output, rerun test/type-check/build, push the cleanup, and save the previously blocked checkpoint without publishing.

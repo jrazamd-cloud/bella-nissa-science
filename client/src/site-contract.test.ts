@@ -113,7 +113,7 @@ describe("Bella Nissa Science experience contract", () => {
     const portabilitySources = [home, formula, styles, documentHead, server].join("\n");
     const assetNames = Array.from(new Set(Array.from(portabilitySources.matchAll(/\/(?:media|fonts)\/([A-Za-z0-9._-]+)/g), (match) => match[1])));
     expect(portabilitySources).not.toContain("/manus-storage/");
-    expect(assetNames).toHaveLength(57);
+    expect(assetNames).toHaveLength(56);
     assetNames.forEach((assetName) => {
       const directory = assetName.endsWith(".woff2") ? "fonts" : "media";
       expect(existsSync(resolve(here, "../public", directory, assetName))).toBe(true);
