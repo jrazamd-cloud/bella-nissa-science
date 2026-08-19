@@ -160,4 +160,7 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Create a files-only Shopify/Klaviyo handoff ZIP containing approved product copy, FAQ, brand tokens, references, and existing Cycle 7 image masters with no commerce or policy claims.
 - [x] Record the owner-approved 8–16 second, light-only, palm-scale device amendments in the Cycle 9 and Cycle 12 ritual specifications; retain the generated serum beat as reference-only.
 - [x] Build a zero-generation 16-second 720×1280 stills-based ritual review video with existing Cycle 7 masters, 24fps gentle motion, soft dissolves, H.264 under 2MB, and WebM sibling; stop before integration or media commit.
-- [ ] Report which live images depict an oversized device and provide a no-action correction recommendation with cost/credit implications.
+- [x] Report which live images depict an oversized device and provide a no-action correction recommendation with cost/credit implications.
+- [x] Integrate the approved zero-generation 16-second ritual MP4/WebM and a JPEG exported from its first frame, preserving accessible playback and reduced-motion behavior without publishing.
+- [x] Validate integrated media geometry, duration, byte sizes, temporal order, exact poster-frame match, actual playing-frame chip contrast, responsive output, tests, type-check, and build before one release commit.
+- [x] Provide a report-only audit of every live companion-device image, its inferred scale, and an ordered image-regeneration credit/allowance recommendation without editing any image.

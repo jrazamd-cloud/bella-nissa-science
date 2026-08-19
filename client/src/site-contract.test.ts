@@ -108,13 +108,15 @@ describe("Bella Nissa Science experience contract", () => {
     expect(documentHead).toContain('"@type":"Product"');
   });
 
-  it("keeps skip navigation, accessible protocol wiring, the Karger citation, and the two-step video sources", () => {
+  it("keeps skip navigation, accessible protocol wiring, the Karger citation, and coordinated ritual review sources", () => {
     expect(home).toContain('className="skip-link"');
     expect(formula).toContain('className="skip-link"');
     expect(home).toContain('aria-controls={`use-step-panel-${step.id}`}');
     expect(home).toContain('aria-current={activeStep === index ? "step" : undefined}');
     expect(home).toContain('preload="metadata"');
-    expect(home).toContain('bns-ritual-two-step_74502cd2.webm');
+    expect(home).toContain('bns-cycle12-stills-ritual-review_9dd7299d.mp4');
+    expect(home).toContain('bns-cycle12-stills-ritual-review_f0682928.webm');
+    expect(home).toContain('bns-cycle12-stills-ritual-review-poster_ea33111f.jpg');
     expect(home).toContain('karger.com/spp/article/17/5/232/295389');
   });
 
@@ -139,7 +141,7 @@ describe("Bella Nissa Science experience contract", () => {
     expect(home).toContain('bns-cycle9-ingredient-map-1920_e6acc01e.webp 1920w');
     expect(home).toContain('className="ritual-video-toggle"');
     expect(home).toContain('autoPlay={!reduceMotion}');
-    expect(home).toContain('aria-label="A blonde woman applies a skincare serum, then uses the companion device as part of her skincare ritual"');
+    expect(home).toContain('aria-label="A slow product sequence shows the ruby-red serum with a warm polished gold cap on polished black marble against a pale pink ground, then cross-dissolves to the companion device."');
     expect(home).toContain('RUBY-RED FORMULA');
     expect(home).toContain('POLISHED GOLD');
     expect(home).not.toContain('SATIN SILVER');

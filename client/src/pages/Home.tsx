@@ -18,9 +18,9 @@ const ASSETS = {
   hero: "/manus-storage/bns-cycle7-master-product-system-final_9fe40db9.jpg",
   serum: "/manus-storage/bns-cycle7-serum-final_2280009d.jpg",
   device: "/manus-storage/bns-cycle7-device-final_0e062148.jpg",
-  ritualMotion: "/manus-storage/bns-ritual-two-step_de344aae.mp4",
-  ritualWebm: "/manus-storage/bns-ritual-two-step_74502cd2.webm",
-  ritualPoster: "/manus-storage/bns-ritual-two-step-poster_c33fb4c4.jpg",
+  ritualMotion: "/manus-storage/bns-cycle12-stills-ritual-review_9dd7299d.mp4",
+  ritualWebm: "/manus-storage/bns-cycle12-stills-ritual-review_f0682928.webm",
+  ritualPoster: "/manus-storage/bns-cycle12-stills-ritual-review-poster_ea33111f.jpg",
   ritualMineralStill: "/manus-storage/bns-blonde-device-ritual-mineral-keyframe_7a913bcc.png",
   ingredientMap: "/manus-storage/bns-cycle7-ingredient-map-final_1bd416de.jpg",
 };
@@ -426,7 +426,7 @@ export default function Home() {
               playsInline
               preload="metadata"
               poster={ASSETS.ritualPoster}
-              aria-label="A blonde woman applies a skincare serum, then uses the companion device as part of her skincare ritual"
+              aria-label="A slow product sequence shows the ruby-red serum with a warm polished gold cap on polished black marble against a pale pink ground, then cross-dissolves to the companion device."
               onPlay={() => setRitualPlaying(true)}
               onPause={() => setRitualPlaying(false)}
             ><source src={ASSETS.ritualWebm} type="video/webm" /><source src={ASSETS.ritualMotion} type="video/mp4" /></video>
