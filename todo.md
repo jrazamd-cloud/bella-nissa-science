@@ -158,3 +158,6 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Preserve and present the successful Cycle 12 serum beat with first/middle/last review frames and exact locked prompts; do not integrate or commit media.
 - [x] Run the requested non-destructive release-health audit and report findings without fixing anything unless a test fails.
 - [x] Create a files-only Shopify/Klaviyo handoff ZIP containing approved product copy, FAQ, brand tokens, references, and existing Cycle 7 image masters with no commerce or policy claims.
+- [x] Record the owner-approved 8–16 second, light-only, palm-scale device amendments in the Cycle 9 and Cycle 12 ritual specifications; retain the generated serum beat as reference-only.
+- [x] Build a zero-generation 16-second 720×1280 stills-based ritual review video with existing Cycle 7 masters, 24fps gentle motion, soft dissolves, H.264 under 2MB, and WebM sibling; stop before integration or media commit.
+- [ ] Report which live images depict an oversized device and provide a no-action correction recommendation with cost/credit implications.
