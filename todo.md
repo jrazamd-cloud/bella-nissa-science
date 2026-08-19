@@ -129,3 +129,6 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Generate, integrate, and visually review the Cycle 7 non-video system: master hero, standalone serum, device, ingredient map, ritual poster, and a 1200×630 35,555-byte share image.
 - [x] Validate the integrated non-video Cycle 7 change set at 1440/1024/768/680/390, confirm 24px protocol-link targeting, sampled still/overlay contrast, clean console, and test/typecheck/build.
 - [ ] Deferred pending a video-generation quota that can support the complete deliverable: create and integrate a 14–18 second serum-then-device ritual video, encode MP4 under 2 MB plus WebM, and sample the chip against the brightest actual new video frame.
+- [x] Restore the active fallback-video poster URL and confirm the built page references the matching legacy ritual poster.
+- [ ] Check the exact daily video-generation quota state without consuming a generation attempt when the quota remains unavailable. Current observed generator status is 1/1 free-plan generations used, with no reset window exposed; no fresh read-only quota endpoint is available.
+- [ ] If generation is available, create and integrate the full 14–18 second replacement video and matching Cycle 7 poster in one commit; otherwise document the quota state and stop after the poster correction.

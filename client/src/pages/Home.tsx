@@ -18,7 +18,7 @@ const ASSETS = {
   device: "/manus-storage/bns-cycle7-device-final_0e062148.jpg",
   ritualMotion: "/manus-storage/bns-ritual-two-step_de344aae.mp4",
   ritualWebm: "/manus-storage/bns-ritual-two-step_74502cd2.webm",
-  ritualPoster: "/manus-storage/bns-cycle7-ritual-poster-final_bb2cc59e.jpg",
+  ritualPoster: "/manus-storage/bns-ritual-two-step-poster_c33fb4c4.jpg",
   ritualMineralStill: "/manus-storage/bns-blonde-device-ritual-mineral-keyframe_7a913bcc.png",
   ingredientMap: "/manus-storage/bns-cycle7-ingredient-map-final_1bd416de.jpg",
 };
