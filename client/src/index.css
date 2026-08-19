@@ -214,8 +214,10 @@ h1 em, h2 em { font-style: normal; color: var(--ink); }
 .ingredient-hotspot { position: absolute; z-index: 3; display: grid; width: 24px; height: 24px; margin: -0.5px; padding: 0; border: 0; border-radius: 50%; background: transparent; box-shadow: none; color: var(--emerald); cursor: help; place-items: center; transition: transform 160ms ease, color 160ms ease; }
 .ingredient-hotspot::before { position: absolute; inset: 0.5px; border: 1px solid var(--emerald); border-radius: 50%; background: rgba(248,252,249,0.94); box-shadow: 0 0 0 5px rgba(0,111,88,0.12); content: ""; transition: background 160ms ease; }
 .ingredient-hotspot > span { position: relative; z-index: 1; font-family: var(--font-mono); font-size: 7px; font-variant-numeric: tabular-nums slashed-zero; }
-.ingredient-hotspot:hover, .ingredient-hotspot:focus-visible { color: white; outline: none; transform: scale(1.12); }
-.ingredient-hotspot:hover::before, .ingredient-hotspot:focus-visible::before { background: var(--emerald); }
+.ingredient-hotspot:hover { color: white; transform: scale(1.12); }
+.ingredient-hotspot:hover::before { background: var(--emerald); }
+.ingredient-hotspot:focus-visible { color: white; outline: 2px solid var(--emerald); outline-offset: 3px; transform: scale(1.12); }
+.ingredient-hotspot:focus-visible::before { background: var(--emerald); }
 .ingredient-hotspot--peptides { top: 35%; left: 25.5%; }
 .ingredient-hotspot--nad { top: 51%; left: 42%; }
 .ingredient-hotspot--niacinamide { top: 41%; left: 47%; }
@@ -231,6 +233,7 @@ h1 em, h2 em { font-style: normal; color: var(--ink); }
 .ingredient-hotspot--device:hover .ingredient-tooltip, .ingredient-hotspot--device:focus-visible .ingredient-tooltip { transform: translate(0, 0); }
 .ingredient-hotspot--device[data-tooltip-open="true"] .ingredient-tooltip { transform: translate(0, 0); }
 .ingredient-figure figcaption { position: absolute; right: 22px; bottom: 19px; left: 22px; display: flex; justify-content: space-between; gap: 20px; color: #f6f7f3; background: rgba(5, 16, 12, 0.86); box-shadow: 0 0 0 6px rgba(5, 16, 12, 0.86); font-family: var(--font-mono); font-size: 8px; font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.14em; text-shadow: 0 1px 5px rgba(0,0,0,0.65); }
+.citation-separator { display: inline-block; margin: 0 0.16em; color: var(--emerald); font-size: 0.76em; line-height: 1; vertical-align: super; }
 .ingredient-science__body { display: grid; grid-template-columns: 0.82fr 1.18fr; gap: 8vw; padding: 8vw 0 7.4vw; }
 .ingredient-science__body { position: relative; }
 .ingredient-science__body::before { position: absolute; top: 5.3vw; left: -4.2vw; width: 3vw; height: 1px; content: ""; background: var(--emerald); }
@@ -583,6 +586,9 @@ h1 em, h2 em { font-style: normal; color: var(--ink); }
 .motion-education__visual::before { background: linear-gradient(145deg, rgba(255,238,211,0.15), rgba(249,249,240,0.02) 44%, rgba(20,76,50,0.12)); mix-blend-mode: normal; }
 .motion-education__visual::after { background: linear-gradient(180deg, rgba(21,24,20,0.03), transparent 42%, rgba(7,9,8,0.56)); }
 .ritual-plant-overlay { position: absolute; z-index: 1; right: 2%; bottom: -2%; width: 31%; max-width: 230px; opacity: 0.96; filter: drop-shadow(0 10px 18px rgba(16,38,25,0.24)); mix-blend-mode: multiply; pointer-events: none; }
+.ritual-video-toggle { position: absolute; z-index: 4; top: 20px; right: 20px; display: inline-flex; min-width: 24px; min-height: 24px; align-items: center; gap: 7px; padding: 7px 10px; border: 1px solid rgba(222, 255, 239, 0.48); border-radius: 999px; background: rgba(5, 16, 12, 0.86); box-shadow: 0 5px 18px rgba(0,0,0,0.3); color: #f6f7f3; font-family: var(--font-mono); font-size: 8px; font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.12em; text-transform: uppercase; }
+.ritual-video-toggle:hover { background: #006f58; color: #fff; }
+.ritual-video-toggle:focus-visible { outline: 2px solid var(--emerald); outline-offset: 3px; }
 @media (max-width: 680px) { .ritual-video { object-position: 52% center; } .ritual-plant-overlay { right: -4%; bottom: -1%; width: 36%; } }
 
 /* Final anatomy system: hand-authored, high-contrast vector linework with a dedicated label gutter. */
@@ -640,6 +646,7 @@ h3, h4, .product-feature h3, .concern-card h3, .ingredient-science__intro h3, .p
 .brand-link, button, .ingredient-hotspot { transition: color 160ms ease, background-color 160ms ease, border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease; }
 .brand-link--on-light:hover { color: #006f58 !important; }
 .brand-link--on-dark:hover { color: #a7ddc4 !important; }
+.formula-reference-disclaimer { max-width: 62ch; margin: 22px 0 0; color: var(--slate); font-size: 11px; line-height: 1.65; }
 
 @media (max-width: 680px) {
   .motion-education__visual-mark { top: 18px; left: 18px; font-size: 8px; }
@@ -653,4 +660,5 @@ h3, h4, .product-feature h3, .concern-card h3, .ingredient-science__intro h3, .p
 
 @media (prefers-reduced-motion: reduce) {
   .motion-education__visual-mark { opacity: 1; transform: none; }
+  .ritual-video { animation: none; }
 }

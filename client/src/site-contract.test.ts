@@ -10,6 +10,8 @@ const styles = readFileSync(resolve(here, "index.css"), "utf8");
 const documentHead = readFileSync(resolve(here, "../index.html"), "utf8");
 const app = readFileSync(resolve(here, "App.tsx"), "utf8");
 const server = readFileSync(resolve(here, "../../server/index.ts"), "utf8");
+const robots = readFileSync(resolve(here, "../public/robots.txt"), "utf8");
+const sitemap = readFileSync(resolve(here, "../public/sitemap.xml"), "utf8");
 
 describe("Bella Nissa Science experience contract", () => {
   it("keeps the hero headline as staged semantic text", () => {
@@ -128,6 +130,33 @@ describe("Bella Nissa Science experience contract", () => {
     expect(styles).toContain('.ingredient-hotspot { position: absolute; z-index: 3; display: grid; width: 24px; height: 24px;');
     expect(styles).toContain('.ingredient-hotspot { width: 24px; height: 24px; margin: -2.5px; }');
     expect(styles).toContain('.desktop-nav a::after, .brand::after, .header-action::after, .text-link::after, .product-link::after, .formula-link::after, .ingredient-references a::after');
+  });
+
+  it("keeps Cycle 9 product, responsive-media, accessibility, and route metadata safeguards", () => {
+    expect(home).toContain('bns-cycle9-hero-480_c4acdc79.webp 480w');
+    expect(home).toContain('bns-cycle9-serum-1920_ecadc3bc.webp 1920w');
+    expect(home).toContain('bns-cycle9-device-1920_adfeb55d.webp 1920w');
+    expect(home).toContain('bns-cycle9-ingredient-map-1920_e6acc01e.webp 1920w');
+    expect(home).toContain('className="ritual-video-toggle"');
+    expect(home).toContain('autoPlay={!reduceMotion}');
+    expect(home).toContain('aria-label="A blonde woman applies a skincare serum, then uses the companion device as part of her skincare ritual"');
+    expect(home).toContain('RUBY-RED FORMULA');
+    expect(home).toContain('POLISHED GOLD');
+    expect(home).not.toContain('SATIN SILVER');
+    expect(home).not.toContain('silver hardware');
+    expect(styles).toContain('.ingredient-hotspot:focus-visible { color: white; outline: 2px solid var(--emerald); outline-offset: 3px; transform: scale(1.12); }');
+    expect(formula).toContain('bns-cycle9-serum-480_8f77fbe8.webp 480w');
+    expect(formula).not.toContain('bns-serum-laboratory');
+    expect(formula).toContain('target="_blank" rel="noopener noreferrer"');
+    expect(formula).toContain('References describe published research on individual ingredients. They are not claims about this finished product.');
+    expect(formula).toContain('const formulaMetadata');
+    expect(formula).toContain('formulaMetadata.url');
+    expect(documentHead).toContain('imagesrcset=');
+    expect(server).toContain('if (req.path !== "/formula")');
+    expect(server).toContain('renderFormulaDocument(template)');
+    expect(server).toContain(".replaceAll('content=\"Bella Nissa Science — Clinical Skincare, Calibrated\"'");
+    expect(robots).toContain('Sitemap: https://bella-nissa-science.manus.space/sitemap.xml');
+    expect(sitemap).toContain('https://bella-nissa-science.manus.space/formula');
   });
 });
 

@@ -1,14 +1,16 @@
 /**
- * Clinical Atelier design system: luminous white fields, silver hardware, and calibration-emerald accents.
+ * Clinical Atelier design system: pale-pink fields, polished-gold hardware, and calibration-emerald accents.
  * The layout treats Bella Nissa Science as a connected serum-and-device protocol rather than a conventional beauty catalogue.
  */
-import { useEffect, useRef, useState, type FocusEvent, type PointerEvent } from "react";
+import { Fragment, useEffect, useRef, useState, type FocusEvent, type PointerEvent } from "react";
 import ArrowDownRight from "lucide-react/dist/esm/icons/arrow-down-right";
 import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
 import ChevronRight from "lucide-react/dist/esm/icons/chevron-right";
 import Menu from "lucide-react/dist/esm/icons/menu";
 import Minus from "lucide-react/dist/esm/icons/minus";
+import Pause from "lucide-react/dist/esm/icons/pause";
 import Plus from "lucide-react/dist/esm/icons/plus";
+import Play from "lucide-react/dist/esm/icons/play";
 import X from "lucide-react/dist/esm/icons/x";
 
 const ASSETS = {
@@ -23,12 +25,12 @@ const ASSETS = {
   ingredientMap: "/manus-storage/bns-cycle7-ingredient-map-final_1bd416de.jpg",
 };
 
-type ResponsiveImageConfig = { src: string; sizes: string; width: number; height: number; webp?: string; fallback?: string };
+type ResponsiveImageConfig = { src: string; sizes: string; width: number; height: number; webp: string; fallback: string };
 const RESPONSIVE_IMAGES: Record<"hero" | "serum" | "device" | "ingredientMap", ResponsiveImageConfig> = {
-  hero: { src: ASSETS.hero, sizes: "(max-width: 600px) 100vw, 54vw", width: 1536, height: 864 },
-  serum: { src: ASSETS.serum, sizes: "(max-width: 680px) 100vw, 50vw", width: 1024, height: 1365 },
-  device: { src: ASSETS.device, sizes: "(max-width: 680px) 100vw, 50vw", width: 1024, height: 1365 },
-  ingredientMap: { src: ASSETS.ingredientMap, sizes: "(max-width: 680px) 100vw, 86vw", width: 1536, height: 864 },
+  hero: { src: "/manus-storage/bns-cycle9-hero-1440_d401d83a.jpg", sizes: "(max-width: 600px) 100vw, 54vw", width: 1920, height: 1080, webp: "/manus-storage/bns-cycle9-hero-480_c4acdc79.webp 480w, /manus-storage/bns-cycle9-hero-768_e4f067f2.webp 768w, /manus-storage/bns-cycle9-hero-1024_99e60e3a.webp 1024w, /manus-storage/bns-cycle9-hero-1440_352e5955.webp 1440w, /manus-storage/bns-cycle9-hero-1920_d36325aa.webp 1920w", fallback: "/manus-storage/bns-cycle9-hero-480_319a1f5d.jpg 480w, /manus-storage/bns-cycle9-hero-768_6885b17d.jpg 768w, /manus-storage/bns-cycle9-hero-1024_e414f50f.jpg 1024w, /manus-storage/bns-cycle9-hero-1440_d401d83a.jpg 1440w, /manus-storage/bns-cycle9-hero-1920_d4ca200d.jpg 1920w" },
+  serum: { src: "/manus-storage/bns-cycle9-serum-1440_d013724f.jpg", sizes: "(max-width: 680px) 100vw, 50vw", width: 1920, height: 2560, webp: "/manus-storage/bns-cycle9-serum-480_8f77fbe8.webp 480w, /manus-storage/bns-cycle9-serum-768_5a1d8911.webp 768w, /manus-storage/bns-cycle9-serum-1024_ce163f2e.webp 1024w, /manus-storage/bns-cycle9-serum-1440_ca989e75.webp 1440w, /manus-storage/bns-cycle9-serum-1920_ecadc3bc.webp 1920w", fallback: "/manus-storage/bns-cycle9-serum-480_eef061f4.jpg 480w, /manus-storage/bns-cycle9-serum-768_d1911094.jpg 768w, /manus-storage/bns-cycle9-serum-1024_ce1a8fa0.jpg 1024w, /manus-storage/bns-cycle9-serum-1440_d013724f.jpg 1440w, /manus-storage/bns-cycle9-serum-1920_ba61fb83.jpg 1920w" },
+  device: { src: "/manus-storage/bns-cycle9-device-1440_aa15852b.jpg", sizes: "(max-width: 680px) 100vw, 50vw", width: 1920, height: 2560, webp: "/manus-storage/bns-cycle9-device-480_b52769a7.webp 480w, /manus-storage/bns-cycle9-device-768_9ec18452.webp 768w, /manus-storage/bns-cycle9-device-1024_d74af6e3.webp 1024w, /manus-storage/bns-cycle9-device-1440_a403f179.webp 1440w, /manus-storage/bns-cycle9-device-1920_adfeb55d.webp 1920w", fallback: "/manus-storage/bns-cycle9-device-480_33070fd7.jpg 480w, /manus-storage/bns-cycle9-device-768_a83aba24.jpg 768w, /manus-storage/bns-cycle9-device-1024_99b8c221.jpg 1024w, /manus-storage/bns-cycle9-device-1440_aa15852b.jpg 1440w, /manus-storage/bns-cycle9-device-1920_c3ebc302.jpg 1920w" },
+  ingredientMap: { src: "/manus-storage/bns-cycle9-ingredient-map-1440_18650846.jpg", sizes: "(max-width: 680px) 100vw, 86vw", width: 1920, height: 1080, webp: "/manus-storage/bns-cycle9-ingredient-map-480_27c02cd5.webp 480w, /manus-storage/bns-cycle9-ingredient-map-768_adbbdce5.webp 768w, /manus-storage/bns-cycle9-ingredient-map-1024_18f6cf2f.webp 1024w, /manus-storage/bns-cycle9-ingredient-map-1440_591b253a.webp 1440w, /manus-storage/bns-cycle9-ingredient-map-1920_e6acc01e.webp 1920w", fallback: "/manus-storage/bns-cycle9-ingredient-map-480_819d9893.jpg 480w, /manus-storage/bns-cycle9-ingredient-map-768_4511d20d.jpg 768w, /manus-storage/bns-cycle9-ingredient-map-1024_7483e989.jpg 1024w, /manus-storage/bns-cycle9-ingredient-map-1440_18650846.jpg 1440w, /manus-storage/bns-cycle9-ingredient-map-1920_7a9cb0ea.jpg 1920w" },
 };
 
 type ResponsiveImageName = keyof typeof RESPONSIVE_IMAGES;
@@ -151,7 +153,7 @@ const formulaReferences = [
 ];
 
 function CitationMarkers({ references }: { references: number[] }) {
-  return <>{references.map((reference) => <sup key={reference}><a className="brand-link brand-link--on-light" href={`#ingredient-ref-${reference}`} aria-label={`Read reference ${reference}`}>{reference}</a></sup>)}</>;
+  return <>{references.map((reference, index) => <Fragment key={reference}>{index > 0 ? <span className="citation-separator" aria-hidden="true">·</span> : null}<sup><a className="brand-link brand-link--on-light" href={`#ingredient-ref-${reference}`} aria-label={`Read reference ${reference}`}>{reference}</a></sup></Fragment>)}</>;
 }
 
 function Wordmark({ inverse = false }: { inverse?: boolean }) {
@@ -169,10 +171,37 @@ export default function Home() {
   const [openUsageStep, setOpenUsageStep] = useState<number | null>(0);
   const [heroProgress, setHeroProgress] = useState(0);
   const [ritualVisible, setRitualVisible] = useState(false);
+  const [reduceMotion, setReduceMotion] = useState(() => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
+  const [ritualPlaying, setRitualPlaying] = useState(false);
   const heroRef = useRef<HTMLElement | null>(null);
   const ritualRef = useRef<HTMLElement | null>(null);
+  const ritualVideoRef = useRef<HTMLVideoElement | null>(null);
 
   const activeProtocol = protocol[activeStep];
+
+  useEffect(() => {
+    const mediaQuery = window.matchMedia("(prefers-reduced-motion: reduce)");
+    const syncMotionPreference = () => {
+      setReduceMotion(mediaQuery.matches);
+      if (mediaQuery.matches) {
+        ritualVideoRef.current?.pause();
+        setRitualPlaying(false);
+      }
+    };
+    syncMotionPreference();
+    mediaQuery.addEventListener("change", syncMotionPreference);
+    return () => mediaQuery.removeEventListener("change", syncMotionPreference);
+  }, []);
+
+  const toggleRitualPlayback = () => {
+    const video = ritualVideoRef.current;
+    if (!video) return;
+    if (video.paused) {
+      void video.play().catch(() => setRitualPlaying(false));
+      return;
+    }
+    video.pause();
+  };
 
   useEffect(() => {
     const updateScrollScenes = () => {
@@ -219,7 +248,7 @@ export default function Home() {
       <a className="skip-link" href="#main-content">Skip to main content</a>
       <header className="site-header">
         <a className="brand site-link brand-link brand-link--on-light" href="#top" aria-label="Bella Nissa Science home">
-          <img src={ASSETS.logo} alt="BNS scientific emblem" width="100" height="100" loading="eager" decoding="async" />
+          <img src={ASSETS.logo} alt="Bella Nissa Science emblem" width="100" height="100" loading="eager" decoding="async" />
           <Wordmark />
         </a>
 
@@ -298,7 +327,7 @@ export default function Home() {
         <section className="proof-strip" aria-label="Brand principles">
           <p>FORMULATION <span>+</span> METHOD</p>
           <div className="proof-rule" />
-          <p>FROSTED WHITE <span>·</span> SATIN SILVER <span>·</span> CALIBRATION EMERALD</p>
+          <p>RUBY-RED FORMULA <span>·</span> POLISHED GOLD <span>·</span> CALIBRATION EMERALD</p>
           <div className="proof-badge"><img src={ASSETS.logo} alt="" width="100" height="100" loading="lazy" decoding="async" /></div>
         </section>
 
@@ -326,7 +355,7 @@ export default function Home() {
             <div className="product-feature__content">
               <p className="product-label">Bioactive Renewal Serum</p>
               <h3>Start with the formula.</h3>
-              <p>Frosted glass, measured presentation, and a formula-first point of entry for the Bella Nissa Science system.</p>
+              <p>A ruby-red formula with polished-gold presentation, creating a formula-first point of entry for the Bella Nissa Science system.</p>
               <a className="product-link brand-link brand-link--on-light" href="#protocol">Explore serum <ArrowUpRight size={17} /></a>
             </div>
           </article>
@@ -337,7 +366,7 @@ export default function Home() {
               <span>Companion device</span>
             </div>
             <div className="product-feature__image-wrap">
-              <ResponsiveImage name="device" alt="Bella Nissa Science absorption and massage device" />
+              <ResponsiveImage name="device" alt="Bella Nissa Science absorption and massage device with warm polished gold hardware on a polished black marble surface" />
               <span className="image-index">BNS / 02</span>
             </div>
             <div className="product-feature__content">
@@ -352,20 +381,26 @@ export default function Home() {
         <section ref={ritualRef} className="motion-education" id="ritual" aria-labelledby="ritual-title">
           <div className="motion-education__visual">
             <video
+              ref={ritualVideoRef}
               className="ritual-video"
-              autoPlay
+              autoPlay={!reduceMotion}
               muted
               loop
               playsInline
               preload="metadata"
               poster={ASSETS.ritualPoster}
-              aria-label="A blonde woman applies translucent ruby-red Bella Nissa Science serum, then uses the companion device as part of her skincare ritual"
+              aria-label="A blonde woman applies a skincare serum, then uses the companion device as part of her skincare ritual"
+              onPlay={() => setRitualPlaying(true)}
+              onPause={() => setRitualPlaying(false)}
             ><source src={ASSETS.ritualWebm} type="video/webm" /><source src={ASSETS.ritualMotion} type="video/mp4" /></video>
             <img className="ritual-plant-overlay" src="/manus-storage/bns-ritual-plant-overlay-368_134c1e48.webp" alt="" aria-hidden="true" width="368" height="368" loading="lazy" decoding="async" />
             <div className={`motion-education__visual-mark ${ritualVisible ? "is-visible" : ""}`} aria-hidden="true">
               <img src={ASSETS.logo} alt="" width="100" height="100" loading="lazy" decoding="async" />
               <span>RITUAL / IN MOTION</span>
             </div>
+            <button className="ritual-video-toggle" type="button" onClick={toggleRitualPlayback} aria-label={ritualPlaying ? "Pause ritual video" : "Play ritual video"} aria-pressed={ritualPlaying}>
+              {ritualPlaying ? <Pause size={14} aria-hidden="true" /> : <Play size={14} aria-hidden="true" />}<span>{ritualPlaying ? "Pause motion" : "Play motion"}</span>
+            </button>
             <p className="motion-education__caption">METHOD / a calm, deliberate application pass after formula.</p>
           </div>
 
@@ -414,7 +449,7 @@ export default function Home() {
               <h2 id="ingredient-science-title">An active formula,<br /><em>seen in context.</em></h2>
             </div>
             <div className="ingredient-science__annotation">
-              <div className="ingredient-science__seal"><img src={ASSETS.logo} alt="BNS molecular badge" width="100" height="100" loading="lazy" decoding="async" /><span>FORMULATION<br />AUTHORITY</span></div>
+              <div className="ingredient-science__seal"><img src={ASSETS.logo} alt="" width="100" height="100" loading="lazy" decoding="async" /><span>FORMULATION<br />AUTHORITY</span></div>
               <p>The serum sits at the surface of the ritual. The companion device follows with a directed application pass over the serum layer—an intentional finish, not a claim of deep or clinical delivery.</p>
             </div>
           </div>
@@ -494,7 +529,7 @@ export default function Home() {
                 <div className="section-kicker section-kicker--light">03 / Your protocol</div>
                 <h2 id="protocol-title">The sequence<br />is the signal.</h2>
               </div>
-              <img src={ASSETS.logo} alt="BNS emblem" width="100" height="100" loading="lazy" decoding="async" />
+              <img src={ASSETS.logo} alt="" width="100" height="100" loading="lazy" decoding="async" />
             </div>
 
             <div className="protocol-workspace">
@@ -563,7 +598,7 @@ export default function Home() {
             </div>
           </div>
           <div className="closing-stamp">
-            <img src={ASSETS.logo} alt="BNS scientific emblem" width="100" height="100" loading="lazy" decoding="async" />
+            <img src={ASSETS.logo} alt="" width="100" height="100" loading="lazy" decoding="async" />
             <p>BELLA NISSA<br />SCIENCE</p>
           </div>
         </section>
@@ -571,7 +606,7 @@ export default function Home() {
 
       <footer className="site-footer">
         <a className="brand brand--footer site-link brand-link brand-link--footer brand-link--on-dark" href="#top">
-          <img src={ASSETS.logo} alt="BNS scientific emblem" width="100" height="100" loading="lazy" decoding="async" />
+          <img src={ASSETS.logo} alt="" width="100" height="100" loading="lazy" decoding="async" />
           <Wordmark inverse />
         </a>
         <p>Clinical skincare, calibrated.</p>

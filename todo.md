@@ -132,3 +132,14 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Restore the active fallback-video poster URL and confirm the built page references the matching legacy ritual poster.
 - [ ] Check the exact daily video-generation quota state without consuming a generation attempt when the quota remains unavailable. Current observed generator status is 1/1 free-plan generations used, with no reset window exposed; no fresh read-only quota endpoint is available.
 - [ ] If generation is available, create and integrate the full 14–18 second replacement video and matching Cycle 7 poster in one commit; otherwise document the quota state and stop after the poster correction.
+- [x] Cycle 9: align Formula Detail serum media with the existing Cycle 7 ruby-red/gold serum master and create only deterministic derivatives from existing assets.
+- [x] Cycle 9: register working Home responsive WebP/JPEG srcsets for hero, serum, device, and ingredient map without generating media.
+- [x] Cycle 9: add an accessible ritual video play/pause control and reduced-motion non-autoplay behavior.
+- [x] Cycle 9: restore visible emerald focus indication on ingredient hotspots without changing hover behavior.
+- [x] Cycle 9: revise the fallback-video aria-label to describe the footage actually shipping, reserving ruby/gold wording for the coordinated future video/poster swap.
+- [x] Cycle 9: replace visible silver/frosted-white art-direction copy with ruby-red formula and polished-gold language only.
+- [x] Cycle 9: add Formula Detail reference disclaimer, secure outbound-link attributes, route-specific metadata, and citation-marker separation.
+- [x] Cycle 9: add robots.txt and sitemap.xml for the home and Formula Detail routes using the configured canonical host.
+- [x] Cycle 9: reconcile device and emblem alternative text so decorative emblems are empty and exactly one meaningful brand mark remains named.
+- [x] Cycle 9: commit the exact quota-reset ritual-video prompt, negative prompt, parameters, encoding requirements, and acceptance checks without generating media.
+- [x] Cycle 9: verify the reverted fallback poster’s intrinsic dimensions, video aspect match, first-frame stability, CLS, and decode timing without changing the product-name conflict or subscription.
