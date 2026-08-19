@@ -72,8 +72,8 @@ const protocol = [
     id: "02",
     eyebrow: "Formula / 02",
     title: "Apply the serum first.",
-    body: "Dispense the Bioactive Renewal Serum and smooth it over the face as the formula-led opening to the system.",
-    note: "BIOACTIVE RENEWAL SERUM",
+    body: "Dispense the Rejuvenating Bioactive Precision Serum and smooth it over the face as the formula-led opening to the system.",
+    note: "REJUVENATING BIOACTIVE PRECISION SERUM",
   },
   {
     id: "03",
@@ -93,7 +93,7 @@ const protocol = [
 
 const usageSteps = [
   { id: "01", title: "Cleanse, then prepare", body: "Begin with clean, dry skin. Keep the application simple and use the serum and device only as directed in their final product instructions.", note: "START WITH FRESHLY CLEANSED SKIN" },
-  { id: "02", title: "Apply the serum", body: "Dispense the Bioactive Renewal Serum and spread it in a light, even layer across the areas you want to include in your ritual.", note: "FORMULA / THE FIRST STEP" },
+  { id: "02", title: "Apply the serum", body: "Dispense the Rejuvenating Bioactive Precision Serum and spread it in a light, even layer across the areas you want to include in your ritual.", note: "FORMULA / THE FIRST STEP" },
   { id: "03", title: "Follow with the device", body: "After application, use the companion device in gentle, deliberate passes over the serum layer. Do not treat this as a deep-delivery or therapeutic step.", note: "METHOD / GUIDED SURFACE APPLICATION" },
   { id: "04", title: "Complete your routine", body: "Allow the ritual to settle, then continue with the remainder of your usual skincare routine as desired. Pause use if discomfort occurs.", note: "RETURN TO YOUR ROUTINE" },
 ];
@@ -150,6 +150,33 @@ const formulaReferences = [
   { id: 5, title: "Ectoin: An Effective Natural Substance to Prevent UVA-Induced Premature Photoaging", journal: "Skin Pharmacology and Physiology", href: "https://karger.com/spp/article/17/5/232/295389/Ectoin-An-Effective-Natural-Substance-to-Prevent" },
   { id: 6, title: "Benefits of topical hyaluronic acid for skin quality and signs of skin aging", journal: "Dermatology and Therapy", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10078143/" },
   { id: 7, title: "Exploring the Safety and Efficacy of Glutathione", journal: "Antioxidants", href: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11862975/" },
+];
+
+const faqEntries = [
+  {
+    question: "How do I use the serum and the device together?",
+    answer: "Use the serum first on freshly cleansed skin, then use the device in gentle, deliberate passes over the serum layer.",
+  },
+  {
+    question: "Do I need the device, or can I use the serum on its own?",
+    answer: "The serum and device have distinct roles: the serum begins the ritual, and the device is made to follow it.",
+  },
+  {
+    question: "Is this a cosmetic or a medical product?",
+    answer: "Bella Nissa Science products are cosmetics. They are not intended to diagnose, treat, cure, or prevent any disease.",
+  },
+  {
+    question: "Are the studies you cite about this finished product?",
+    answer: "References describe published research on individual ingredients. They are not claims about this finished product.",
+  },
+  {
+    question: "Which ingredients are in the formula, and why these together?",
+    answer: "Read the ingredient section for: Epidermal growth factor (sh-Oligopeptide-1) and peptides; NAD+; Niacinamide (vitamin B3) and adenosine; Ectoin; Hyaluronic acid (sodium hyaluronate); and Topical glutathione.",
+  },
+  {
+    question: "Where can I read more about the formulation?",
+    answer: "You can read more in the Formula Detail page.",
+  },
 ];
 
 function CitationMarkers({ references }: { references: number[] }) {
@@ -254,7 +281,6 @@ export default function Home() {
   return (
     <div className="site-shell" id="top">
       <a className="skip-link" href="#main-content">Skip to main content</a>
-      <div className="founder-trust-bar"><p>Vetted by our founder — a physician with 30 years of experience.</p></div>
       <header className={`site-header ${headerScrolled ? "site-header--scrolled" : ""}`}>
         <a className="brand site-link brand-link brand-link--on-light" href="#top" aria-label="Bella Nissa Science home">
           <img src={ASSETS.logo} alt="Bella Nissa Science emblem" width="100" height="100" loading="eager" decoding="async" />
@@ -333,6 +359,8 @@ export default function Home() {
           </div>
         </section>
 
+        <div className="founder-trust-bar"><p>Vetted by our founder — a physician with 30 years of experience.</p></div>
+
         <section className="proof-strip" aria-label="Brand principles">
           <p>FORMULATION <span>+</span> METHOD</p>
           <div className="proof-rule" />
@@ -355,14 +383,14 @@ export default function Home() {
           <article className="product-feature product-feature--serum" id="formula">
             <div className="product-feature__meta">
               <span>01 / Formula</span>
-              <span>30 mL</span>
+              <span>30 ML (1.01 FL OZ)</span>
             </div>
             <div className="product-feature__image-wrap">
               <ResponsiveImage name="serum" alt="Bella Nissa Science serum with a translucent ruby-red formula and warm polished gold label hardware" />
               <span className="image-index">BNS / 01</span>
             </div>
             <div className="product-feature__content">
-              <p className="product-label">Bioactive Renewal Serum</p>
+              <p className="product-label">Rejuvenating Bioactive Precision Serum</p>
               <h3>Start with the formula.</h3>
               <p>A ruby-red formula with polished-gold presentation, creating a formula-first point of entry for the Bella Nissa Science system.</p>
               <a className="product-link brand-link brand-link--on-light" href="#protocol">Explore serum <ArrowUpRight size={17} /></a>
@@ -584,7 +612,7 @@ export default function Home() {
               <div className="system-role-card__index"><span>01</span><span>FORMULA</span></div>
               <div className="silver-specimen"><span>Serum</span><i /><i /><i /><i /></div>
               <h3>The opening layer</h3>
-              <p>The Bioactive Renewal Serum is the first applied component: a focused formula step placed directly after cleansing.</p>
+              <p>The Rejuvenating Bioactive Precision Serum is the first applied component: a focused formula step placed directly after cleansing.</p>
               <span className="system-role-card__tag">CLEAN SKIN → SERUM</span>
             </article>
             <article className="system-role-card system-role-card--method">
@@ -609,6 +637,23 @@ export default function Home() {
           <div className="closing-stamp">
             <img src={ASSETS.logo} alt="" width="100" height="100" loading="lazy" decoding="async" />
             <p>BELLA NISSA<br />SCIENCE</p>
+          </div>
+        </section>
+
+        <section className="faq-section" id="questions" aria-labelledby="questions-title">
+          <div className="faq-section__head">
+            <div className="section-kicker">Questions / 06</div>
+            <h2 id="questions-title">Questions,<br /><em>answered plainly.</em></h2>
+          </div>
+          <div className="faq-list">
+            {faqEntries.map((entry, index) => (
+              <details className="faq-item" key={entry.question}>
+                <summary><span>{String(index + 1).padStart(2, "0")}</span>{entry.question}</summary>
+                <div className="faq-item__answer">
+                  {index === 4 ? <p><a className="brand-link brand-link--on-light" href="#ingredients">Read the ingredient section</a> for: Epidermal growth factor (sh-Oligopeptide-1) and peptides; NAD+; Niacinamide (vitamin B3) and adenosine; Ectoin; Hyaluronic acid (sodium hyaluronate); and Topical glutathione.</p> : index === 5 ? <p>You can read more in the <a className="brand-link brand-link--on-light" href="/formula">Formula Detail page</a>.</p> : <p>{entry.answer}</p>}
+                </div>
+              </details>
+            ))}
           </div>
         </section>
       </main>

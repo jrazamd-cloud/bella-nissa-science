@@ -152,9 +152,9 @@ describe("Bella Nissa Science experience contract", () => {
     expect(formula).toContain('const formulaMetadata');
     expect(formula).toContain('formulaMetadata.url');
     expect(documentHead).toContain('imagesrcset=');
-    expect(server).toContain('if (req.path !== "/formula")');
+    expect(server).toContain('if (req.path !== "/formula" && !policyTitle)');
     expect(server).toContain('renderFormulaDocument(template)');
-    expect(server).toContain(".replaceAll('content=\"Bella Nissa Science — Clinical Skincare, Calibrated\"'");
+    expect(server).toContain(".replaceAll('content=\"Rejuvenating Bioactive Precision Serum | Bella Nissa Science\"'");
     expect(robots).toContain('Sitemap: https://bella-nissa-science.manus.space/sitemap.xml');
     expect(home).toContain('Vetted by our founder — a physician with 30 years of experience.');
     expect(home).toContain('site-header--scrolled');
@@ -167,6 +167,31 @@ describe("Bella Nissa Science experience contract", () => {
     expect(styles).toContain('[id] { scroll-margin-top: calc(var(--sticky-header-height) + 16px); }');
     expect(styles).toContain('color-scheme: light');
     expect(documentHead).toContain('<meta name="color-scheme" content="light" />');
+    expect(home).toContain('Rejuvenating Bioactive Precision Serum');
+    expect(home).not.toContain(["Bioactive", "Renewal Serum"].join(" "));
+    expect(home).toContain('30 ML (1.01 FL OZ)');
+    expect(home).toContain("skin’s natural renewal");
+    expect(documentHead).toContain('"@type":"FAQPage"');
+    expect(home).toContain('<details className="faq-item"');
+    expect(home).toContain('<summary><span>{String(index + 1).padStart(2, "0")}</span>{entry.question}</summary>');
+    expect(styles).toContain('.faq-item summary:focus-visible { outline: 2px solid #00a97f; outline-offset: 3px; }');
+    expect(server).toContain('const policyTitles: Record<string, string>');
+    expect(server).toContain('renderPolicyDocument(template, policyTitle)');
+    [
+      "How do I use the serum and the device together?",
+      "Do I need the device, or can I use the serum on its own?",
+      "Is this a cosmetic or a medical product?",
+      "Are the studies you cite about this finished product?",
+      "Which ingredients are in the formula, and why these together?",
+      "Where can I read more about the formulation?",
+    ].forEach((question) => expect(home).toContain(question));
+    expect(home).toContain("Bella Nissa Science products are cosmetics. They are not intended to diagnose, treat, cure, or prevent any disease.");
+    expect(home).toContain("References describe published research on individual ingredients. They are not claims about this finished product.");
+    const faqSource = home.slice(home.indexOf("const faqEntries"), home.indexOf("function CitationMarkers"));
+    const faqWithoutRequiredDisclaimers = faqSource
+      .replace("Bella Nissa Science products are cosmetics. They are not intended to diagnose, treat, cure, or prevent any disease.", "")
+      .replace("References describe published research on individual ingredients. They are not claims about this finished product.", "");
+    expect(faqWithoutRequiredDisclaimers).not.toMatch(/\b(repair|stimulate|inhibit|prevent|photoaging|heal|treat|cure)\b/i);
     expect(sitemap).toContain('https://bella-nissa-science.manus.space/formula');
   });
 });

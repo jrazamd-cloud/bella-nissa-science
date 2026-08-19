@@ -14,11 +14,11 @@ function Router() {
       <Switch>
         <Route path={"/"} component={Home} />
         <Route path={"/formula"} component={FormulaDetail} />
-        <Route path={"/contact"} component={PolicyPlaceholder} />
-        <Route path={"/privacy"} component={PolicyPlaceholder} />
-        <Route path={"/terms"} component={PolicyPlaceholder} />
-        <Route path={"/shipping-returns"} component={PolicyPlaceholder} />
-        <Route path={"/accessibility"} component={PolicyPlaceholder} />
+        <Route path={"/contact"}>{() => <PolicyPlaceholder title="Contact" />}</Route>
+        <Route path={"/privacy"}>{() => <PolicyPlaceholder title="Privacy Policy" />}</Route>
+        <Route path={"/terms"}>{() => <PolicyPlaceholder title="Terms of Service" />}</Route>
+        <Route path={"/shipping-returns"}>{() => <PolicyPlaceholder title="Shipping and Returns" />}</Route>
+        <Route path={"/accessibility"}>{() => <PolicyPlaceholder title="Accessibility Statement" />}</Route>
         <Route path={"/404"} component={NotFound} />
         {/* Final fallback route */}
         <Route component={NotFound} />

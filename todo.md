@@ -147,3 +147,8 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Cycle 10: make the header sticky with an on-scroll separator, reduced-motion-safe behavior, and scroll-margin offsets for every in-page target.
 - [x] Cycle 10: add footer policy/contact scaffolding, the required cosmetic clarifier, and five non-dead placeholder routes without inventing legal copy.
 - [x] Cycle 10: explicitly declare and validate a light color scheme in document metadata and root CSS when the operating system prefers dark mode.
+- [x] Cycle 11: relocate the exact founder trust bar immediately after the hero, retaining its semantic mono treatment, accessible contrast, sticky-header height, and anchor-offset behavior.
+- [x] Cycle 11: replace only product-name instances with Rejuvenating Bioactive Precision Serum, including 30 ML (1.01 FL OZ), metadata, JSON-LD, and Formula Detail while preserving ingredient-language uses of natural renewal.
+- [x] Cycle 11: give each of the five policy placeholder routes its own page h1, document title, and home link while retaining exactly one placeholder sentence and no policy copy.
+- [x] Cycle 11: add only the user-authorised six-question native-details FAQ with verified existing-site answers, FAQPage JSON-LD matching visible copy, no unsupplied commercial/product facts, and no banned claim language.
+- [x] Cycle 11: validate the FAQ disclosures and JSON-LD at 1440/1024/390, including open/closed states, native keyboard operation, focus indication, and reduced-motion behavior.

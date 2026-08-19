@@ -76,7 +76,7 @@ p { max-width: 62ch; }
 .section-kicker, .mono-label, .product-label, .product-feature__meta, .proof-strip p, .image-index, .hero-stage__badge, .hero-stage__scale, .formula-link, .formula-scroll, .formula-back, .formula-return, .ingredient-list__dot, .ingredient-references > li > span, .ingredient-references a, .ingredient-figure figcaption, .protocol-tab span, .protocol-reading__note, .system-role-card__index, .system-role-card__tag, .site-footer > p, .hero-epilogue, .wordmark small { font-family: var(--font-mono) !important; font-weight: 400; font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.14em !important; text-transform: uppercase; }
 
 .site-shell { overflow-x: clip; background: var(--paper); }
-.founder-trust-bar { display: grid; min-height: 34px; place-items: center; padding: 8px 20px; border-bottom: 1px solid rgba(0, 77, 62, 0.12); background: #e5ebe7; color: var(--deep-emerald); text-align: center; }
+.founder-trust-bar { display: grid; min-height: 34px; place-items: center; padding: 8px 20px; background: #e5ebe7; color: var(--deep-emerald); text-align: center; }
 .founder-trust-bar p { max-width: none; margin: 0; font-family: var(--font-mono); font-size: 10px; font-weight: 400; font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.14em; line-height: 1.45; text-transform: uppercase; }
 .site-header {
   position: sticky;
@@ -474,6 +474,18 @@ h1 em, h2 em { font-style: normal; color: var(--ink); }
 .site-footer__links a { position: relative; width: max-content; max-width: 100%; color: #f6f7f3; font-family: var(--font-mono); font-size: 9px; font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.14em; line-height: 1.5; text-transform: uppercase; }
 .site-footer__links a:hover { color: #a7ddc4; text-decoration: underline; text-underline-offset: 0.22em; }
 .site-footer__clarifier { grid-column: 1 / -1; max-width: 76ch; margin: 0; padding-top: 18px; border-top: 1px solid rgba(218,226,222,0.17); color: #afbab5; font-size: 11px; line-height: 1.55; }
+.faq-section { padding: 9vw 9.4vw 10vw; border-top: 1px solid var(--line); background: #f8f9f6; }
+.faq-section__head { display: grid; grid-template-columns: minmax(0, 0.62fr) minmax(0, 1.38fr); gap: 8vw; align-items: end; margin-bottom: 4.6vw; }
+.faq-section h2 { margin: 0; font-size: clamp(2.8rem, 4.8vw, 5.1rem); font-weight: 300; line-height: 1.01; }
+.faq-list { border-top: 1px solid var(--line); }
+.faq-item { border-bottom: 1px solid var(--line); }
+.faq-item summary { display: grid; grid-template-columns: 42px minmax(0, 1fr); align-items: center; min-height: 56px; padding: 18px 20px 18px 0; color: var(--ink); cursor: pointer; font-family: var(--font-tight); font-size: clamp(1.05rem, 1.6vw, 1.35rem); font-weight: 500; letter-spacing: -0.015em; line-height: 1.35; }
+.faq-item summary::marker { color: var(--emerald); font-size: 0.8em; }
+.faq-item summary > span { color: var(--emerald); font-family: var(--font-mono); font-size: 9px; font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.14em; }
+.faq-item summary:focus-visible { outline: 2px solid #00a97f; outline-offset: 3px; }
+.faq-item__answer { max-width: 62ch; padding: 0 0 23px 42px; }
+.faq-item__answer p { margin: 0; color: var(--slate); font-size: 13px; line-height: 1.65; }
+.faq-item__answer a { color: var(--emerald) !important; text-decoration: underline; text-underline-offset: 0.2em; }
 .brand--footer .wordmark { color: #f6f7f3; }
 .brand--footer > img { border-color: rgba(156, 211, 192, 0.32); background: rgba(255,255,255,0.07); }
 .brand--footer .wordmark small { color: #91cfb7; }
@@ -575,6 +587,10 @@ h1 em, h2 em { font-style: normal; color: var(--ink); }
   .site-footer { grid-template-columns: 1fr; gap: 26px; padding: 30px 25px; }
   .site-footer__links { grid-template-columns: 1fr; gap: 11px; }
   .site-footer__clarifier { grid-column: auto; padding-top: 16px; }
+  .faq-section { padding: 80px 25px; }
+  .faq-section__head { display: block; margin-bottom: 42px; }
+  .faq-item summary { grid-template-columns: 34px minmax(0, 1fr); min-height: 54px; padding: 17px 0; font-size: 1.05rem; }
+  .faq-item__answer { padding: 0 0 21px 34px; }
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -683,5 +699,7 @@ h3, h4, .product-feature h3, .concern-card h3, .ingredient-science__intro h3, .p
   .ritual-video { animation: none; }
 }
 
-.policy-placeholder { display: grid; min-height: 100svh; place-items: center; padding: 32px; background: var(--paper); color: var(--slate); }
+.policy-placeholder { display: grid; min-height: 100svh; align-content: center; justify-items: center; gap: 16px; padding: 32px; background: var(--paper); color: var(--slate); text-align: center; }
+.policy-placeholder h1 { margin: 0; color: var(--ink); font-size: clamp(2.5rem, 6vw, 4.5rem); }
 .policy-placeholder p { margin: 0; font-family: var(--font-mono); font-size: 10px; font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.14em; text-align: center; }
+.policy-placeholder a { color: var(--emerald) !important; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
