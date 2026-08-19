@@ -164,3 +164,8 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Integrate the approved zero-generation 16-second ritual MP4/WebM and a JPEG exported from its first frame, preserving accessible playback and reduced-motion behavior without publishing.
 - [x] Validate integrated media geometry, duration, byte sizes, temporal order, exact poster-frame match, actual playing-frame chip contrast, responsive output, tests, type-check, and build before one release commit.
 - [x] Provide a report-only audit of every live companion-device image, its inferred scale, and an ordered image-regeneration credit/allowance recommendation without editing any image.
+- [x] Inventory all live /manus-storage assets and repository baseline size for a fully portable asset migration.
+- [x] Vendor every referenced image, video, and font under client/public/media or client/public/fonts with existing hashed filenames, then remove Manus-only storage proxy and debug collector support.
+- [x] Rewrite every visual, font, preload, favicon, responsive-srcset, metadata, JSON-LD, and server reference to local public paths without changing the canonical host.
+- [x] Add portability regression coverage and verify tests, type-check, build output, zero unresolved-storage warnings, asset inclusion, and before/after repository size.
+- [ ] Commit and push the complete portable-asset migration, save a checkpoint without publishing, and report the non-generative image-quota status.

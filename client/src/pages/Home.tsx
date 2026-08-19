@@ -14,23 +14,23 @@ import Play from "lucide-react/dist/esm/icons/play";
 import X from "lucide-react/dist/esm/icons/x";
 
 const ASSETS = {
-  logo: "/manus-storage/bns-emblem_58bd568a.svg",
-  hero: "/manus-storage/bns-cycle7-master-product-system-final_9fe40db9.jpg",
-  serum: "/manus-storage/bns-cycle7-serum-final_2280009d.jpg",
-  device: "/manus-storage/bns-cycle7-device-final_0e062148.jpg",
-  ritualMotion: "/manus-storage/bns-cycle12-stills-ritual-review_9dd7299d.mp4",
-  ritualWebm: "/manus-storage/bns-cycle12-stills-ritual-review_f0682928.webm",
-  ritualPoster: "/manus-storage/bns-cycle12-stills-ritual-review-poster_ea33111f.jpg",
-  ritualMineralStill: "/manus-storage/bns-blonde-device-ritual-mineral-keyframe_7a913bcc.png",
-  ingredientMap: "/manus-storage/bns-cycle7-ingredient-map-final_1bd416de.jpg",
+  logo: "/media/bns-emblem_58bd568a.svg",
+  hero: "/media/bns-cycle7-master-product-system-final_9fe40db9.jpg",
+  serum: "/media/bns-cycle7-serum-final_2280009d.jpg",
+  device: "/media/bns-cycle7-device-final_0e062148.jpg",
+  ritualMotion: "/media/bns-cycle12-stills-ritual-review_9dd7299d.mp4",
+  ritualWebm: "/media/bns-cycle12-stills-ritual-review_f0682928.webm",
+  ritualPoster: "/media/bns-cycle12-stills-ritual-review-poster_ea33111f.jpg",
+  ritualMineralStill: "/media/bns-blonde-device-ritual-mineral-keyframe_7a913bcc.png",
+  ingredientMap: "/media/bns-cycle7-ingredient-map-final_1bd416de.jpg",
 };
 
 type ResponsiveImageConfig = { src: string; sizes: string; width: number; height: number; webp: string; fallback: string };
 const RESPONSIVE_IMAGES: Record<"hero" | "serum" | "device" | "ingredientMap", ResponsiveImageConfig> = {
-  hero: { src: "/manus-storage/bns-cycle9-hero-1440_d401d83a.jpg", sizes: "(max-width: 600px) 100vw, 54vw", width: 1920, height: 1080, webp: "/manus-storage/bns-cycle9-hero-480_c4acdc79.webp 480w, /manus-storage/bns-cycle9-hero-768_e4f067f2.webp 768w, /manus-storage/bns-cycle9-hero-1024_99e60e3a.webp 1024w, /manus-storage/bns-cycle9-hero-1440_352e5955.webp 1440w, /manus-storage/bns-cycle9-hero-1920_d36325aa.webp 1920w", fallback: "/manus-storage/bns-cycle9-hero-480_319a1f5d.jpg 480w, /manus-storage/bns-cycle9-hero-768_6885b17d.jpg 768w, /manus-storage/bns-cycle9-hero-1024_e414f50f.jpg 1024w, /manus-storage/bns-cycle9-hero-1440_d401d83a.jpg 1440w, /manus-storage/bns-cycle9-hero-1920_d4ca200d.jpg 1920w" },
-  serum: { src: "/manus-storage/bns-cycle9-serum-1440_d013724f.jpg", sizes: "(max-width: 680px) 100vw, 50vw", width: 1920, height: 2560, webp: "/manus-storage/bns-cycle9-serum-480_8f77fbe8.webp 480w, /manus-storage/bns-cycle9-serum-768_5a1d8911.webp 768w, /manus-storage/bns-cycle9-serum-1024_ce163f2e.webp 1024w, /manus-storage/bns-cycle9-serum-1440_ca989e75.webp 1440w, /manus-storage/bns-cycle9-serum-1920_ecadc3bc.webp 1920w", fallback: "/manus-storage/bns-cycle9-serum-480_eef061f4.jpg 480w, /manus-storage/bns-cycle9-serum-768_d1911094.jpg 768w, /manus-storage/bns-cycle9-serum-1024_ce1a8fa0.jpg 1024w, /manus-storage/bns-cycle9-serum-1440_d013724f.jpg 1440w, /manus-storage/bns-cycle9-serum-1920_ba61fb83.jpg 1920w" },
-  device: { src: "/manus-storage/bns-cycle9-device-1440_aa15852b.jpg", sizes: "(max-width: 680px) 100vw, 50vw", width: 1920, height: 2560, webp: "/manus-storage/bns-cycle9-device-480_b52769a7.webp 480w, /manus-storage/bns-cycle9-device-768_9ec18452.webp 768w, /manus-storage/bns-cycle9-device-1024_d74af6e3.webp 1024w, /manus-storage/bns-cycle9-device-1440_a403f179.webp 1440w, /manus-storage/bns-cycle9-device-1920_adfeb55d.webp 1920w", fallback: "/manus-storage/bns-cycle9-device-480_33070fd7.jpg 480w, /manus-storage/bns-cycle9-device-768_a83aba24.jpg 768w, /manus-storage/bns-cycle9-device-1024_99b8c221.jpg 1024w, /manus-storage/bns-cycle9-device-1440_aa15852b.jpg 1440w, /manus-storage/bns-cycle9-device-1920_c3ebc302.jpg 1920w" },
-  ingredientMap: { src: "/manus-storage/bns-cycle9-ingredient-map-1440_18650846.jpg", sizes: "(max-width: 680px) 100vw, 86vw", width: 1920, height: 1080, webp: "/manus-storage/bns-cycle9-ingredient-map-480_27c02cd5.webp 480w, /manus-storage/bns-cycle9-ingredient-map-768_adbbdce5.webp 768w, /manus-storage/bns-cycle9-ingredient-map-1024_18f6cf2f.webp 1024w, /manus-storage/bns-cycle9-ingredient-map-1440_591b253a.webp 1440w, /manus-storage/bns-cycle9-ingredient-map-1920_e6acc01e.webp 1920w", fallback: "/manus-storage/bns-cycle9-ingredient-map-480_819d9893.jpg 480w, /manus-storage/bns-cycle9-ingredient-map-768_4511d20d.jpg 768w, /manus-storage/bns-cycle9-ingredient-map-1024_7483e989.jpg 1024w, /manus-storage/bns-cycle9-ingredient-map-1440_18650846.jpg 1440w, /manus-storage/bns-cycle9-ingredient-map-1920_7a9cb0ea.jpg 1920w" },
+  hero: { src: "/media/bns-cycle9-hero-1440_d401d83a.jpg", sizes: "(max-width: 600px) 100vw, 54vw", width: 1920, height: 1080, webp: "/media/bns-cycle9-hero-480_c4acdc79.webp 480w, /media/bns-cycle9-hero-768_e4f067f2.webp 768w, /media/bns-cycle9-hero-1024_99e60e3a.webp 1024w, /media/bns-cycle9-hero-1440_352e5955.webp 1440w, /media/bns-cycle9-hero-1920_d36325aa.webp 1920w", fallback: "/media/bns-cycle9-hero-480_319a1f5d.jpg 480w, /media/bns-cycle9-hero-768_6885b17d.jpg 768w, /media/bns-cycle9-hero-1024_e414f50f.jpg 1024w, /media/bns-cycle9-hero-1440_d401d83a.jpg 1440w, /media/bns-cycle9-hero-1920_d4ca200d.jpg 1920w" },
+  serum: { src: "/media/bns-cycle9-serum-1440_d013724f.jpg", sizes: "(max-width: 680px) 100vw, 50vw", width: 1920, height: 2560, webp: "/media/bns-cycle9-serum-480_8f77fbe8.webp 480w, /media/bns-cycle9-serum-768_5a1d8911.webp 768w, /media/bns-cycle9-serum-1024_ce163f2e.webp 1024w, /media/bns-cycle9-serum-1440_ca989e75.webp 1440w, /media/bns-cycle9-serum-1920_ecadc3bc.webp 1920w", fallback: "/media/bns-cycle9-serum-480_eef061f4.jpg 480w, /media/bns-cycle9-serum-768_d1911094.jpg 768w, /media/bns-cycle9-serum-1024_ce1a8fa0.jpg 1024w, /media/bns-cycle9-serum-1440_d013724f.jpg 1440w, /media/bns-cycle9-serum-1920_ba61fb83.jpg 1920w" },
+  device: { src: "/media/bns-cycle9-device-1440_aa15852b.jpg", sizes: "(max-width: 680px) 100vw, 50vw", width: 1920, height: 2560, webp: "/media/bns-cycle9-device-480_b52769a7.webp 480w, /media/bns-cycle9-device-768_9ec18452.webp 768w, /media/bns-cycle9-device-1024_d74af6e3.webp 1024w, /media/bns-cycle9-device-1440_a403f179.webp 1440w, /media/bns-cycle9-device-1920_adfeb55d.webp 1920w", fallback: "/media/bns-cycle9-device-480_33070fd7.jpg 480w, /media/bns-cycle9-device-768_a83aba24.jpg 768w, /media/bns-cycle9-device-1024_99b8c221.jpg 1024w, /media/bns-cycle9-device-1440_aa15852b.jpg 1440w, /media/bns-cycle9-device-1920_c3ebc302.jpg 1920w" },
+  ingredientMap: { src: "/media/bns-cycle9-ingredient-map-1440_18650846.jpg", sizes: "(max-width: 680px) 100vw, 86vw", width: 1920, height: 1080, webp: "/media/bns-cycle9-ingredient-map-480_27c02cd5.webp 480w, /media/bns-cycle9-ingredient-map-768_adbbdce5.webp 768w, /media/bns-cycle9-ingredient-map-1024_18f6cf2f.webp 1024w, /media/bns-cycle9-ingredient-map-1440_591b253a.webp 1440w, /media/bns-cycle9-ingredient-map-1920_e6acc01e.webp 1920w", fallback: "/media/bns-cycle9-ingredient-map-480_819d9893.jpg 480w, /media/bns-cycle9-ingredient-map-768_4511d20d.jpg 768w, /media/bns-cycle9-ingredient-map-1024_7483e989.jpg 1024w, /media/bns-cycle9-ingredient-map-1440_18650846.jpg 1440w, /media/bns-cycle9-ingredient-map-1920_7a9cb0ea.jpg 1920w" },
 };
 
 type ResponsiveImageName = keyof typeof RESPONSIVE_IMAGES;
@@ -430,7 +430,7 @@ export default function Home() {
               onPlay={() => setRitualPlaying(true)}
               onPause={() => setRitualPlaying(false)}
             ><source src={ASSETS.ritualWebm} type="video/webm" /><source src={ASSETS.ritualMotion} type="video/mp4" /></video>
-            <img className="ritual-plant-overlay" src="/manus-storage/bns-ritual-plant-overlay-368_134c1e48.webp" alt="" aria-hidden="true" width="368" height="368" loading="lazy" decoding="async" />
+            <img className="ritual-plant-overlay" src="/media/bns-ritual-plant-overlay-368_134c1e48.webp" alt="" aria-hidden="true" width="368" height="368" loading="lazy" decoding="async" />
             <div className={`motion-education__visual-mark ${ritualVisible ? "is-visible" : ""}`} aria-hidden="true">
               <img src={ASSETS.logo} alt="" width="100" height="100" loading="lazy" decoding="async" />
               <span>RITUAL / IN MOTION</span>

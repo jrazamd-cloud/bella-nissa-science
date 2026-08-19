@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { dirname, resolve } from "node:path";
 
@@ -12,6 +12,7 @@ const app = readFileSync(resolve(here, "App.tsx"), "utf8");
 const server = readFileSync(resolve(here, "../../server/index.ts"), "utf8");
 const robots = readFileSync(resolve(here, "../public/robots.txt"), "utf8");
 const sitemap = readFileSync(resolve(here, "../public/sitemap.xml"), "utf8");
+const vite = readFileSync(resolve(here, "../../vite.config.ts"), "utf8");
 
 describe("Bella Nissa Science experience contract", () => {
   it("keeps the hero headline as staged semantic text", () => {
@@ -106,6 +107,21 @@ describe("Bella Nissa Science experience contract", () => {
     expect(documentHead).toContain('name="twitter:card"');
     expect(documentHead).toContain('"@type":"Organization"');
     expect(documentHead).toContain('"@type":"Product"');
+  });
+
+  it("vendors all production assets locally and leaves no Manus storage or debug dependency", () => {
+    const portabilitySources = [home, formula, styles, documentHead, server].join("\n");
+    const assetNames = Array.from(new Set(Array.from(portabilitySources.matchAll(/\/(?:media|fonts)\/([A-Za-z0-9._-]+)/g), (match) => match[1])));
+    expect(portabilitySources).not.toContain("/manus-storage/");
+    expect(assetNames).toHaveLength(57);
+    assetNames.forEach((assetName) => {
+      const directory = assetName.endsWith(".woff2") ? "fonts" : "media";
+      expect(existsSync(resolve(here, "../public", directory, assetName))).toBe(true);
+    });
+    expect(vite).not.toContain("vitePluginStorageProxy");
+    expect(vite).not.toContain("vitePluginManusDebugCollector");
+    expect(vite).not.toContain("BUILT_IN_FORGE_API_URL");
+    expect(existsSync(resolve(here, "../public/__manus__/debug-collector.js"))).toBe(false);
   });
 
   it("keeps skip navigation, accessible protocol wiring, the Karger citation, and coordinated ritual review sources", () => {

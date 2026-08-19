@@ -7,20 +7,20 @@ import ChevronRight from "lucide-react/dist/esm/icons/chevron-right";
 import { useEffect } from "react";
 
 const ASSETS = {
-  logo: "/manus-storage/bns-emblem_58bd568a.svg",
-  serum: "/manus-storage/bns-cycle9-serum-1440_d013724f.jpg",
+  logo: "/media/bns-emblem_58bd568a.svg",
+  serum: "/media/bns-cycle9-serum-1440_d013724f.jpg",
 };
 
 const serumSources = {
-  webp: "/manus-storage/bns-cycle9-serum-480_8f77fbe8.webp 480w, /manus-storage/bns-cycle9-serum-768_5a1d8911.webp 768w, /manus-storage/bns-cycle9-serum-1024_ce163f2e.webp 1024w, /manus-storage/bns-cycle9-serum-1440_ca989e75.webp 1440w, /manus-storage/bns-cycle9-serum-1920_ecadc3bc.webp 1920w",
-  fallback: "/manus-storage/bns-cycle9-serum-480_eef061f4.jpg 480w, /manus-storage/bns-cycle9-serum-768_d1911094.jpg 768w, /manus-storage/bns-cycle9-serum-1024_ce1a8fa0.jpg 1024w, /manus-storage/bns-cycle9-serum-1440_d013724f.jpg 1440w, /manus-storage/bns-cycle9-serum-1920_ba61fb83.jpg 1920w",
+  webp: "/media/bns-cycle9-serum-480_8f77fbe8.webp 480w, /media/bns-cycle9-serum-768_5a1d8911.webp 768w, /media/bns-cycle9-serum-1024_ce163f2e.webp 1024w, /media/bns-cycle9-serum-1440_ca989e75.webp 1440w, /media/bns-cycle9-serum-1920_ecadc3bc.webp 1920w",
+  fallback: "/media/bns-cycle9-serum-480_eef061f4.jpg 480w, /media/bns-cycle9-serum-768_d1911094.jpg 768w, /media/bns-cycle9-serum-1024_ce1a8fa0.jpg 1024w, /media/bns-cycle9-serum-1440_d013724f.jpg 1440w, /media/bns-cycle9-serum-1920_ba61fb83.jpg 1920w",
 };
 
 const formulaMetadata = {
   title: "Rejuvenating Bioactive Precision Serum | Formula Detail | Bella Nissa Science",
   description: "An evidence-context dossier for Rejuvenating Bioactive Precision Serum, describing individual ingredients and a cosmetic ritual that supports the appearance of smooth, hydrated, radiant-looking skin.",
   url: "https://bella-nissa-science.manus.space/formula",
-  image: "https://bella-nissa-science.manus.space/manus-storage/bns-cycle9-serum-1440_d013724f.jpg",
+  image: "https://bella-nissa-science.manus.space/media/bns-cycle9-serum-1440_d013724f.jpg",
   imageAlt: "Bella Nissa Science serum with a translucent ruby-red formula and warm polished gold hardware.",
 };
 

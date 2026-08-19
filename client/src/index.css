@@ -3,11 +3,11 @@
 @import "tw-animate-css";
 
 @font-face { font-family: "Newsreader Fallback"; src: local("Georgia"); size-adjust: 97%; ascent-override: 93%; descent-override: 23%; line-gap-override: 0%; }
-@font-face { font-family: "Newsreader"; src: url("/manus-storage/newsreader-latin-basic_93828df0.woff2") format("woff2"); font-style: normal; font-weight: 300 400; font-display: swap; }
-@font-face { font-family: "Inter"; src: url("/manus-storage/inter-latin_9b37a295.woff2") format("woff2"); font-style: normal; font-weight: 400 500; font-display: swap; }
-@font-face { font-family: "Inter Tight"; src: url("/manus-storage/inter-tight-latin_c84fe693.woff2") format("woff2"); font-style: normal; font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "Newsreader"; src: url("/fonts/newsreader-latin-basic_93828df0.woff2") format("woff2"); font-style: normal; font-weight: 300 400; font-display: swap; }
+@font-face { font-family: "Inter"; src: url("/fonts/inter-latin_9b37a295.woff2") format("woff2"); font-style: normal; font-weight: 400 500; font-display: swap; }
+@font-face { font-family: "Inter Tight"; src: url("/fonts/inter-tight-latin_c84fe693.woff2") format("woff2"); font-style: normal; font-weight: 400 500; font-display: swap; }
 @font-face { font-family: "IBM Plex Mono Fallback"; src: local("Courier New"); size-adjust: 92%; ascent-override: 90%; descent-override: 22%; line-gap-override: 0%; }
-@font-face { font-family: "IBM Plex Mono"; src: url("/manus-storage/ibm-plex-mono-latin_3a647e54.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
+@font-face { font-family: "IBM Plex Mono"; src: url("/fonts/ibm-plex-mono-latin_3a647e54.woff2") format("woff2"); font-style: normal; font-weight: 400; font-display: swap; }
 
 @custom-variant dark (&:is(.dark *));
 
