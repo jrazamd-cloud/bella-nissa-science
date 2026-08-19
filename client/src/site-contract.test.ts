@@ -156,6 +156,17 @@ describe("Bella Nissa Science experience contract", () => {
     expect(server).toContain('renderFormulaDocument(template)');
     expect(server).toContain(".replaceAll('content=\"Bella Nissa Science — Clinical Skincare, Calibrated\"'");
     expect(robots).toContain('Sitemap: https://bella-nissa-science.manus.space/sitemap.xml');
+    expect(home).toContain('Vetted by our founder — a physician with 30 years of experience.');
+    expect(home).toContain('site-header--scrolled');
+    expect(app).toContain('path={"/contact"}');
+    expect(app).toContain('path={"/privacy"}');
+    expect(app).toContain('path={"/terms"}');
+    expect(app).toContain('path={"/shipping-returns"}');
+    expect(app).toContain('path={"/accessibility"}');
+    expect(styles).toContain('--sticky-header-height: 72px');
+    expect(styles).toContain('[id] { scroll-margin-top: calc(var(--sticky-header-height) + 16px); }');
+    expect(styles).toContain('color-scheme: light');
+    expect(documentHead).toContain('<meta name="color-scheme" content="light" />');
     expect(sitemap).toContain('https://bella-nissa-science.manus.space/formula');
   });
 });

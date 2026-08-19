@@ -173,6 +173,7 @@ export default function Home() {
   const [ritualVisible, setRitualVisible] = useState(false);
   const [reduceMotion, setReduceMotion] = useState(() => typeof window !== "undefined" && window.matchMedia("(prefers-reduced-motion: reduce)").matches);
   const [ritualPlaying, setRitualPlaying] = useState(false);
+  const [headerScrolled, setHeaderScrolled] = useState(false);
   const heroRef = useRef<HTMLElement | null>(null);
   const ritualRef = useRef<HTMLElement | null>(null);
   const ritualVideoRef = useRef<HTMLVideoElement | null>(null);
@@ -191,6 +192,13 @@ export default function Home() {
     syncMotionPreference();
     mediaQuery.addEventListener("change", syncMotionPreference);
     return () => mediaQuery.removeEventListener("change", syncMotionPreference);
+  }, []);
+
+  useEffect(() => {
+    const updateHeaderState = () => setHeaderScrolled(window.scrollY > 2);
+    updateHeaderState();
+    window.addEventListener("scroll", updateHeaderState, { passive: true });
+    return () => window.removeEventListener("scroll", updateHeaderState);
   }, []);
 
   const toggleRitualPlayback = () => {
@@ -246,7 +254,8 @@ export default function Home() {
   return (
     <div className="site-shell" id="top">
       <a className="skip-link" href="#main-content">Skip to main content</a>
-      <header className="site-header">
+      <div className="founder-trust-bar"><p>Vetted by our founder — a physician with 30 years of experience.</p></div>
+      <header className={`site-header ${headerScrolled ? "site-header--scrolled" : ""}`}>
         <a className="brand site-link brand-link brand-link--on-light" href="#top" aria-label="Bella Nissa Science home">
           <img src={ASSETS.logo} alt="Bella Nissa Science emblem" width="100" height="100" loading="eager" decoding="async" />
           <Wordmark />
@@ -605,12 +614,22 @@ export default function Home() {
       </main>
 
       <footer className="site-footer">
-        <a className="brand brand--footer site-link brand-link brand-link--footer brand-link--on-dark" href="#top">
-          <img src={ASSETS.logo} alt="" width="100" height="100" loading="lazy" decoding="async" />
-          <Wordmark inverse />
-        </a>
-        <p>Clinical skincare, calibrated.</p>
-        <p className="footer-meta">© 2026 Bella Nissa Science</p>
+        <div className="site-footer__brand">
+          <a className="brand brand--footer site-link brand-link brand-link--footer brand-link--on-dark" href="#top">
+            <img src={ASSETS.logo} alt="" width="100" height="100" loading="lazy" decoding="async" />
+            <Wordmark inverse />
+          </a>
+          <p>Clinical skincare, calibrated.</p>
+          <p className="footer-meta">© 2026 Bella Nissa Science</p>
+        </div>
+        <nav className="site-footer__links" aria-label="Company and policy links">
+          <a href="/contact">Contact</a>
+          <a href="/privacy">Privacy Policy</a>
+          <a href="/terms">Terms of Service</a>
+          <a href="/shipping-returns">Shipping and Returns</a>
+          <a href="/accessibility">Accessibility Statement</a>
+        </nav>
+        <p className="site-footer__clarifier">Bella Nissa Science products are cosmetics. They are not intended to diagnose, treat, cure, or prevent any disease.</p>
       </footer>
     </div>
   );

@@ -143,3 +143,7 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Cycle 9: reconcile device and emblem alternative text so decorative emblems are empty and exactly one meaningful brand mark remains named.
 - [x] Cycle 9: commit the exact quota-reset ritual-video prompt, negative prompt, parameters, encoding requirements, and acceptance checks without generating media.
 - [x] Cycle 9: verify the reverted fallback poster’s intrinsic dimensions, video aspect match, first-frame stability, CLS, and decode timing without changing the product-name conflict or subscription.
+- [x] Cycle 10: add the exact founder trust-bar sentence above the header with the specified mono treatment, responsive wrapping, non-sticky behavior, and 4.5:1 contrast.
+- [x] Cycle 10: make the header sticky with an on-scroll separator, reduced-motion-safe behavior, and scroll-margin offsets for every in-page target.
+- [x] Cycle 10: add footer policy/contact scaffolding, the required cosmetic clarifier, and five non-dead placeholder routes without inventing legal copy.
+- [x] Cycle 10: explicitly declare and validate a light color scheme in document metadata and root CSS when the operating system prefers dark mode.

@@ -5,6 +5,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 const FormulaDetail = lazy(() => import("./pages/FormulaDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
+const PolicyPlaceholder = lazy(() => import("./pages/PolicyPlaceholder"));
 
 
 function Router() {
@@ -13,6 +14,11 @@ function Router() {
       <Switch>
         <Route path={"/"} component={Home} />
         <Route path={"/formula"} component={FormulaDetail} />
+        <Route path={"/contact"} component={PolicyPlaceholder} />
+        <Route path={"/privacy"} component={PolicyPlaceholder} />
+        <Route path={"/terms"} component={PolicyPlaceholder} />
+        <Route path={"/shipping-returns"} component={PolicyPlaceholder} />
+        <Route path={"/accessibility"} component={PolicyPlaceholder} />
         <Route path={"/404"} component={NotFound} />
         {/* Final fallback route */}
         <Route component={NotFound} />
