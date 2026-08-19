@@ -152,3 +152,4 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Cycle 11: give each of the five policy placeholder routes its own page h1, document title, and home link while retaining exactly one placeholder sentence and no policy copy.
 - [x] Cycle 11: add only the user-authorised six-question native-details FAQ with verified existing-site answers, FAQPage JSON-LD matching visible copy, no unsupplied commercial/product facts, and no banned claim language.
 - [x] Cycle 11: validate the FAQ disclosures and JSON-LD at 1440/1024/390, including open/closed states, native keyboard operation, focus indication, and reduced-motion behavior.
+- [x] Prepare and deliver a comprehensive Claude-ready project handoff documenting all completed work, technical decisions, validation, release history, and pending work.
