@@ -153,3 +153,8 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Cycle 11: add only the user-authorised six-question native-details FAQ with verified existing-site answers, FAQPage JSON-LD matching visible copy, no unsupplied commercial/product facts, and no banned claim language.
 - [x] Cycle 11: validate the FAQ disclosures and JSON-LD at 1440/1024/390, including open/closed states, native keyboard operation, focus indication, and reduced-motion behavior.
 - [x] Prepare and deliver a comprehensive Claude-ready project handoff documenting all completed work, technical decisions, validation, release history, and pending work.
+- [x] Make one owner-authorised complete 14–18 second ritual-video generation attempt following the committed Cycle 9 execution brief; the serum beat rendered, the device-beat request received the single permitted quota refusal, and work stopped without media integration.
+- [ ] Create two continuity-locked 8-second ritual beats, join them into a 16-second review video, and obtain owner approval before any media integration, commit, checkpoint, or publication.
+- [x] Preserve and present the successful Cycle 12 serum beat with first/middle/last review frames and exact locked prompts; do not integrate or commit media.
+- [x] Run the requested non-destructive release-health audit and report findings without fixing anything unless a test fails.
+- [x] Create a files-only Shopify/Klaviyo handoff ZIP containing approved product copy, FAQ, brand tokens, references, and existing Cycle 7 image masters with no commerce or policy claims.
