@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://bella-nissa-science.manus.space/sitemap.xml
+Sitemap: https://bellanissascience.com/sitemap.xml

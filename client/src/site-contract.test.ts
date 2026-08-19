@@ -109,6 +109,20 @@ describe("Bella Nissa Science experience contract", () => {
     expect(documentHead).toContain('"@type":"Product"');
   });
 
+  it("keeps apex metadata and server template literals synchronized with the document head", () => {
+    const apexHost = "https://bellanissascience.com";
+    [documentHead, formula, server, sitemap, robots].forEach((source) => {
+      expect(source).not.toContain("manus.space");
+    });
+    expect(documentHead).toContain(`<link rel="canonical" href="${apexHost}/" />`);
+    expect(sitemap).toContain(`<loc>${apexHost}/</loc>`);
+    expect(sitemap).toContain(`<loc>${apexHost}/formula</loc>`);
+    expect(robots).toContain(`Sitemap: ${apexHost}/sitemap.xml`);
+    const templateLiterals = Array.from(server.matchAll(/\.replace(?:All)?\(\s*(["'])(.*?)\1/g), (match) => match[2]);
+    expect(templateLiterals.length).toBeGreaterThan(0);
+    templateLiterals.forEach((literal) => expect(documentHead).toContain(literal));
+  });
+
   it("vendors all production assets locally and leaves no Manus storage or debug dependency", () => {
     const portabilitySources = [home, formula, styles, documentHead, server].join("\n");
     const assetNames = Array.from(new Set(Array.from(portabilitySources.matchAll(/\/(?:media|fonts)\/([A-Za-z0-9._-]+)/g), (match) => match[1])));
@@ -173,7 +187,7 @@ describe("Bella Nissa Science experience contract", () => {
     expect(server).toContain('if (req.path !== "/formula" && !policyTitle)');
     expect(server).toContain('renderFormulaDocument(template)');
     expect(server).toContain(".replaceAll('content=\"Rejuvenating Bioactive Precision Serum | Bella Nissa Science\"'");
-    expect(robots).toContain('Sitemap: https://bella-nissa-science.manus.space/sitemap.xml');
+    expect(robots).toContain('Sitemap: https://bellanissascience.com/sitemap.xml');
     expect(home).toContain('Vetted by our founder — a physician with 30 years of experience.');
     expect(home).toContain('site-header--scrolled');
     expect(app).toContain('path={"/contact"}');
@@ -210,7 +224,7 @@ describe("Bella Nissa Science experience contract", () => {
       .replace("Bella Nissa Science products are cosmetics. They are not intended to diagnose, treat, cure, or prevent any disease.", "")
       .replace("References describe published research on individual ingredients. They are not claims about this finished product.", "");
     expect(faqWithoutRequiredDisclaimers).not.toMatch(/\b(repair|stimulate|inhibit|prevent|photoaging|heal|treat|cure)\b/i);
-    expect(sitemap).toContain('https://bella-nissa-science.manus.space/formula');
+    expect(sitemap).toContain('https://bellanissascience.com/formula');
   });
 });
 

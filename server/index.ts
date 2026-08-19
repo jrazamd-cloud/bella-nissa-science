@@ -10,8 +10,8 @@ const __dirname = path.dirname(__filename);
 const formulaMetadata = {
   title: "Rejuvenating Bioactive Precision Serum | Formula Detail | Bella Nissa Science",
   description: "An evidence-context dossier for Rejuvenating Bioactive Precision Serum, describing individual ingredients and a cosmetic ritual that supports the appearance of smooth, hydrated, radiant-looking skin.",
-  url: "https://bella-nissa-science.manus.space/formula",
-  image: "https://bella-nissa-science.manus.space/media/bns-cycle9-serum-1440_d013724f.jpg",
+  url: "https://bellanissascience.com/formula",
+  image: "https://bellanissascience.com/media/bns-cycle9-serum-1440_d013724f.jpg",
   imageAlt: "Bella Nissa Science serum with a translucent ruby-red formula and warm polished gold hardware.",
 };
 
@@ -27,11 +27,11 @@ function renderFormulaDocument(template: string) {
   return template
     .replace("<title>Rejuvenating Bioactive Precision Serum | Bella Nissa Science</title>", `<title>${formulaMetadata.title}</title>`)
     .replace('content="Rejuvenating Bioactive Precision Serum and its companion device form a considered cosmetic ritual that supports the appearance of smooth, hydrated, radiant-looking skin."', `content="${formulaMetadata.description}"`)
-    .replace('href="https://bella-nissa-science.manus.space/"', `href="${formulaMetadata.url}"`)
+    .replace('href="https://bellanissascience.com/"', `href="${formulaMetadata.url}"`)
     .replaceAll('content="Rejuvenating Bioactive Precision Serum | Bella Nissa Science"', `content="${formulaMetadata.title}"`)
     .replaceAll('content="Rejuvenating Bioactive Precision Serum and its companion device form a considered cosmetic ritual that supports the appearance of smooth, hydrated, radiant-looking skin."', `content="${formulaMetadata.description}"`)
-    .replaceAll('content="https://bella-nissa-science.manus.space/"', `content="${formulaMetadata.url}"`)
-    .replaceAll('content="https://bella-nissa-science.manus.space/media/bns-cycle7-share-1200x630_56e14440.jpg"', `content="${formulaMetadata.image}"`)
+    .replaceAll('content="https://bellanissascience.com/"', `content="${formulaMetadata.url}"`)
+    .replaceAll('content="https://bellanissascience.com/media/bns-cycle7-share-1200x630_56e14440.jpg"', `content="${formulaMetadata.image}"`)
     .replace('content="1200"', 'content="1440"')
     .replace('content="630"', 'content="1920"')
     .replaceAll('content="Translucent ruby-red serum with warm polished gold hardware and companion device for a ritual that supports the appearance of smooth, radiant-looking skin."', `content="${formulaMetadata.imageAlt}"`);

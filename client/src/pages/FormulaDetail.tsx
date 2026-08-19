@@ -19,8 +19,8 @@ const serumSources = {
 const formulaMetadata = {
   title: "Rejuvenating Bioactive Precision Serum | Formula Detail | Bella Nissa Science",
   description: "An evidence-context dossier for Rejuvenating Bioactive Precision Serum, describing individual ingredients and a cosmetic ritual that supports the appearance of smooth, hydrated, radiant-looking skin.",
-  url: "https://bella-nissa-science.manus.space/formula",
-  image: "https://bella-nissa-science.manus.space/media/bns-cycle9-serum-1440_d013724f.jpg",
+  url: "https://bellanissascience.com/formula",
+  image: "https://bellanissascience.com/media/bns-cycle9-serum-1440_d013724f.jpg",
   imageAlt: "Bella Nissa Science serum with a translucent ruby-red formula and warm polished gold hardware.",
 };
 

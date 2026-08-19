@@ -170,4 +170,7 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Add portability regression coverage and verify tests, type-check, build output, zero unresolved-storage warnings, asset inclusion, and before/after repository size.
 - [ ] Commit and push the complete portable-asset migration, save a checkpoint without publishing, and report the non-generative image-quota status.
 - [x] Remove the owner-approved unused ritualMineralStill registry entry and its oversized vendored PNG/build copy, then revise only the portable-asset count assertion to 56.
-- [ ] Rebuild the 56-asset portable output, rerun test/type-check/build, push the cleanup, and save the previously blocked checkpoint without publishing.
+- [x] Rebuild the 56-asset portable output, rerun test/type-check/build, push the cleanup, and save the previously blocked checkpoint without publishing.
+- [x] Replace the configured Manus canonical host with https://bellanissascience.com in the specified document head, Formula Detail, server metadata, sitemap, and robots files without changing local media or font paths.
+- [x] Add source-contract coverage for apex canonical URLs, sitemap and robots URLs, zero manus.space references, and server template-literal rewrite drift against client/index.html.
+- [x] Validate the 14-test suite, type-check, clean build, and raw production HTML for /, /formula, and /privacy; then push and checkpoint the host swap without publishing.
