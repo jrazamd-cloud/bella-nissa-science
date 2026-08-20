@@ -23,6 +23,8 @@ const policyTitles: Record<string, string> = {
   "/accessibility": "Accessibility Statement",
 };
 
+const knownRoutes = new Set(["/", "/formula", "/404", ...Object.keys(policyTitles)]);
+
 function renderFormulaDocument(template: string) {
   return template
     .replace("<title>Rejuvenating Bioactive Precision Serum | Bella Nissa Science</title>", `<title>${formulaMetadata.title}</title>`)
@@ -37,8 +39,17 @@ function renderFormulaDocument(template: string) {
     .replaceAll('content="Translucent ruby-red serum with warm polished gold hardware and companion device for a ritual that supports the appearance of smooth, radiant-looking skin."', `content="${formulaMetadata.imageAlt}"`);
 }
 
-function renderPolicyDocument(template: string, title: string) {
-  return template.replace("<title>Rejuvenating Bioactive Precision Serum | Bella Nissa Science</title>", `<title>${title} | Bella Nissa Science</title>`);
+function renderPolicyDocument(template: string, title: string, routePath: string) {
+  const routeUrl = `https://bellanissascience.com${routePath}`;
+  // Policy documents need their own canonical and social URL rather than inheriting the home page.
+  return template
+    .replace("<title>Rejuvenating Bioactive Precision Serum | Bella Nissa Science</title>", `<title>${title} | Bella Nissa Science</title>`)
+    .replace('href="https://bellanissascience.com/"', `href="${routeUrl}"`)
+    .replaceAll('content="https://bellanissascience.com/"', `content="${routeUrl}"`);
+}
+
+function renderNotFoundDocument(template: string) {
+  return template.replace("</head>", '<meta name="robots" content="noindex" />\n  </head>');
 }
 
 async function startServer() {
@@ -60,17 +71,24 @@ async function startServer() {
     },
   }));
 
-  // Handle client-side routing while serving Formula Detail metadata before hydration.
+  // Handle known client routes while preserving route-specific metadata before hydration.
   app.get("*", async (req, res, next) => {
     res.setHeader("Cache-Control", "no-cache");
     const policyTitle = policyTitles[req.path];
-    if (req.path !== "/formula" && !policyTitle) {
+    // Unknown requests must render the client fallback with a real 404, never a soft 200.
+    if (req.path !== "/formula" && !policyTitle && knownRoutes.has(req.path)) {
       res.sendFile(path.join(staticPath, "index.html"));
       return;
     }
     try {
       const template = await readFile(path.join(staticPath, "index.html"), "utf8");
-      res.type("html").send(req.path === "/formula" ? renderFormulaDocument(template) : renderPolicyDocument(template, policyTitle));
+      if (req.path === "/formula") {
+        res.type("html").send(renderFormulaDocument(template));
+      } else if (policyTitle) {
+        res.type("html").send(renderPolicyDocument(template, policyTitle, req.path));
+      } else {
+        res.status(404).type("html").send(renderNotFoundDocument(template));
+      }
     } catch (error) {
       next(error);
     }

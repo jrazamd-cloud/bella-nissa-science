@@ -189,3 +189,5 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Add the analytics-tag/plugin drift contract, validate 15 tests, type-check, unconfigured build removal, and configured build substitution; then push the isolated fix without publishing.
 - [x] Make exactly one owner-authorized 1920×1080 ingredient-map image attempt that preserves hotspot-sensitive diagram geometry while reducing only the companion device scale.
 - [x] Preserve the ingredient-map raw generation and side-by-side comparison as an unapproved candidate in media-masters/cycle13-review-ingredient-map and push only that archive to GitHub.
+- [x] Correct policy-route self-referencing canonical/Open Graph metadata and return a real noindex 404 for unknown paths in server/index.ts without changing media or rejected candidates.
+- [x] Update the pinned and new route-metadata source contracts, validate 17 tests, type-check, build, and raw production routes; then push the isolated SEO fix without publishing.

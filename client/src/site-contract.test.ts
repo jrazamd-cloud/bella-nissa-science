@@ -184,7 +184,7 @@ describe("Bella Nissa Science experience contract", () => {
     expect(formula).toContain('const formulaMetadata');
     expect(formula).toContain('formulaMetadata.url');
     expect(documentHead).toContain('imagesrcset=');
-    expect(server).toContain('if (req.path !== "/formula" && !policyTitle)');
+    expect(server).toContain('if (req.path !== "/formula" && !policyTitle && knownRoutes.has(req.path))');
     expect(server).toContain('renderFormulaDocument(template)');
     expect(server).toContain(".replaceAll('content=\"Rejuvenating Bioactive Precision Serum | Bella Nissa Science\"'");
     expect(robots).toContain('Sitemap: https://bellanissascience.com/sitemap.xml');
@@ -208,7 +208,7 @@ describe("Bella Nissa Science experience contract", () => {
     expect(home).toContain('<summary><span>{String(index + 1).padStart(2, "0")}</span>{entry.question}</summary>');
     expect(styles).toContain('.faq-item summary:focus-visible { outline: 2px solid #00a97f; outline-offset: 3px; }');
     expect(server).toContain('const policyTitles: Record<string, string>');
-    expect(server).toContain('renderPolicyDocument(template, policyTitle)');
+    expect(server).toContain('renderPolicyDocument(template, policyTitle, req.path)');
     [
       "How do I use the serum and the device together?",
       "Do I need the device, or can I use the serum on its own?",
@@ -225,6 +225,22 @@ describe("Bella Nissa Science experience contract", () => {
       .replace("References describe published research on individual ingredients. They are not claims about this finished product.", "");
     expect(faqWithoutRequiredDisclaimers).not.toMatch(/\b(repair|stimulate|inhibit|prevent|photoaging|heal|treat|cure)\b/i);
     expect(sitemap).toContain('https://bellanissascience.com/formula');
+  });
+
+  it("renders self-referencing metadata for every policy document", () => {
+    expect(server).toContain('function renderPolicyDocument(template: string, title: string, routePath: string)');
+    expect(server).toContain('const routeUrl = `https://bellanissascience.com${routePath}`;');
+    expect(server).toContain(".replace('href=\"https://bellanissascience.com/\"', `href=\"${routeUrl}\"`)");
+    expect(server).toContain(".replaceAll('content=\"https://bellanissascience.com/\"', `content=\"${routeUrl}\"`)");
+    expect(server).toContain('renderPolicyDocument(template, policyTitle, req.path)');
+  });
+
+  it("serves a noindex real 404 for unknown routes", () => {
+    expect(server).toContain('const knownRoutes = new Set(["/", "/formula", "/404", ...Object.keys(policyTitles)]);');
+    expect(server).toContain('knownRoutes.has(req.path)');
+    expect(server).toContain('res.status(404)');
+    expect(server).toContain('<meta name="robots" content="noindex" />');
+    expect(app).toContain('<Route component={NotFound} />');
   });
 
   it("never ships an unconfigured analytics script tag", () => {
