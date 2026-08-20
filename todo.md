@@ -187,3 +187,5 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Preserve the standalone-device raw generation and side-by-side comparison as an unapproved candidate in media-masters/cycle13-review-device and push only that archive to GitHub.
 - [x] Add a build-time Vite transform that removes the analytics script only when its endpoint or website ID is unconfigured, without changing client/index.html or any media.
 - [x] Add the analytics-tag/plugin drift contract, validate 15 tests, type-check, unconfigured build removal, and configured build substitution; then push the isolated fix without publishing.
+- [x] Make exactly one owner-authorized 1920×1080 ingredient-map image attempt that preserves hotspot-sensitive diagram geometry while reducing only the companion device scale.
+- [x] Preserve the ingredient-map raw generation and side-by-side comparison as an unapproved candidate in media-masters/cycle13-review-ingredient-map and push only that archive to GitHub.
