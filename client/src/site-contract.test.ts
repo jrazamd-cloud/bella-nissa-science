@@ -144,9 +144,9 @@ describe("Bella Nissa Science experience contract", () => {
     expect(home).toContain('aria-controls={`use-step-panel-${step.id}`}');
     expect(home).toContain('aria-current={activeStep === index ? "step" : undefined}');
     expect(home).toContain('preload="metadata"');
-    expect(home).toContain('bns-cycle12-stills-ritual-review_9dd7299d.mp4');
-    expect(home).toContain('bns-cycle12-stills-ritual-review_f0682928.webm');
-    expect(home).toContain('bns-cycle12-stills-ritual-review-poster_ea33111f.jpg');
+    expect(home).toContain('bns-cycle13-ritual-motion_1bd80b38.mp4');
+    expect(home).toContain('bns-cycle13-ritual-motion_df4a3898.webm');
+    expect(home).toContain('bns-cycle13-ritual-motion-poster_995f5a51.jpg');
     expect(home).toContain('karger.com/spp/article/17/5/232/295389');
   });
 
@@ -171,7 +171,8 @@ describe("Bella Nissa Science experience contract", () => {
     expect(home).toContain('bns-cycle9-ingredient-map-1920_e6acc01e.webp 1920w');
     expect(home).toContain('className="ritual-video-toggle"');
     expect(home).toContain('autoPlay={!reduceMotion}');
-    expect(home).toContain('aria-label="A slow product sequence shows the ruby-red serum with a warm polished gold cap on polished black marble against a pale pink ground, then cross-dissolves to the companion device."');
+    expect(home).toContain('aria-label="A slow product sequence moves in on the ruby-red serum with its warm polished gold cap on polished black marble against a pale pink ground, travels across to the compact companion device, then settles on the two together."');
+    expect(home).not.toMatch(/aria-label="[^"]*\b(applies|applying|massag|onto the skin|her face|cheek)\b/i);
     expect(home).toContain('RUBY-RED FORMULA');
     expect(home).toContain('POLISHED GOLD');
     expect(home).not.toContain('SATIN SILVER');

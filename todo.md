@@ -191,3 +191,5 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Preserve the ingredient-map raw generation and side-by-side comparison as an unapproved candidate in media-masters/cycle13-review-ingredient-map and push only that archive to GitHub.
 - [x] Correct policy-route self-referencing canonical/Open Graph metadata and return a real noindex 404 for unknown paths in server/index.ts without changing media or rejected candidates.
 - [x] Update the pinned and new route-metadata source contracts, validate 17 tests, type-check, build, and raw production routes; then push the isolated SEO fix without publishing.
+- [x] Build a deterministic three-beat Cycle 13 ritual motion sequence, WebM sibling, and first-frame poster from approved repository images without generation or deletion of superseded media.
+- [x] Wire only the active ritual media sources and accurate product-only aria label, update ritual source contracts, validate 17 tests/type-check/build, and push the motion replacement without publishing.

@@ -18,9 +18,9 @@ const ASSETS = {
   hero: "/media/bns-cycle13-master-product-system-palmscale_b5e76dad.jpg",
   serum: "/media/bns-cycle7-serum-final_2280009d.jpg",
   device: "/media/bns-cycle7-device-final_0e062148.jpg",
-  ritualMotion: "/media/bns-cycle12-stills-ritual-review_9dd7299d.mp4",
-  ritualWebm: "/media/bns-cycle12-stills-ritual-review_f0682928.webm",
-  ritualPoster: "/media/bns-cycle12-stills-ritual-review-poster_ea33111f.jpg",
+  ritualMotion: "/media/bns-cycle13-ritual-motion_1bd80b38.mp4",
+  ritualWebm: "/media/bns-cycle13-ritual-motion_df4a3898.webm",
+  ritualPoster: "/media/bns-cycle13-ritual-motion-poster_995f5a51.jpg",
   ingredientMap: "/media/bns-cycle7-ingredient-map-final_1bd416de.jpg",
 };
 
@@ -425,7 +425,7 @@ export default function Home() {
               playsInline
               preload="metadata"
               poster={ASSETS.ritualPoster}
-              aria-label="A slow product sequence shows the ruby-red serum with a warm polished gold cap on polished black marble against a pale pink ground, then cross-dissolves to the companion device."
+              aria-label="A slow product sequence moves in on the ruby-red serum with its warm polished gold cap on polished black marble against a pale pink ground, travels across to the compact companion device, then settles on the two together."
               onPlay={() => setRitualPlaying(true)}
               onPause={() => setRitualPlaying(false)}
             ><source src={ASSETS.ritualWebm} type="video/webm" /><source src={ASSETS.ritualMotion} type="video/mp4" /></video>
