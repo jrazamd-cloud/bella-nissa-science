@@ -195,3 +195,5 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Wire only the active ritual media sources and accurate product-only aria label, update ritual source contracts, validate 17 tests/type-check/build, and push the motion replacement without publishing.
 - [x] Write and archive a complete self-contained final Manus thread handoff documenting the entire project history, all generation outcomes, commits, current state, constraints, and pending work.
 - [x] Push the final handoff as a documentation-only commit and audit all remaining project-related files under /home/ubuntu and /manus-storage for preservation status.
+- [x] Locate the nine named owner-uploaded reference images, archive every available original under archive/manus-exit-2026-08-20/owner-uploads with factual provenance metadata, and explicitly report any unavailable original without substitution.
+- [x] Commit and push the owner-upload archive only, without site source, media integration, generation, checkpoint, publication, or deployment changes.
