@@ -193,3 +193,5 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Update the pinned and new route-metadata source contracts, validate 17 tests, type-check, build, and raw production routes; then push the isolated SEO fix without publishing.
 - [x] Build a deterministic three-beat Cycle 13 ritual motion sequence, WebM sibling, and first-frame poster from approved repository images without generation or deletion of superseded media.
 - [x] Wire only the active ritual media sources and accurate product-only aria label, update ritual source contracts, validate 17 tests/type-check/build, and push the motion replacement without publishing.
+- [x] Write and archive a complete self-contained final Manus thread handoff documenting the entire project history, all generation outcomes, commits, current state, constraints, and pending work.
+- [x] Push the final handoff as a documentation-only commit and audit all remaining project-related files under /home/ubuntu and /manus-storage for preservation status.
