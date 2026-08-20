@@ -5,7 +5,19 @@ import path from "node:path";
 import { defineConfig } from "vite";
 import { vitePluginManusRuntime } from "vite-plugin-manus-runtime";
 
-const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime()];
+// Prevent literal analytics placeholders from shipping when the optional analytics environment is absent.
+const stripUnconfiguredAnalytics = () => ({
+  name: "bns-strip-unconfigured-analytics",
+  transformIndexHtml(html: string) {
+    const endpoint = process.env.VITE_ANALYTICS_ENDPOINT;
+    const websiteId = process.env.VITE_ANALYTICS_WEBSITE_ID;
+    const configured = Boolean(endpoint && websiteId && !endpoint.startsWith("%") && !websiteId.startsWith("%"));
+    if (configured) return html;
+    return html.replace(/\n?\s*<script\b[^>]*\bsrc="%VITE_ANALYTICS_ENDPOINT%\/umami"[\s\S]*?<\/script>/, "");
+  },
+});
+
+const plugins = [react(), tailwindcss(), jsxLocPlugin(), vitePluginManusRuntime(), stripUnconfiguredAnalytics()];
 
 export default defineConfig({
   plugins,

@@ -226,6 +226,13 @@ describe("Bella Nissa Science experience contract", () => {
     expect(faqWithoutRequiredDisclaimers).not.toMatch(/\b(repair|stimulate|inhibit|prevent|photoaging|heal|treat|cure)\b/i);
     expect(sitemap).toContain('https://bellanissascience.com/formula');
   });
+
+  it("never ships an unconfigured analytics script tag", () => {
+    const viteConfig = readFileSync(resolve(here, "../../vite.config.ts"), "utf8");
+    expect(viteConfig).toContain("bns-strip-unconfigured-analytics");
+    expect(viteConfig).toContain("VITE_ANALYTICS_ENDPOINT");
+    expect(documentHead).toContain('src="%VITE_ANALYTICS_ENDPOINT%/umami"');
+  });
 });
 
 export {};

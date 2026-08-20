@@ -185,3 +185,5 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Validate 14 contracts, type-check, production build, raw home and Formula Detail metadata, and generated asset sizes; then push without checkpointing, publishing, or deployment.
 - [x] Make exactly one owner-authorized 1440×1920 standalone companion-device image attempt that changes only scale and framing, then stop for review without integration or derivative generation.
 - [x] Preserve the standalone-device raw generation and side-by-side comparison as an unapproved candidate in media-masters/cycle13-review-device and push only that archive to GitHub.
+- [x] Add a build-time Vite transform that removes the analytics script only when its endpoint or website ID is unconfigured, without changing client/index.html or any media.
+- [x] Add the analytics-tag/plugin drift contract, validate 15 tests, type-check, unconfigured build removal, and configured build substitution; then push the isolated fix without publishing.
