@@ -179,3 +179,7 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Create and deliver a comprehensive Claude-ready handoff covering all project sessions, current state, technical architecture, media, validation, constraints, and pending decisions.
 - [x] Archive eligible Bella Nissa Science artifacts that exist only in the sandbox under archive/manus-exit-2026-08-20 with original-path index documentation; exclude node_modules, build output, and files over 50 MB.
 - [x] Commit and push the archive-only preservation commit to github/main without altering the live site, integrating media, publishing, or checkpointing.
+- [x] Make exactly one owner-authorized 1920×1080 local-reference paired product-system image attempt that changes only the device scale, then stop for side-by-side review without derivatives, integration, commit, checkpoint, or publishing.
+- [x] Produce the approved Cycle 13 palm-scale master, responsive JPEG/WebP hero derivatives, and share crop deterministically from the raw review master while retaining all superseded assets.
+- [x] Update only Home, document metadata, server metadata rewrite, and the hero source-contract expectation to use the Cycle 13 palm-scale assets.
+- [x] Validate 14 contracts, type-check, production build, raw home and Formula Detail metadata, and generated asset sizes; then push without checkpointing, publishing, or deployment.

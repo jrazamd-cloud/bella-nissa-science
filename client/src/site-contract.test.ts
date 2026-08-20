@@ -165,7 +165,7 @@ describe("Bella Nissa Science experience contract", () => {
   });
 
   it("keeps Cycle 9 product, responsive-media, accessibility, and route metadata safeguards", () => {
-    expect(home).toContain('bns-cycle9-hero-480_c4acdc79.webp 480w');
+    expect(home).toContain('bns-cycle13-hero-480_d40c59ec.webp 480w');
     expect(home).toContain('bns-cycle9-serum-1920_ecadc3bc.webp 1920w');
     expect(home).toContain('bns-cycle9-device-1920_adfeb55d.webp 1920w');
     expect(home).toContain('bns-cycle9-ingredient-map-1920_e6acc01e.webp 1920w');
