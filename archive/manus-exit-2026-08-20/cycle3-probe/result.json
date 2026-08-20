@@ -1,0 +1,118 @@
+{
+  "meta": "width=device-width, initial-scale=1.0",
+  "focusClass": "skip-link",
+  "skipMatchesFocus": true,
+  "skipMatchesFocusVisible": true,
+  "skipRect": {
+    "top": 12,
+    "left": 12,
+    "width": 168,
+    "height": 37.5
+  },
+  "skipTransform": "matrix(1, 0, 0, 1, 0, 0)",
+  "skipRules": [
+    {
+      "selector": ".skip-link",
+      "transform": "translateY(-160%)",
+      "priority": ""
+    },
+    {
+      "selector": ".skip-link:focus, .skip-link:focus-visible",
+      "transform": "translateY(0px)",
+      "priority": "important"
+    }
+  ],
+  "mono": [
+    {
+      "start": 28.399999976158142,
+      "end": 273,
+      "transferSize": 0
+    }
+  ],
+  "video": {
+    "preload": "metadata",
+    "poster": "https://3000-iq2nne2zduvky1ptn1ozy-28b6c959.us3.manus.computer/manus-storage/bns-ritual-two-step-poster_c33fb4c4.jpg",
+    "sources": [
+      {
+        "src": "https://3000-iq2nne2zduvky1ptn1ozy-28b6c959.us3.manus.computer/manus-storage/bns-ritual-two-step_74502cd2.webm",
+        "type": "video/webm"
+      },
+      {
+        "src": "https://3000-iq2nne2zduvky1ptn1ozy-28b6c959.us3.manus.computer/manus-storage/bns-ritual-two-step_de344aae.mp4",
+        "type": "video/mp4"
+      }
+    ]
+  },
+  "ref7": {
+    "href": "https://karger.com/spp/article/17/5/232/295389/Ectoin-An-Effective-Natural-Substance-to-Prevent",
+    "target": "_blank",
+    "rel": "noopener noreferrer"
+  },
+  "referenceLinks": [
+    {
+      "href": "https://pubmed.ncbi.nlm.nih.gov/37452558/",
+      "target": "_blank",
+      "rel": "noopener noreferrer"
+    },
+    {
+      "href": "https://pubmed.ncbi.nlm.nih.gov/23417317/",
+      "target": "_blank",
+      "rel": "noopener noreferrer"
+    },
+    {
+      "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11762834/",
+      "target": "_blank",
+      "rel": "noopener noreferrer"
+    },
+    {
+      "href": "https://pubmed.ncbi.nlm.nih.gov/39513906/",
+      "target": "_blank",
+      "rel": "noopener noreferrer"
+    },
+    {
+      "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11047333/",
+      "target": "_blank",
+      "rel": "noopener noreferrer"
+    },
+    {
+      "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC9804842/",
+      "target": "_blank",
+      "rel": "noopener noreferrer"
+    },
+    {
+      "href": "https://karger.com/spp/article/17/5/232/295389/Ectoin-An-Effective-Natural-Substance-to-Prevent",
+      "target": "_blank",
+      "rel": "noopener noreferrer"
+    },
+    {
+      "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10078143/",
+      "target": "_blank",
+      "rel": "noopener noreferrer"
+    },
+    {
+      "href": "https://pmc.ncbi.nlm.nih.gov/articles/PMC11862975/",
+      "target": "_blank",
+      "rel": "noopener noreferrer"
+    }
+  ],
+  "protocolCurrent": "protocol-step-01",
+  "protocolControls": "protocol-reading-panel",
+  "accordionControls": [
+    {
+      "controls": "use-step-panel-01",
+      "expanded": "true"
+    },
+    {
+      "controls": "use-step-panel-02",
+      "expanded": "false"
+    },
+    {
+      "controls": "use-step-panel-03",
+      "expanded": "false"
+    },
+    {
+      "controls": "use-step-panel-04",
+      "expanded": "false"
+    }
+  ]
+}

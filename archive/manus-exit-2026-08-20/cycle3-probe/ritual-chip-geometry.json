@@ -1,0 +1,14 @@
+{
+  "scrollY": 2828,
+  "chip": {
+    "x": 28,
+    "y": 195.703125,
+    "width": 177.890625,
+    "height": 46,
+    "opacity": "0",
+    "color": "rgb(246, 247, 243)",
+    "background": "rgba(5, 16, 12, 0.82)"
+  },
+  "videoTime": 0,
+  "duration": 8
+}

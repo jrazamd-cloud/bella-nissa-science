@@ -174,3 +174,8 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Replace the configured Manus canonical host with https://bellanissascience.com in the specified document head, Formula Detail, server metadata, sitemap, and robots files without changing local media or font paths.
 - [x] Add source-contract coverage for apex canonical URLs, sitemap and robots URLs, zero manus.space references, and server template-literal rewrite drift against client/index.html.
 - [x] Validate the 14-test suite, type-check, clean build, and raw production HTML for /, /formula, and /privacy; then push and checkpoint the host swap without publishing.
+- [ ] Review homepage and Formula Detail JSON-LD against applicable Google Organization and Product structured-data requirements without changing site markup in this pass.
+- [ ] Make exactly one owner-authorized 1920×1080 paired product-system image attempt that changes only the companion device scale; do not create derivatives, integrate, commit, checkpoint, or publish before owner review.
+- [x] Create and deliver a comprehensive Claude-ready handoff covering all project sessions, current state, technical architecture, media, validation, constraints, and pending decisions.
+- [x] Archive eligible Bella Nissa Science artifacts that exist only in the sandbox under archive/manus-exit-2026-08-20 with original-path index documentation; exclude node_modules, build output, and files over 50 MB.
+- [x] Commit and push the archive-only preservation commit to github/main without altering the live site, integrating media, publishing, or checkpointing.
