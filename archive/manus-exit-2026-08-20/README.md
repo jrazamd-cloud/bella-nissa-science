@@ -2,7 +2,7 @@
 
 > **Purpose:** Preserve eligible Bella Nissa Science artifacts that were present only in the Manus sandbox before trial expiry. This archive is historical/supporting material only; it does not alter the live application, integrate media, or change deployed behavior.
 
-**Archive inventory:** 460 files, 386,064,667 bytes. Every archived file is below the owner-specified 50 MB individual-file limit.
+**Archive inventory:** 462 files, 386,074,676 bytes. Every archived file is below the owner-specified 50 MB individual-file limit.
 
 ## Included files
 
@@ -12,6 +12,8 @@
 | `bella-nissa-shopify-klaviyo-handoff.zip` | 22,217,532 | `/home/ubuntu/bella-nissa-shopify-klaviyo-handoff.zip` |
 | `bns-cycle12-serum-beat_61e0a461.mp4` | 2,095,656 | `/manus-storage/bns-cycle12-serum-beat_61e0a461.mp4 (preserved from /home/ubuntu/webdev-static-assets/bns-cycle12-serum-beat.mp4)` |
 | `bns-jsonld-review.md` | 4,791 | `/home/ubuntu/bns-jsonld-review.md` |
+| `recovered-project-notes/pasted_content.txt` | 3,670 | `/home/ubuntu/upload/pasted_content.txt` |
+| `recovered-project-notes/pasted_content_2.txt` | 6,339 | `/home/ubuntu/upload/pasted_content_2.txt` |
 | `cycle12-chip-frames/frame-001.png` | 482,925 | `/home/ubuntu/cycle12-chip-frames/frame-001.png` |
 | `cycle12-chip-frames/frame-002.png` | 484,312 | `/home/ubuntu/cycle12-chip-frames/frame-002.png` |
 | `cycle12-chip-frames/frame-003.png` | 484,464 | `/home/ubuntu/cycle12-chip-frames/frame-003.png` |
