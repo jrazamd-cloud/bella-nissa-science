@@ -198,3 +198,4 @@ Note: the higher-resolution 1080p generation attempt was blocked by the free pla
 - [x] Locate the nine named owner-uploaded reference images, archive every available original under archive/manus-exit-2026-08-20/owner-uploads with factual provenance metadata, and explicitly report any unavailable original without substitution.
 - [x] Commit and push the owner-upload archive only, without site source, media integration, generation, checkpoint, publication, or deployment changes.
 - [x] Conduct the final pre-deletion GitHub and sandbox artifact audit; archive the two unique recovered project-reference uploads; and confirm the deletion-risk conclusion.
+- [x] Attempt one unintegrated Cycle 14 human ritual video candidate from the local gesture reference; if full video generation is refused or quota-blocked, generate one still fallback; then archive the raw result and candid README without changing site source.
