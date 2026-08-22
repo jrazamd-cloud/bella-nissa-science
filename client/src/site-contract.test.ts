@@ -284,6 +284,7 @@ describe("Bella Nissa Science experience contract", () => {
     expect(server).toContain('app.disable("x-powered-by");');
     expect(server).toContain("app.use(compression());");
     expect(server).toContain('res.setHeader("X-Content-Type-Options", "nosniff");');
+    expect(server).toContain('res.setHeader("X-Frame-Options", "SAMEORIGIN");');
     expect(server).toContain('res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");');
     expect(server).toContain('res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");');
     expect(server).toContain('res.redirect(301, req.path.replace(/\\/+$/, "") + query);');
