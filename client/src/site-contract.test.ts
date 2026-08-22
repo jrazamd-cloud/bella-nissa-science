@@ -13,6 +13,10 @@ const server = readFileSync(resolve(here, "../../server/index.ts"), "utf8");
 const robots = readFileSync(resolve(here, "../public/robots.txt"), "utf8");
 const sitemap = readFileSync(resolve(here, "../public/sitemap.xml"), "utf8");
 const vite = readFileSync(resolve(here, "../../vite.config.ts"), "utf8");
+const packageJson = JSON.parse(readFileSync(resolve(here, "../../package.json"), "utf8")) as {
+  dependencies: Record<string, string>;
+  pnpm?: { patchedDependencies?: Record<string, string> };
+};
 
 describe("Bella Nissa Science experience contract", () => {
   it("keeps the hero headline as staged semantic text", () => {
@@ -185,7 +189,7 @@ describe("Bella Nissa Science experience contract", () => {
     expect(formula).toContain('const formulaMetadata');
     expect(formula).toContain('formulaMetadata.url');
     expect(documentHead).toContain('imagesrcset=');
-    expect(server).toContain('if (req.path !== "/formula" && !policyTitle && knownRoutes.has(req.path))');
+    expect(server).toContain('if (req.path === "/" && knownRoutes.has(req.path))');
     expect(server).toContain('renderFormulaDocument(template)');
     expect(server).toContain(".replaceAll('content=\"Rejuvenating Bioactive Precision Serum | Bella Nissa Science\"'");
     expect(robots).toContain('Sitemap: https://bellanissascience.com/sitemap.xml');
@@ -249,6 +253,54 @@ describe("Bella Nissa Science experience contract", () => {
     expect(viteConfig).toContain("bns-strip-unconfigured-analytics");
     expect(viteConfig).toContain("VITE_ANALYTICS_ENDPOINT");
     expect(documentHead).toContain('src="%VITE_ANALYTICS_ENDPOINT%/umami"');
+  });
+
+  it("removes editor tooling and obsolete patch configuration from production files", () => {
+    expect(vite.toLowerCase()).not.toContain("manus");
+    expect(vite).not.toContain("jsxLocPlugin");
+    expect(vite).not.toContain("vitePluginManusRuntime");
+    expect(JSON.stringify(packageJson).toLowerCase()).not.toContain("manus");
+    expect(JSON.stringify(packageJson)).not.toContain("jsx-loc");
+    expect(packageJson.pnpm?.patchedDependencies).toBeUndefined();
+    expect(existsSync(resolve(here, "../../patches"))).toBe(false);
+  });
+
+  it("keeps the direct production dependency set intentionally minimal", () => {
+    expect(Object.keys(packageJson.dependencies).sort()).toEqual([
+      "@radix-ui/react-slot",
+      "class-variance-authority",
+      "clsx",
+      "compression",
+      "express",
+      "lucide-react",
+      "react",
+      "react-dom",
+      "tailwind-merge",
+      "wouter",
+    ]);
+  });
+
+  it("hardens Express responses, normalizes trailing slashes, and preserves the public 404 route", () => {
+    expect(server).toContain('app.disable("x-powered-by");');
+    expect(server).toContain("app.use(compression());");
+    expect(server).toContain('res.setHeader("X-Content-Type-Options", "nosniff");');
+    expect(server).toContain('res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");');
+    expect(server).toContain('res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");');
+    expect(server).toContain('res.redirect(301, req.path.replace(/\\/+$/, "") + query);');
+    expect(server).toContain('else if (req.path === "/404")');
+  });
+
+  it("keeps concise accessible labels for the brand link, ritual toggle, and numbered ingredient hotspots", () => {
+    expect(home).toContain('aria-label="01 / epidermal growth factor and peptide benefit details"');
+    expect(home).toContain('aria-label="07 / companion device application details"');
+    expect(home).not.toContain("Play ritual video");
+    expect(home).not.toContain("Bella Nissa Science home");
+  });
+
+  it("uses the approved softer slate and care-note colors", () => {
+    expect(styles).toContain("--soft-slate: #6a7372");
+    expect(styles).not.toContain("#808988");
+    expect(styles).not.toContain("#61716c");
   });
 });
 

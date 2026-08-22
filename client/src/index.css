@@ -28,7 +28,7 @@
   --sticky-header-height: 72px;
   --ink: #17211f;
   --slate: #55605f;
-  --soft-slate: #808988;
+  --soft-slate: #6a7372;
   --bone: #f4f5f1;
   --paper: #fbfbf8;
   --silver: #c9cfce;
@@ -205,7 +205,7 @@ h1 em, h2 em { font-style: normal; color: var(--ink); }
 .concern-card p { max-width: 330px; margin: 18px 0 20px; color: var(--slate); font-size: 12px; line-height: 1.76; }
 .concern-card > span { color: var(--emerald); font-family: var(--font-mono); font-size: 8px; letter-spacing: 0.14em; }
 .motion-education__care-note { grid-column: 1 / -1; display: flex; align-items: center; gap: 15px; padding: 21px 9.4vw 23px; background: #e4e9e4; border-top: 1px solid var(--line); }
-.motion-education__care-note p { max-width: 62ch; margin: 0; color: #61716c; font-size: 10px; line-height: 1.68; }
+.motion-education__care-note p { max-width: 62ch; margin: 0; color: #57655f; font-size: 10px; line-height: 1.68; }
 .motion-education__care-note b { margin-right: 7px; color: var(--emerald); font-family: var(--font-mono); font-size: 8px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; }
 
 .ingredient-science { padding: 10.5vw 9.4vw 0; background: #f8f9f6; border-top: 1px solid var(--line); }
@@ -263,7 +263,7 @@ h1 em, h2 em { font-style: normal; color: var(--ink); }
 .ingredient-references a { grid-column: 2; display: inline-flex; align-items: center; gap: 6px; align-self: end; width: max-content; color: var(--emerald) !important; font-size: 8px; }
 .ingredient-reference-disclaimer { max-width: 62ch; margin: 0; padding: 18px 0 24px; color: var(--slate); font-size: 11px; line-height: 1.55; }
 .ingredient-science__note { display: flex; align-items: center; gap: 15px; margin: 0 -9.4vw; padding: 21px 9.4vw 24px; border-top: 1px solid var(--line); background: #e6ebe6; }
-.ingredient-science__note p { max-width: 62ch; margin: 0; color: #61716c; font-size: 10px; line-height: 1.68; }
+.ingredient-science__note p { max-width: 62ch; margin: 0; color: #57655f; font-size: 10px; line-height: 1.68; }
 .ingredient-science__note b { margin-right: 7px; color: var(--emerald); font-family: var(--font-mono); font-size: 8px; font-weight: 400; letter-spacing: 0.14em; text-transform: uppercase; }
 
 .use-accordion { position: relative; display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 10vw; padding: 10vw 9.4vw; overflow: hidden; background: linear-gradient(130deg, #e9eeea, #f7f8f5 62%); border-top: 1px solid var(--line); }
@@ -417,7 +417,7 @@ h1 em, h2 em { font-style: normal; color: var(--ink); }
 .mono-label { margin: 0 0 18px; color: var(--emerald); font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
 .protocol-reading h3 { max-width: 390px; margin: 0; color: var(--ink); font-size: clamp(2rem, 3.3vw, 3.4rem); font-weight: 500; line-height: 1; letter-spacing: -0.06em; }
 .protocol-reading > p:not(.mono-label) { max-width: 420px; margin: 20px 0 36px; color: var(--slate); font-size: 14px; line-height: 1.76; }
-.protocol-reading__note { display: flex; align-items: center; gap: 10px; color: #61716c; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; }
+.protocol-reading__note { display: flex; align-items: center; gap: 10px; color: #57655f; font-family: var(--font-mono); font-size: 9px; letter-spacing: 0.14em; }
 .protocol-reading__note span { width: 30px; border-top: 1px solid var(--emerald); }
 .protocol-guidance { display: flex; align-items: center; gap: 17px; padding: 23px 6.4vw 25px; border-top: 1px solid rgba(58, 74, 69, 0.16); background: rgba(225, 231, 226, 0.48); }
 .protocol-guidance > .molecular-waypoint { flex-basis: 31px; }

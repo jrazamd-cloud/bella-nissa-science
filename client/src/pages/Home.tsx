@@ -184,7 +184,7 @@ function CitationMarkers({ references }: { references: number[] }) {
 
 function Wordmark({ inverse = false }: { inverse?: boolean }) {
   return (
-    <div className={`wordmark ${inverse ? "wordmark--inverse" : ""}`} aria-label="Bella Nissa Science">
+    <div className={`wordmark ${inverse ? "wordmark--inverse" : ""}`}>
       <span>Bella Nissa</span>
       <small>SCIENCE / BNS</small>
     </div>
@@ -281,8 +281,8 @@ export default function Home() {
     <div className="site-shell" id="top">
       <a className="skip-link" href="#main-content">Skip to main content</a>
       <header className={`site-header ${headerScrolled ? "site-header--scrolled" : ""}`}>
-        <a className="brand site-link brand-link brand-link--on-light" href="#top" aria-label="Bella Nissa Science home">
-          <img src={ASSETS.logo} alt="Bella Nissa Science emblem" width="100" height="100" loading="eager" decoding="async" />
+        <a className="brand site-link brand-link brand-link--on-light" href="#top">
+          <img src={ASSETS.logo} alt="" width="100" height="100" loading="eager" decoding="async" />
           <Wordmark />
         </a>
 
@@ -434,7 +434,7 @@ export default function Home() {
               <img src={ASSETS.logo} alt="" width="100" height="100" loading="lazy" decoding="async" />
               <span>RITUAL / IN MOTION</span>
             </div>
-            <button className="ritual-video-toggle" type="button" onClick={toggleRitualPlayback} aria-label={ritualPlaying ? "Pause ritual video" : "Play ritual video"} aria-pressed={ritualPlaying}>
+            <button className="ritual-video-toggle" type="button" onClick={toggleRitualPlayback} aria-pressed={ritualPlaying}>
               {ritualPlaying ? <Pause size={14} aria-hidden="true" /> : <Play size={14} aria-hidden="true" />}<span>{ritualPlaying ? "Pause motion" : "Play motion"}</span>
             </button>
             <p className="motion-education__caption">METHOD / a calm, deliberate application pass after formula.</p>
@@ -492,13 +492,13 @@ export default function Home() {
 
           <figure className="ingredient-figure">
             <ResponsiveImage name="ingredientMap" alt="Bella Nissa Science skin-layer illustration with a translucent ruby-red serum film, active ingredient groupings, and the companion device shown in guided surface application" />
-            <button className="ingredient-hotspot ingredient-hotspot--peptides" type="button" aria-label="Epidermal growth factor and peptide benefit details" {...hotspotInteractionProps}><span>01</span><i className="ingredient-tooltip"><b>01 / EGF + peptides</b> Helps improve the appearance of texture, firmness, elasticity, and smoother-looking expression lines.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--nad" type="button" aria-label="NAD plus benefit details" {...hotspotInteractionProps}><span>02</span><i className="ingredient-tooltip"><b>02 / NAD+</b> Supports a vital-looking, firm-looking surface in an environmental-stress care story.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--niacinamide" type="button" aria-label="Niacinamide and adenosine benefit details" {...hotspotInteractionProps}><span>03</span><i className="ingredient-tooltip"><b>03 / B3 + adenosine</b> Helps even the look of tone and supports a smoother-looking, firmer-looking finish.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--ectoin" type="button" aria-label="Ectoin benefit details" {...hotspotInteractionProps}><span>04</span><i className="ingredient-tooltip"><b>04 / ectoin</b> Supports a calm, resilient, moisturised-feeling barrier in a daily stress-exposure story.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--hyaluronic" type="button" aria-label="Hyaluronic acid benefit details" {...hotspotInteractionProps}><span>05</span><i className="ingredient-tooltip"><b>05 / sodium hyaluronate</b> Helps skin look plumper and more dewy while softening the look of dehydration lines.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--glutathione" type="button" aria-label="Topical glutathione benefit details" {...hotspotInteractionProps}><span>06</span><i className="ingredient-tooltip"><b>06 / glutathione</b> Supports a more even-looking, luminous complexion in an antioxidant-focused formula story.</i></button>
-            <button className="ingredient-hotspot ingredient-hotspot--device" type="button" aria-label="Companion device application details" {...hotspotInteractionProps}><span>07</span><i className="ingredient-tooltip"><b>07 / Companion device</b> Follows serum as a guided surface-application pass; it is not presented as a clinical-delivery tool.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--peptides" type="button" aria-label="01 / epidermal growth factor and peptide benefit details" {...hotspotInteractionProps}><span>01</span><i className="ingredient-tooltip"><b>01 / EGF + peptides</b> Helps improve the appearance of texture, firmness, elasticity, and smoother-looking expression lines.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--nad" type="button" aria-label="02 / NAD plus benefit details" {...hotspotInteractionProps}><span>02</span><i className="ingredient-tooltip"><b>02 / NAD+</b> Supports a vital-looking, firm-looking surface in an environmental-stress care story.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--niacinamide" type="button" aria-label="03 / niacinamide and adenosine benefit details" {...hotspotInteractionProps}><span>03</span><i className="ingredient-tooltip"><b>03 / B3 + adenosine</b> Helps even the look of tone and supports a smoother-looking, firmer-looking finish.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--ectoin" type="button" aria-label="04 / ectoin benefit details" {...hotspotInteractionProps}><span>04</span><i className="ingredient-tooltip"><b>04 / ectoin</b> Supports a calm, resilient, moisturised-feeling barrier in a daily stress-exposure story.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--hyaluronic" type="button" aria-label="05 / hyaluronic acid benefit details" {...hotspotInteractionProps}><span>05</span><i className="ingredient-tooltip"><b>05 / sodium hyaluronate</b> Helps skin look plumper and more dewy while softening the look of dehydration lines.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--glutathione" type="button" aria-label="06 / topical glutathione benefit details" {...hotspotInteractionProps}><span>06</span><i className="ingredient-tooltip"><b>06 / glutathione</b> Supports a more even-looking, luminous complexion in an antioxidant-focused formula story.</i></button>
+            <button className="ingredient-hotspot ingredient-hotspot--device" type="button" aria-label="07 / companion device application details" {...hotspotInteractionProps}><span>07</span><i className="ingredient-tooltip"><b>07 / Companion device</b> Follows serum as a guided surface-application pass; it is not presented as a clinical-delivery tool.</i></button>
             <figcaption><span>FORMULA / SURFACE-LEVEL STORY</span><span>DEVICE / GUIDED APPLICATION PASS</span></figcaption>
           </figure>
 

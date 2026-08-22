@@ -1,3 +1,4 @@
+import compression from "compression";
 import express from "express";
 import { readFile } from "fs/promises";
 import { createServer } from "http";
@@ -56,6 +57,23 @@ async function startServer() {
   const app = express();
   const server = createServer(app);
 
+  app.disable("x-powered-by");
+  app.use(compression());
+  app.use((_req, res, next) => {
+    res.setHeader("X-Content-Type-Options", "nosniff");
+    res.setHeader("Referrer-Policy", "strict-origin-when-cross-origin");
+    res.setHeader("Permissions-Policy", "camera=(), microphone=(), geolocation=()");
+    next();
+  });
+  app.use((req, res, next) => {
+    if (req.path.length > 1 && req.path.endsWith("/")) {
+      const query = req.originalUrl.slice(req.path.length);
+      res.redirect(301, req.path.replace(/\/+$/, "") + query);
+      return;
+    }
+    next();
+  });
+
   // Serve static files from dist/public in production
   const staticPath =
     process.env.NODE_ENV === "production"
@@ -76,7 +94,7 @@ async function startServer() {
     res.setHeader("Cache-Control", "no-cache");
     const policyTitle = policyTitles[req.path];
     // Unknown requests must render the client fallback with a real 404, never a soft 200.
-    if (req.path !== "/formula" && !policyTitle && knownRoutes.has(req.path)) {
+    if (req.path === "/" && knownRoutes.has(req.path)) {
       res.sendFile(path.join(staticPath, "index.html"));
       return;
     }
@@ -86,12 +104,19 @@ async function startServer() {
         res.type("html").send(renderFormulaDocument(template));
       } else if (policyTitle) {
         res.type("html").send(renderPolicyDocument(template, policyTitle, req.path));
+      } else if (req.path === "/404") {
+        res.type("html").send(renderNotFoundDocument(template));
       } else {
         res.status(404).type("html").send(renderNotFoundDocument(template));
       }
     } catch (error) {
       next(error);
     }
+  });
+
+  app.use((error: unknown, req: express.Request, res: express.Response, next: express.NextFunction) => {
+    console.error(error);
+    res.status(500).type("text").send("Internal server error");
   });
 
   const port = process.env.PORT || 3000;
