@@ -699,11 +699,6 @@ h3, h4, .product-feature h3, .concern-card h3, .ingredient-science__intro h3, .p
   .ritual-video { animation: none; }
 }
 
-.policy-placeholder { display: grid; min-height: 100svh; align-content: center; justify-items: center; gap: 16px; padding: 32px; background: var(--paper); color: var(--slate); text-align: center; }
-.policy-placeholder h1 { margin: 0; color: var(--ink); font-size: clamp(2.5rem, 6vw, 4.5rem); }
-.policy-placeholder p { margin: 0; font-family: var(--font-mono); font-size: 10px; font-variant-numeric: tabular-nums slashed-zero; letter-spacing: 0.14em; text-align: center; }
-.policy-placeholder a { color: var(--emerald) !important; font-family: var(--font-mono); font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; }
-
 .policy-page { min-height: 100svh; padding: clamp(72px, 12vw, 140px) 24px clamp(64px, 10vw, 120px); background: var(--paper); color: var(--slate); }
 .policy-page__inner { max-width: 70ch; margin: 0 auto; }
 .policy-page h1 { margin: 0 0 8px; color: var(--ink); font-size: clamp(2rem, 5vw, 3.25rem); line-height: 1.08; }

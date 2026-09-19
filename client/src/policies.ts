@@ -111,6 +111,7 @@ export const policies: Record<string, PolicyDoc> = {
 
   "/terms": {
     title: "Terms of Service",
+    intro: "Last updated: September 18, 2026",
     blocks: [
       { kind: "h2", text: "Overview" },
       {
