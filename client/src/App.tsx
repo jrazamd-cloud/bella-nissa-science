@@ -5,7 +5,7 @@ import { ThemeProvider } from "./contexts/ThemeContext";
 import Home from "./pages/Home";
 const FormulaDetail = lazy(() => import("./pages/FormulaDetail"));
 const NotFound = lazy(() => import("./pages/NotFound"));
-const PolicyPlaceholder = lazy(() => import("./pages/PolicyPlaceholder"));
+const PolicyPage = lazy(() => import("./pages/PolicyPage"));
 
 
 function Router() {
@@ -14,11 +14,11 @@ function Router() {
       <Switch>
         <Route path={"/"} component={Home} />
         <Route path={"/formula"} component={FormulaDetail} />
-        <Route path={"/contact"}>{() => <PolicyPlaceholder title="Contact" />}</Route>
-        <Route path={"/privacy"}>{() => <PolicyPlaceholder title="Privacy Policy" />}</Route>
-        <Route path={"/terms"}>{() => <PolicyPlaceholder title="Terms of Service" />}</Route>
-        <Route path={"/shipping-returns"}>{() => <PolicyPlaceholder title="Shipping and Returns" />}</Route>
-        <Route path={"/accessibility"}>{() => <PolicyPlaceholder title="Accessibility Statement" />}</Route>
+        <Route path={"/contact"}>{() => <PolicyPage route="/contact" />}</Route>
+        <Route path={"/privacy"}>{() => <PolicyPage route="/privacy" />}</Route>
+        <Route path={"/terms"}>{() => <PolicyPage route="/terms" />}</Route>
+        <Route path={"/shipping-returns"}>{() => <PolicyPage route="/shipping-returns" />}</Route>
+        <Route path={"/accessibility"}>{() => <PolicyPage route="/accessibility" />}</Route>
         <Route path={"/404"} component={NotFound} />
         {/* Final fallback route */}
         <Route component={NotFound} />
