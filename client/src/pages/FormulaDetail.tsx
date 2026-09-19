@@ -5,6 +5,7 @@ import ArrowLeft from "lucide-react/dist/esm/icons/arrow-left";
 import ArrowUpRight from "lucide-react/dist/esm/icons/arrow-up-right";
 import ChevronRight from "lucide-react/dist/esm/icons/chevron-right";
 import { useEffect } from "react";
+import { COSMETIC_DISCLAIMER } from "../policies";
 
 const ASSETS = {
   logo: "/media/bns-emblem_58bd568a.svg",
@@ -136,7 +137,7 @@ export default function FormulaDetail() {
             ))}
           </div>
           <p className="formula-reference-disclaimer">References describe published research on individual ingredients. They are not claims about this finished product.</p>
-          <p className="formula-reference-disclaimer">Bella Nissa Science products are cosmetics. They are not intended to diagnose, treat, cure, or prevent any disease.</p>
+          <p className="formula-reference-disclaimer">{COSMETIC_DISCLAIMER}</p>
         </section>
 
         <section className="testing-section" aria-labelledby="testing-title">
