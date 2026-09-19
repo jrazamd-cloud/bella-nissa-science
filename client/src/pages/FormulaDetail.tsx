@@ -136,6 +136,7 @@ export default function FormulaDetail() {
             ))}
           </div>
           <p className="formula-reference-disclaimer">References describe published research on individual ingredients. They are not claims about this finished product.</p>
+          <p className="formula-reference-disclaimer">Bella Nissa Science products are cosmetics. They are not intended to diagnose, treat, cure, or prevent any disease.</p>
         </section>
 
         <section className="testing-section" aria-labelledby="testing-title">
